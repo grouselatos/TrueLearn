@@ -173,14 +173,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Managers\DbManager.cs" />
     <Compile Include="Migrations\201907230726108_branch migration.cs" />
     <Compile Include="Migrations\201907230726108_branch migration.Designer.cs">
       <DependentUpon>201907230726108_branch migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907230831489_courses changes.cs" />
+    <Compile Include="Migrations\201907230831489_courses changes.Designer.cs">
+      <DependentUpon>201907230831489_courses changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -281,6 +287,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +307,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907230726108_branch migration.resx">
       <DependentUpon>201907230726108_branch migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907230831489_courses changes.resx">
+      <DependentUpon>201907230831489_courses changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
