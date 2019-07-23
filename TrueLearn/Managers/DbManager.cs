@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -58,5 +60,31 @@ namespace TrueLearn.Managers
                 db.SaveChanges();
             }
         }
+
+        #region User
+
+        //public ApplicationUser GetUser()
+        //{
+        //    ApplicationUser result;
+        //    using (ApplicationDbContext db = new ApplicationDbContext())
+        //    {
+        //        result = db.Users.Find(Microsoft.AspNet.Identity.GetUserId());
+        //    }
+        //}
+
+        public void UpgradeToPremium(string userId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+
+                //ApplicationUser user = db.Users.FirstOrDefault(x => x.Id == userId);
+
+                var result1 = userManager.RemoveFromRole(userId, "FreeUser");
+                var result2 = userManager.AddToRole(userId, "PremiumUser");
+            }
+        }
+
+        #endregion
     }
 }

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using TrueLearn.Managers;
 using TrueLearn.Models;
 
 namespace TrueLearn.Controllers
@@ -17,6 +18,7 @@ namespace TrueLearn.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private DbManager db = new DbManager();
 
         public AccountController()
         {
@@ -480,6 +482,26 @@ namespace TrueLearn.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+        #endregion
+
+        #region Role Changes
+
+        [Authorize]
+        public ActionResult Premium()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Premium")]
+        public ActionResult PremiumConfirm()
+        {
+            string userId = User.Identity.GetUserId();
+            db.UpgradeToPremium(userId);
+            return RedirectToAction("Index", "Home");
+        }
+
         #endregion
     }
 }
