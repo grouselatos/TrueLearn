@@ -12,6 +12,7 @@ namespace TrueLearn
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            createRolesandUsers();
         }
 
         private void createRolesandUsers()
