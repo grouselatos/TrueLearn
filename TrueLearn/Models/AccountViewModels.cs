@@ -49,9 +49,8 @@ namespace TrueLearn.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +63,10 @@ namespace TrueLearn.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +82,29 @@ namespace TrueLearn.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string first_name { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string last_name { get; set; }
+
+        //[Required]
+        //[DataType(DataType.Date)]
+        //[Display(Name = "Date of Birth")]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        //public DateTime birth_date { get; set; }
+
+        //[Required]
+        //[Display(Name = "Country")]
+        //public string country { get; set; }
+
+        //public string UserRole { get; set; } = "FreeUser";
+
+        //[Display(Name = "Profile Picture")]
+        //public byte? profile_pic { get; set; }
     }
 
     public class ResetPasswordViewModel
