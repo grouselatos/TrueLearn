@@ -13,7 +13,7 @@ namespace TrueLearn.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201907230658286_branch migration"; }
+            get { return "201907230726108_branch migration"; }
         }
         
         string IMigrationMetadata.Source
