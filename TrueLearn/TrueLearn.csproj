@@ -178,20 +178,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907181400118_Initial.cs" />
-    <Compile Include="Migrations\201907181400118_Initial.Designer.cs">
-      <DependentUpon>201907181400118_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201907230658286_branch migration.cs" />
+    <Compile Include="Migrations\201907230658286_branch migration.Designer.cs">
+      <DependentUpon>201907230658286_branch migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Enums.cs" />
-    <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Premium_User.cs" />
-    <Compile Include="Models\Tracked_Course.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -305,8 +300,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907181400118_Initial.resx">
-      <DependentUpon>201907181400118_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907230658286_branch migration.resx">
+      <DependentUpon>201907230658286_branch migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

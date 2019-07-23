@@ -20,10 +20,10 @@ namespace TrueLearn.Models
 
         public string first_name { get; set; }
         public string last_name { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime? birth_date { get; set; }
-        public string country { get; set; }
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        //public DateTime? birth_date { get; set; }
+        //public string country { get; set; }
         //public bool premium { get; set; }
         //public virtual ICollection<Friend> friends { get; set; }
         //public byte profile_pic { get; set; }
