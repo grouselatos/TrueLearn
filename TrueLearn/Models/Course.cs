@@ -12,11 +12,10 @@ namespace TrueLearn.Models
         [Key]
         [Required]
         public int id { get; set; }
-        public string UserId { get; set; }
+
         public virtual ApplicationUser ApplicationUser { get; set; }
         public string title { get; set; }
         public string category { get; set; }
-        public string provider { get; set; }
         public bool started { get; set; }
         public bool completed { get; set; }
         public bool tracked { get; set; }
