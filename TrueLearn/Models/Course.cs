@@ -20,5 +20,6 @@ namespace TrueLearn.Models
         public bool started { get; set; }
         public bool completed { get; set; }
         public bool tracked { get; set; }
+		public virtual ICollection<CourseTask> CourseTasks { get; set; }
     }
 }

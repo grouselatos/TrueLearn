@@ -74,6 +74,20 @@ namespace TrueLearn.Managers
             }
         }
 
-        #endregion
-    }
+		#endregion
+
+		#region CourseTasks
+
+		public ICollection<CourseTask> GetCourseTasks()
+		{
+			ICollection<CourseTask> result;
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				result = db.CourseTasks.ToList();
+			}
+			return result;
+		}
+
+		#endregion
+	}
 }

@@ -7,13 +7,13 @@ namespace TrueLearn.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class courseschanges : IMigrationMetadata
+    public sealed partial class Tasks : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(courseschanges));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Tasks));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907230831489_courses changes"; }
+            get { return "201907250501584_Tasks"; }
         }
         
         string IMigrationMetadata.Source

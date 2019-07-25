@@ -3,7 +3,7 @@ namespace TrueLearn.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class branchmigration : DbMigration
+    public partial class Tasks : DbMigration
     {
         public override void Up()
         {
@@ -12,8 +12,10 @@ namespace TrueLearn.Migrations
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(),
                         title = c.String(),
                         category = c.String(),
+                        provider = c.String(),
                         started = c.Boolean(nullable: false),
                         completed = c.Boolean(nullable: false),
                         tracked = c.Boolean(nullable: false),
@@ -84,6 +86,22 @@ namespace TrueLearn.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.CourseTasks",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        task = c.Int(nullable: false),
+                        description = c.String(),
+                        start_date = c.DateTime(nullable: false),
+                        end_date = c.DateTime(nullable: false),
+                        completed = c.Boolean(nullable: false),
+                        CourseId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Courses", t => t.CourseId, cascadeDelete: true)
+                .Index(t => t.CourseId);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -98,11 +116,13 @@ namespace TrueLearn.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.CourseTasks", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.Courses", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.CourseTasks", new[] { "CourseId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -110,6 +130,7 @@ namespace TrueLearn.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Courses", new[] { "ApplicationUser_Id" });
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.CourseTasks");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
