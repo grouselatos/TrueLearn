@@ -7,13 +7,13 @@ namespace TrueLearn.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class gallery : IMigrationMetadata
+    public sealed partial class asdf : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(gallery));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(asdf));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907261333581_gallery"; }
+            get { return "201907261425576_asdf"; }
         }
         
         string IMigrationMetadata.Source

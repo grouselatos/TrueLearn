@@ -12,7 +12,8 @@ namespace TrueLearn.Models
         [Key]
         [Required]
         public int id { get; set; }
-
+        [ForeignKey("ApplicationUser")]
+        public string UserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         public string title { get; set; }
         public string category { get; set; }

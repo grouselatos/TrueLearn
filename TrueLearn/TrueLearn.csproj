@@ -173,51 +173,26 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-<<<<<<< HEAD
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CourseTasksController.cs" />
-=======
->>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907230726108_branch migration.cs" />
-    <Compile Include="Migrations\201907230726108_branch migration.Designer.cs">
-      <DependentUpon>201907230726108_branch migration.cs</DependentUpon>
+    <Compile Include="Migrations\201907261425576_asdf.cs" />
+    <Compile Include="Migrations\201907261425576_asdf.Designer.cs">
+      <DependentUpon>201907261425576_asdf.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907230831489_courses changes.cs" />
-    <Compile Include="Migrations\201907230831489_courses changes.Designer.cs">
-      <DependentUpon>201907230831489_courses changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907261053493_addtasks.cs" />
-    <Compile Include="Migrations\201907261053493_addtasks.Designer.cs">
-      <DependentUpon>201907261053493_addtasks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907261215184_addtasks2.cs" />
-    <Compile Include="Migrations\201907261215184_addtasks2.Designer.cs">
-      <DependentUpon>201907261215184_addtasks2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907261333581_gallery.cs" />
-    <Compile Include="Migrations\201907261333581_gallery.Designer.cs">
-      <DependentUpon>201907261333581_gallery.cs</DependentUpon>
-    </Compile>
-=======
->>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Course.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\CourseTask.cs" />
     <Compile Include="Models\Gallery.cs" />
-=======
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Friend.cs" />
->>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Premium_User.cs" />
@@ -356,7 +331,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-<<<<<<< HEAD
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Delete.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
@@ -366,10 +340,8 @@
     <Content Include="Views\CourseTasks\Index.cshtml" />
     <Content Include="Views\CourseTasks\Edit.cshtml" />
     <Content Include="Views\CourseTasks\Delete.cshtml" />
-=======
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\View.cshtml" />
->>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -383,26 +355,11 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
-<<<<<<< HEAD
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907230726108_branch migration.resx">
-      <DependentUpon>201907230726108_branch migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907230831489_courses changes.resx">
-      <DependentUpon>201907230831489_courses changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907261053493_addtasks.resx">
-      <DependentUpon>201907261053493_addtasks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907261215184_addtasks2.resx">
-      <DependentUpon>201907261215184_addtasks2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907261333581_gallery.resx">
-      <DependentUpon>201907261333581_gallery.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907261425576_asdf.resx">
+      <DependentUpon>201907261425576_asdf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-=======
->>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
