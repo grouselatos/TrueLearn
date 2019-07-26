@@ -47,6 +47,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -144,20 +153,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -173,13 +173,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CourseTasksController.cs" />
+=======
+>>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Managers\DbManager.cs" />
     <Compile Include="Migrations\201907230726108_branch migration.cs" />
     <Compile Include="Migrations\201907230726108_branch migration.Designer.cs">
@@ -201,27 +205,76 @@
     <Compile Include="Migrations\201907261333581_gallery.Designer.cs">
       <DependentUpon>201907261333581_gallery.cs</DependentUpon>
     </Compile>
+=======
+>>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Course.cs" />
+<<<<<<< HEAD
     <Compile Include="Models\CourseTask.cs" />
     <Compile Include="Models\Gallery.cs" />
+=======
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\Friend.cs" />
+>>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Premium_User.cs" />
+    <Compile Include="Models\Tracked_Course.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\assets\css\fullcalendar.css" />
+    <Content Include="Content\assets\css\fullcalendar.print.css" />
+    <Content Include="Content\assets\js\fullcalendar.js" />
+    <Content Include="Content\assets\js\jquery-1.10.2.js" />
+    <Content Include="Content\assets\js\jquery-ui.custom.min.js" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.bundle.js" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.js" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\courses.html" />
+    <Content Include="Content\create.html" />
+    <Content Include="Content\dashboard.html" />
+    <Content Include="Content\gallery.html" />
+    <Content Include="Content\Images\CEE-Resources_Background.jpg" />
+    <Content Include="Content\layout.html" />
+    <Content Include="Content\main.js" />
+    <Content Include="Content\settings.html" />
+    <Content Include="Content\signin.html" />
+    <Content Include="Content\styles.css" />
+    <Content Include="Content\subscription.html" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -230,14 +283,16 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.js.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -269,7 +324,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -302,6 +356,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+<<<<<<< HEAD
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Delete.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
@@ -311,6 +366,10 @@
     <Content Include="Views\CourseTasks\Index.cshtml" />
     <Content Include="Views\CourseTasks\Edit.cshtml" />
     <Content Include="Views\CourseTasks\Delete.cshtml" />
+=======
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\View.cshtml" />
+>>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,6 +383,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907230726108_branch migration.resx">
       <DependentUpon>201907230726108_branch migration.cs</DependentUpon>
@@ -341,6 +401,8 @@
       <DependentUpon>201907261333581_gallery.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+=======
+>>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
