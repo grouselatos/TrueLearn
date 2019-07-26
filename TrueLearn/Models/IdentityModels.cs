@@ -53,6 +53,8 @@ namespace TrueLearn.Models
 
         //public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<CourseTask> CourseTasks { get; set; }
+        public virtual DbSet<Gallery> Galleries { get; set; }
         //public virtual DbSet<Friend> Friends { get; set; }
         //public virtual DbSet<Premium_User> Premium_Users { get; set; }
         //public virtual DbSet<Tracked_Course> Tracked_Courses { get; set; }

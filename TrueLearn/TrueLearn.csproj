@@ -174,6 +174,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\CourseTasksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -188,9 +189,23 @@
     <Compile Include="Migrations\201907230831489_courses changes.Designer.cs">
       <DependentUpon>201907230831489_courses changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907261053493_addtasks.cs" />
+    <Compile Include="Migrations\201907261053493_addtasks.Designer.cs">
+      <DependentUpon>201907261053493_addtasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907261215184_addtasks2.cs" />
+    <Compile Include="Migrations\201907261215184_addtasks2.Designer.cs">
+      <DependentUpon>201907261215184_addtasks2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907261333581_gallery.cs" />
+    <Compile Include="Migrations\201907261333581_gallery.Designer.cs">
+      <DependentUpon>201907261333581_gallery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseTask.cs" />
+    <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -287,11 +302,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Courses\Index.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Delete.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Account\Premium.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\CourseTasks\Create.cshtml" />
+    <Content Include="Views\CourseTasks\Index.cshtml" />
+    <Content Include="Views\CourseTasks\Edit.cshtml" />
+    <Content Include="Views\CourseTasks\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,6 +330,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907230831489_courses changes.resx">
       <DependentUpon>201907230831489_courses changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907261053493_addtasks.resx">
+      <DependentUpon>201907261053493_addtasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907261215184_addtasks2.resx">
+      <DependentUpon>201907261215184_addtasks2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907261333581_gallery.resx">
+      <DependentUpon>201907261333581_gallery.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

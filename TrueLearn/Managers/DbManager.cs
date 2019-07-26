@@ -75,5 +75,59 @@ namespace TrueLearn.Managers
         }
 
         #endregion
+
+        #region CourseTasks
+
+        public ICollection<CourseTask> GetCourseTasks()
+        {
+            ICollection<CourseTask> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.CourseTasks.ToList();
+            }
+            return result;
+        }
+
+        public void AddCourseTask(CourseTask courseTask, int id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                courseTask.CourseId = id;
+                db.CourseTasks.Add(courseTask);
+                db.SaveChanges();
+            }
+        }
+
+        public CourseTask GetCourseTask(int id)
+        {
+            CourseTask result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.CourseTasks.Find(id);
+            }
+            return result;
+        }
+
+        public void UpdateCourseTask(CourseTask courseTask)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.CourseTasks.Attach(courseTask);
+                db.Entry(courseTask).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public void DeleteCourseTask(int id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                CourseTask courseTask = db.CourseTasks.Find(id);
+                db.CourseTasks.Remove(courseTask);
+                db.SaveChanges();
+            }
+        }
+
+        #endregion
     }
 }
