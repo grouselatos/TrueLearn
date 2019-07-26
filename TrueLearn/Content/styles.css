@@ -107,10 +107,7 @@ nav.main-menu.expanded {
     background-repeat: no-repeat;
     background-size: cover;
 }
-#main-content{
-    margin-left: auto;
-    margin-right: auto;
-}
+
 body,
 html {
     height: 100%;
@@ -174,6 +171,14 @@ nav {
     width: auto;
     height: auto;
     margin-right: auto;
+}
+.main-body{
+   width: 70%; 
+   height: 70%;
+   margin-left: auto;
+   margin-right: auto;
+    padding-top: 10vh;
+    padding-bottom: 5vh;
 }
 
 @font-face {
