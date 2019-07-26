@@ -196,12 +196,38 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\fullcalendar.css" />
+    <Content Include="Content\assets\css\fullcalendar.print.css" />
+    <Content Include="Content\assets\js\fullcalendar.js" />
+    <Content Include="Content\assets\js\jquery-1.10.2.js" />
+    <Content Include="Content\assets\js\jquery-ui.custom.min.js" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.bundle.js" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.js" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\courses.html" />
+    <Content Include="Content\create.html" />
+    <Content Include="Content\dashboard.html" />
+    <Content Include="Content\gallery.html" />
+    <Content Include="Content\Images\CEE-Resources_Background.jpg" />
+    <Content Include="Content\layout.html" />
+    <Content Include="Content\main.js" />
+    <Content Include="Content\settings.html" />
+    <Content Include="Content\signin.html" />
+    <Content Include="Content\styles.css" />
+    <Content Include="Content\subscription.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -227,6 +253,16 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.js.map" />
+    <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -258,7 +294,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -291,6 +326,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
