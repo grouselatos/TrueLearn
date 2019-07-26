@@ -181,9 +181,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907250501584_Tasks.cs" />
-    <Compile Include="Migrations\201907250501584_Tasks.Designer.cs">
-      <DependentUpon>201907250501584_Tasks.cs</DependentUpon>
+    <Compile Include="Migrations\201907261310482_branch-1_with-tasks.cs" />
+    <Compile Include="Migrations\201907261310482_branch-1_with-tasks.Designer.cs">
+      <DependentUpon>201907261310482_branch-1_with-tasks.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -305,8 +305,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907250501584_Tasks.resx">
-      <DependentUpon>201907250501584_Tasks.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907261310482_branch-1_with-tasks.resx">
+      <DependentUpon>201907261310482_branch-1_with-tasks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
