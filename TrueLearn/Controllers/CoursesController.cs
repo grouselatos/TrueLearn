@@ -9,7 +9,7 @@ using TrueLearn.Models;
 
 namespace TrueLearn.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CoursesController : Controller
     {
         private DbManager db = new DbManager();
