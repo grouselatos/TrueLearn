@@ -12,17 +12,16 @@ namespace TrueLearn.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public ApplicationUser()
-        {
-            friends = new List<Friend>();
-        }
+        
 
         public string first_name { get; set; }
         public string last_name { get; set; }
         public DateTime birth_date { get; set; }
         public string country { get; set; }
-        public bool premium { get; set; }
-        public virtual ICollection<Friend> friends { get; set; }
+        public virtual ICollection<Friend> Friends { get; set; }
+        public virtual ICollection<Certificate> Certificates { get; set; }
+        public virtual ICollection<TodoTask> TodoTasks { get; set; }
+        public virtual ICollection<GlobalChat> GlobalChats { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -48,16 +47,12 @@ namespace TrueLearn.Models
 
         public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
-//<<<<<<< HEAD
-        public virtual DbSet<CourseTask> CourseTasks { get; set; }
-        public virtual DbSet<Gallery> Galleries { get; set; }
-        //public virtual DbSet<Friend> Friends { get; set; }
-        //public virtual DbSet<Premium_User> Premium_Users { get; set; }
-        //public virtual DbSet<Tracked_Course> Tracked_Courses { get; set; }
-//=======
+        public virtual DbSet<TodoTask> TodoTasks { get; set; }
+        public virtual DbSet<Certificate> Certificates { get; set; }
         public virtual DbSet<Friend> Friends { get; set; }
-        public virtual DbSet<Premium_User> Premium_Users { get; set; }
-        public virtual DbSet<Tracked_Course> Tracked_Courses { get; set; }
-//>>>>>>> f34153fc6334afa32f8c88630609fbc8ff889870
+        public virtual DbSet<FriendNotification> FriendNotifications { get; set; }
+        public virtual DbSet<ChatNotification> ChatNotifications { get; set; }
+        public virtual DbSet<GlobalChat> GlobalChats { get; set; }
+
     }
 }

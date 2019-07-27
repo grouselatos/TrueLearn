@@ -9,13 +9,9 @@ namespace TrueLearn.Models
 {
     public class Chat
     {
-        [Key]
-        [ForeignKey("Friend")]
-        public int friends_id { get; set; }
-        public virtual Friend  Friend { get; set; }
-        public DateTime start_date { get; set; }
-        public DateTime end_date { get; set; }
-        public int sender_id { get; set; }
-        public string transcript { get; set; }
+        [Key, ForeignKey("Friend")]
+        public int Id { get; set; }
+        public virtual Friend Friend { get; set; }
+        public virtual ICollection<Message> Messages { get; set; }
     }
 }

@@ -7,15 +7,20 @@ using System.Web;
 
 namespace TrueLearn.Models
 {
+    public enum FriendStatus
+    {
+        Pending,
+        Approved
+    }
     public class Friend
     {
-        [Key]
-        [Required]
-        public int id { get; set; }
+        public int Id { get; set; }
+        public virtual ApplicationUser sender { get; set; }
+        public virtual ApplicationUser receiver { get; set; }
 
-        public virtual ApplicationUser requested_from_id { get; set; }
-        public virtual ApplicationUser requested_to_id { get; set; }
+        public FriendStatus status { get; set; }
 
-        public Enums.Status status { get; set; }
+        public virtual Chat Chat { get; set; }
+        public virtual ICollection<FriendNotification> FriendNotifications { get; set; }
     }
 }

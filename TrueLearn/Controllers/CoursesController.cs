@@ -9,15 +9,16 @@ using TrueLearn.Models;
 
 namespace TrueLearn.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class CoursesController : Controller
     {
         private DbManager db = new DbManager();
 
-        public ActionResult Index()
+        [HttpGet]
+        public JsonResult Courses()
         {
-            var courses = db.GetCourses().Where(x => x.UserId == User.Identity.GetUserId());
-            return View(courses);
+            var result = db.GetCourses().Where(x => x.UserId == User.Identity.GetUserId());
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()

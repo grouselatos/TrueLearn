@@ -7,6 +7,12 @@ using System.Web;
 
 namespace TrueLearn.Models
 {
+    public enum CourseStatus
+    {
+        NotStarted,
+        InProgress,
+        Completed
+    }
     public class Course
     {
         [Key]
@@ -14,12 +20,16 @@ namespace TrueLearn.Models
         public int id { get; set; }
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
+        public string headline { get; set; }
+        public string description { get; set; }
+        public byte[] image { get; set; }
+        public string provider { get; set; }
+        public string url { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         public string title { get; set; }
         public string category { get; set; }
-        public bool started { get; set; }
-        public bool completed { get; set; }
+        public CourseStatus status { get; set; }
         public bool tracked { get; set; }
-        public virtual ICollection<CourseTask> CourseTasks { get; set; }
+        public virtual ICollection<TodoTask> TodoTasks { get; set; }
     }
 }
