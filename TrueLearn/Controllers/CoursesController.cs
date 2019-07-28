@@ -14,14 +14,13 @@ namespace TrueLearn.Controllers
     {
         private DbManager db = new DbManager();
 
-        [HttpGet]
-        public JsonResult Courses()
-        {
-            var result = db.GetCourses().Where(x => x.UserId == User.Identity.GetUserId());
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+		public ActionResult Index()
+		{
+			var courses = db.GetCourses().Where(x => x.UserId == User.Identity.GetUserId());
+			return View(courses);
+		}
 
-        public ActionResult Create()
+		public ActionResult Create()
         {
             return View();
         }

@@ -53,6 +53,5 @@ namespace TrueLearn.Models
         public virtual DbSet<FriendNotification> FriendNotifications { get; set; }
         public virtual DbSet<ChatNotification> ChatNotifications { get; set; }
         public virtual DbSet<GlobalChat> GlobalChats { get; set; }
-
-    }
+	}
 }

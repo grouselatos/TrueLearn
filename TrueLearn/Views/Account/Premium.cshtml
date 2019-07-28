@@ -1,0 +1,21 @@
+﻿@model TrueLearn.Models.ApplicationUser
+@{
+	ViewBag.Title = "Premium";
+}
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<h2>Premium</h2>
+
+	<p>Upgrade to Premium - Are you sure?</p>
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Yes" class="btn btn-default" />
+		</div>
+		<div class="col-md-offset-2 col-md-10">
+			<input type="reset" value="No" class="btn btn-default" />
+		</div>
+	</div>
+}

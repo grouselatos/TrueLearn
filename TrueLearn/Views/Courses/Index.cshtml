@@ -12,7 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.headline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.provider)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.url)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.title)
@@ -21,10 +33,7 @@
             @Html.DisplayNameFor(model => model.category)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.started)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.completed)
+            @Html.DisplayNameFor(model => model.status)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.tracked)
@@ -35,7 +44,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UserId)
+            @Html.DisplayFor(modelItem => item.headline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.provider)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.url)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.title)
@@ -44,10 +65,7 @@
             @Html.DisplayFor(modelItem => item.category)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.started)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.completed)
+            @Html.DisplayFor(modelItem => item.status)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.tracked)
@@ -55,25 +73,9 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id }) |
-            @Html.ActionLink("View Tasks", "Index", "CourseTasks", new { item=item.id}, null)
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
         </td>
     </tr>
 }
 
 </table>
-
-<script>
-    $(document).ready(() => {
-
-        $.ajax({
-            method: 'GET',
-            url: "/Courses/Courses",
-            success: () => {
-                for (let course of )
-            }
-        })
-
-    });
-
-</script>
