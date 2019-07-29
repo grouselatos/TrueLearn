@@ -127,6 +127,7 @@ namespace TrueLearn.Managers
             }
         }
         #endregion
+
         public ICollection<ApplicationUser> GetUsers()
         {
             List<ApplicationUser> result;
@@ -180,6 +181,5 @@ namespace TrueLearn.Managers
             }
             return result;
         }
-        #endregion
     }
 }
