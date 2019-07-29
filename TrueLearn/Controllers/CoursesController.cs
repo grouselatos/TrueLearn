@@ -56,7 +56,8 @@ namespace TrueLearn.Controllers
             {
                 return View(course);
             }
-            db.UpdateCourse(course);
+			course.UserId = User.Identity.GetUserId();
+			db.UpdateCourse(course);
             return RedirectToAction("Index");
         }
 

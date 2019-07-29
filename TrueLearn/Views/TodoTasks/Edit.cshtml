@@ -1,0 +1,74 @@
+﻿@model TrueLearn.ViewModels.TaskViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+	<h4>TodoTask</h4>
+	<hr />
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	@Html.HiddenFor(model => model.TodoTask.Id)
+	@Html.HiddenFor(model => model.TodoTask.UserId)
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.TodoTask.title, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.TodoTask.title, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.TodoTask.title, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.TodoTask.description, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.TodoTask.description, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.TodoTask.description, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.TodoTask.start_date, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.TodoTask.start_date, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.TodoTask.start_date, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.TodoTask.end_date, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.TodoTask.end_date, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.TodoTask.end_date, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.TodoTask.Courses, null, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.ListBoxFor(model => model.SelectedCourses, Model.Courses)
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Save" class="btn btn-default" />
+		</div>
+	</div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
