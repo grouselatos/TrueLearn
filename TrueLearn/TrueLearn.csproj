@@ -175,9 +175,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CertificatesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
-    <Compile Include="Controllers\CourseTasksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TodoTasksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,6 +197,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\TaskViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\css\fullcalendar.css" />
@@ -287,6 +288,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -329,16 +331,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\CourseTasks\Create.cshtml" />
-    <Content Include="Views\CourseTasks\Index.cshtml" />
-    <Content Include="Views\CourseTasks\Edit.cshtml" />
-    <Content Include="Views\CourseTasks\Delete.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\Premium.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
-    <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\TodoTasks\Index.cshtml" />
+    <Content Include="Views\TodoTasks\Edit.cshtml" />
+    <Content Include="Views\TodoTasks\Delete.cshtml" />
+    <Content Include="Views\TodoTasks\Create.cshtml" />
     <Content Include="Views\Certificates\Index.cshtml" />
     <Content Include="Views\Certificates\Create.cshtml" />
     <Content Include="Views\Certificates\Edit.cshtml" />

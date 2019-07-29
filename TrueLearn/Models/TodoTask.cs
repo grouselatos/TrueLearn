@@ -9,6 +9,11 @@ namespace TrueLearn.Models
 {
     public class TodoTask
     {
+		public TodoTask()
+		{
+			Courses = new HashSet<Course>();
+		}
+
         public int Id { get; set; }
 
         [ForeignKey("ApplicationUser")]
