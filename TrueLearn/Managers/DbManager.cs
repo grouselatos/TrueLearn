@@ -75,7 +75,7 @@ namespace TrueLearn.Managers
             }
         }
 
-        #endregion
+		#endregion
 
         #region Certificate
         public ICollection<Certificate> GetCertificates()
@@ -88,6 +88,16 @@ namespace TrueLearn.Managers
             return result;
         }
 
+		public ICollection<TodoTask> GetTodoTasks()
+		{
+			ICollection<TodoTask> result;
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				result = db.TodoTasks.Include("Courses")
+									 .ToList();
+			}
+			return result;
+		}
         public Certificate GetCertificate(int Id)
         {
             Certificate result;
@@ -136,6 +146,23 @@ namespace TrueLearn.Managers
             }
             return result;
         }
+		public void AddTodoTask(TodoTask todoTask, List<int> courseIds)
+		{
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				db.TodoTasks.Add(todoTask);
+				db.SaveChanges();
+				foreach (int id in courseIds)
+				{
+					Course course = db.Courses.Find(id);
+					if (course != null)
+					{
+						todoTask.Courses.Add(course);
+					}
+				}
+				db.SaveChanges();
+			}
+		}
 
         public ICollection<ApplicationUser> GetUsers(string search)
         {
@@ -151,6 +178,27 @@ namespace TrueLearn.Managers
             }
             return result;
         }
+		public TodoTask GetTodoTask(int id)
+		{
+			TodoTask result;
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				result = db.TodoTasks.Find(id);
+			}
+			return result;
+		}
+
+		public TodoTask GetTodoTaskFull(int id)
+		{
+			TodoTask result;
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				result = db.TodoTasks.Include("Courses")
+									 .Where(x => x.Id == id)
+									 .FirstOrDefault();
+			}
+			return result;
+		}
 
         public ApplicationUser GetUser(string id)
         {
@@ -161,7 +209,36 @@ namespace TrueLearn.Managers
             }
             return result;
         }
+		public void UpdateTodoTask(TodoTask todoTask, List <int> courseIds)
+		{
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				db.TodoTasks.Attach(todoTask);
+				db.Entry(todoTask).Collection("Courses").Load();
+				todoTask.Courses.Clear();
+				db.SaveChanges();
+				foreach (int id in courseIds)
+				{
+					Course course = db.Courses.Find(id);
+					if (course != null)
+					{
+						todoTask.Courses.Add(course);
+					}
+				}
+				db.Entry(todoTask).State = EntityState.Modified;
+				db.SaveChanges();
+			}
+		}
 
+		public void DeleteTodoTask(int id)
+		{
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				TodoTask todoTask = db.TodoTasks.Find(id);
+				db.TodoTasks.Remove(todoTask);
+				db.SaveChanges();
+			}
+		}
         public void AddFriend(Friend friend)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
@@ -182,4 +259,6 @@ namespace TrueLearn.Managers
         }
         #endregion
     }
+		#endregion
+	}
 }
