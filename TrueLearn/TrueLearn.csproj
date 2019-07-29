@@ -176,12 +176,25 @@
     <Compile Include="Controllers\CertificatesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CourseTasksController.cs" />
+    <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
+    <Compile Include="Migrations\201907271626472_init.cs" />
+    <Compile Include="Migrations\201907271626472_init.Designer.cs">
+      <DependentUpon>201907271626472_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907291116556_friends.cs" />
+    <Compile Include="Migrations\201907291116556_friends.Designer.cs">
+      <DependentUpon>201907291116556_friends.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907291236334_friendDateTime.cs" />
+    <Compile Include="Migrations\201907291236334_friendDateTime.Designer.cs">
+      <DependentUpon>201907291236334_friendDateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -197,6 +210,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\FriendsNotificationViewModel.cs" />
+    <Compile Include="ViewModels\FriendsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\css\fullcalendar.css" />
@@ -339,6 +354,9 @@
     <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Friends\Index.cshtml" />
+    <Content Include="Views\Friends\AddFriend.cshtml" />
+    <Content Include="Views\Friends\Notifications.cshtml" />
     <Content Include="Views\Certificates\Index.cshtml" />
     <Content Include="Views\Certificates\Create.cshtml" />
     <Content Include="Views\Certificates\Edit.cshtml" />
@@ -355,6 +373,17 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907271626472_init.resx">
+      <DependentUpon>201907271626472_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907291116556_friends.resx">
+      <DependentUpon>201907291116556_friends.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907291236334_friendDateTime.resx">
+      <DependentUpon>201907291236334_friendDateTime.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

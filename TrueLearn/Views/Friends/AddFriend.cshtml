@@ -1,0 +1,22 @@
+﻿@model  TrueLearn.ViewModels.FriendsViewModel
+@{
+    ViewBag.Title = "Add Friend";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2>Add Friend</h2>
+
+    <p>Add Friend - Are you sure?</p>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Yes" class="btn btn-default" />
+        </div>
+        <div class="col-md-offset-2 col-md-10">
+            <input type="reset" value="No" class="btn btn-default" />
+        </div>
+    </div>
+}
