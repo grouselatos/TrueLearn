@@ -11,6 +11,7 @@ namespace TrueLearn.Managers
 {
     public class DbManager
     {
+        #region Course
         public ICollection<Course> GetCourses()
         {
             ICollection<Course> result;
@@ -35,7 +36,6 @@ namespace TrueLearn.Managers
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-
                 db.Courses.Add(course);
                 db.SaveChanges();
             }
@@ -60,6 +60,7 @@ namespace TrueLearn.Managers
                 db.SaveChanges();
             }
         }
+        #endregion
 
         #region User
 
@@ -74,6 +75,57 @@ namespace TrueLearn.Managers
             }
         }
 
+        #endregion
+
+        #region Certificate
+        public ICollection<Certificate> GetCertificates()
+        {
+            ICollection<Certificate> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Certificates.ToList();
+            }
+            return result;
+        }
+
+        public Certificate GetCertificate(int Id)
+        {
+            Certificate result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Certificates.Find(Id);
+            }
+            return result;
+        }
+
+        public void AddCertificate(Certificate certificate)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Certificates.Add(certificate);
+                db.SaveChanges();
+            }
+        }
+
+        public void UpdateCertificate(Certificate certificate)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Certificates.Attach(certificate);
+                db.Entry(certificate).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public void DeleteCertificate(int Id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                Certificate certificate = db.Certificates.Find(Id);
+                db.Certificates.Remove(certificate);
+                db.SaveChanges();
+            }
+        }
         #endregion
 
         //#region CourseTasks
