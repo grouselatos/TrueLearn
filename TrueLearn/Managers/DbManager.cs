@@ -74,60 +74,59 @@ namespace TrueLearn.Managers
             }
         }
 
+        public ICollection<ApplicationUser> GetUsers()
+        {
+            List<ApplicationUser> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Users.ToList();
+            }
+            return result;
+        }
+
+        public ICollection<ApplicationUser> GetUsers(string search)
+        {
+            List<ApplicationUser> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var query = db.Users.AsQueryable();
+                if (!String.IsNullOrEmpty(search))
+                {
+                    query = query.Where(x => x.UserName.Contains(search) || x.Email.Contains(search) || ((x.first_name.ToString()) +(" ") + (x.last_name.ToString())).Contains(search));
+                }
+                result = query.ToList();
+            }
+            return result;
+        }
+
+        public ApplicationUser GetUser(string id)
+        {
+            ApplicationUser result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Users.Find(id);
+            }
+            return result;
+        }
+
+        public void AddFriend(Friend friend)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Friends.Add(friend);
+                db.SaveChanges();
+            }
+        }
+
+        public ICollection<Friend> GetNotifications(string userId)
+        {
+            ICollection<Friend> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Friends.Where(x => (x.receiverId == userId) && (x.status == FriendStatus.Pending)).ToList();
+            }
+            return result;
+        }
         #endregion
-
-        //#region CourseTasks
-
-        //public ICollection<TodoTask> GetCourseTasks()
-        //{
-        //    ICollection<TodoTask> result;
-        //    using (ApplicationDbContext db = new ApplicationDbContext())
-        //    {
-        //        result = db.CourseTasks.ToList();
-        //    }
-        //    return result;
-        //}
-
-        //public void AddCourseTask(TodoTask courseTask, int id)
-        //{
-        //    using (ApplicationDbContext db = new ApplicationDbContext())
-        //    {
-        //        courseTask.CourseId = id;
-        //        db.CourseTasks.Add(courseTask);
-        //        db.SaveChanges();
-        //    }
-        //}
-
-        //public TodoTask GetCourseTask(int id)
-        //{
-        //    TodoTask result;
-        //    using (ApplicationDbContext db = new ApplicationDbContext())
-        //    {
-        //        result = db.CourseTasks.Find(id);
-        //    }
-        //    return result;
-        //}
-
-        //public void UpdateCourseTask(TodoTask courseTask)
-        //{
-        //    using (ApplicationDbContext db = new ApplicationDbContext())
-        //    {
-        //        db.CourseTasks.Attach(courseTask);
-        //        db.Entry(courseTask).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //    }
-        //}
-
-        //public void DeleteCourseTask(int id)
-        //{
-        //    using (ApplicationDbContext db = new ApplicationDbContext())
-        //    {
-        //        TodoTask courseTask = db.CourseTasks.Find(id);
-        //        db.CourseTasks.Remove(courseTask);
-        //        db.SaveChanges();
-        //    }
-        //}
-
-        //#endregion
     }
 }
