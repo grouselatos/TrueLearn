@@ -183,6 +183,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
+    <Compile Include="Migrations\201907301509393_Providers.cs" />
+    <Compile Include="Migrations\201907301509393_Providers.Designer.cs">
+      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907301531012_Providers2.cs" />
+    <Compile Include="Migrations\201907301531012_Providers2.Designer.cs">
+      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -229,6 +237,13 @@
     <Content Include="Content\dashboard.html" />
     <Content Include="Content\gallery.html" />
     <Content Include="Content\Images\CEE-Resources_Background.jpg" />
+    <Content Include="Content\Images\Icons\Coursera.png" />
+    <Content Include="Content\Images\Icons\Edx.png" />
+    <Content Include="Content\Images\Icons\FutureLearn.png" />
+    <Content Include="Content\Images\Icons\Khan.png" />
+    <Content Include="Content\Images\Icons\Skillshare.png" />
+    <Content Include="Content\Images\Icons\Udacity.png" />
+    <Content Include="Content\Images\Icons\Udemy.png" />
     <Content Include="Content\layout.html" />
     <Content Include="Content\main.js" />
     <Content Include="Content\settings.html" />
@@ -363,6 +378,14 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907301509393_Providers.resx">
+      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907301531012_Providers2.resx">
+      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -15,7 +15,19 @@
         <div class="area">
             <nav class="navbar" role="navigation">
                 <div class="container-fluid">
-
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="../Courses/Index" class="navbar-text">
+                                <i class="fas fa-list-alt fa-2x"
+                                   id="login-icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a id="" class="navbar-text"><i class="far fa-calendar fa-2x" id="togglecalendar"></i></a>
+                        </li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="" class="navbar-text">
@@ -25,27 +37,16 @@
                         </li>
                     </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a id="" class="navbar-text"><i class="far fa-calendar fa-2x" id="togglecalendar"></i></a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="" class="navbar-text">
-                                <i class="fas fa-cog fa-2x"
-                                   id="login-icon"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="" class="navbar-text">
-                                <i class="fas fa-sign-in-alt fa-2x"
-                                   id="login-icon"></i>
-                            </a>
-                        </li>
-                    </ul>
+
+
+                    @*<ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="" class="navbar-text">
+                                    <i class="fas fa-sign-in-alt fa-2x"
+                                       id="login-icon"></i>
+                                </a>
+                            </li>
+                        </ul>*@
                 </div>
             </nav>
             <div class="main-body">
@@ -74,15 +75,14 @@
                 </a>
 
             </li>
-            <li class="has-subnav">
-                <a href="Courses/Index">
-                    <i class="fa fa-list-alt fa-2x"></i>
-                    <span class="nav-text">
-                        Courses
-                    </span>
-                </a>
-
-            </li>
+            @*<li class="has-subnav">
+                    <a href="~/Courses/Index">
+                        <i class="fa fa-list-alt fa-2x"></i>
+                        <span class="nav-text">
+                            Courses
+                        </span>
+                    </a>
+                </li>*@
             <li class="has-subnav">
                 <a href="gallery.html">
                     <i class="fa fa-certificate fa-2x"></i>
@@ -93,13 +93,13 @@
 
             </li>
             @*<li>
-                <a href="#">
-                    <i class="fa fa-trophy fa-2x"></i>
-                    <span class="nav-text">
-                        Achievements
-                    </span>
-                </a>
-            </li>*@
+                    <a href="#">
+                        <i class="fa fa-trophy fa-2x"></i>
+                        <span class="nav-text">
+                            Achievements
+                        </span>
+                    </a>
+                </li>*@
             <li>
                 <a href="#">
                     <i class="fa fa-thumbs-up fa-2x"></i>
@@ -111,7 +111,7 @@
         </ul>
         <ul class="logout">
             <li>
-                <a href="#">
+                <a href="~/Account/Premium">
                     <i class="fa fa-star fa-2x"></i>
                     <span class="nav-text">
                         Subscription
@@ -119,7 +119,15 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="">
+                    <i class="fa fa-cog fa-2x"></i>
+                    <span class="nav-text">
+                        Settings
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="">
                     <i class="fa fa-power-off fa-2x"></i>
                     <span class="nav-text">
                         Logout
