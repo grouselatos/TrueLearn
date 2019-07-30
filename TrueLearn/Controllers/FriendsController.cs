@@ -49,9 +49,22 @@ namespace TrueLearn.Controllers
         public ActionResult Notifications()
         {
             var userId = User.Identity.GetUserId();
-            var users = db.GetUsers();
             var notifications = db.GetNotifications(userId);
-            var requests = users.
+            return View(notifications);
+        }
+
+        [HttpPost]
+        public ActionResult AcceptRequest(string senderId)
+        {
+            db.AcceptRequest(senderId, User.Identity.GetUserId());
+            return new EmptyResult();
+        }
+
+        public ActionResult FriendList()
+        {
+            ICollection<ApplicationUser> friends;
+            friends = db.GetFriends(User.Identity.GetUserId());
+            return View(friends);
         }
     }
 }
