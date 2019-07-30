@@ -370,6 +370,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\GlobalChat\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
