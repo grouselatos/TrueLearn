@@ -1,81 +1,83 @@
 ﻿@model IEnumerable<TrueLearn.Models.Course>
+@using TrueLearn.Models;
 
 @{
     ViewBag.Title = "Index";
 }
+<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script rel="js" src="~/Content/main.js"></script>
+<script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="~/Content/assets/css/fullcalendar.css" />
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a class="nav-link" href="~/Courses/Create" title="CreateCourse">
+        <i class="fa fa-plus" style="color: white;"></i>
+    </a>
 </p>
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.headline)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.image)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.provider)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.url)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.title)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category)
+        <th style="padding-left: 45px">
+            @Html.DisplayNameFor(model => model.url)
         </th>
-        <th>
+        <th class="listitem">
             @Html.DisplayNameFor(model => model.status)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tracked)
+
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.headline)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.provider)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tracked)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.provider)*@
+                @switch (item.provider)
+                {
+                    case CourseProvider.Udemy:<img src="~/Content/Images/Icons/Udemy.png" />
+                        break;
+                    case CourseProvider.Coursera: <img src="~/Content/Images/Icons/Coursera.png" />
+                        break;
+                    case CourseProvider.Edx: <img src="~/Content/Images/Icons/Edx.png" />
+                        break;
+                    case CourseProvider.Futurelearn: <img src="~/Content/Images/Icons/FutureLearn.png" />
+                        break;
+                    case CourseProvider.KhanAcademy: <img src="~/Content/Images/Icons/Khan.png" />
+                        break;
+                    case CourseProvider.Skillshare: <img src="~/Content/Images/Icons/Skillshare.png" />
+                        break;
+                    case CourseProvider.Udacity: <img src="~/Content/Images/Icons/Udacity.png" />
+                        break;
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                <a class="nav-link" href="@item.url" title="Go To Course">
+                    <i class="fa fa-globe"></i>
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>

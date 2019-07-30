@@ -46,13 +46,13 @@ namespace TrueLearn.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Notifications()
-        {
-            var userId = User.Identity.GetUserId();
-            var users = db.GetUsers();
-            var notifications = db.GetNotifications(userId);
-            var requests = users.
-        }
+        //public ActionResult Notifications()
+        //{
+        //    var userId = User.Identity.GetUserId();
+        //    var users = db.GetUsers();
+        //    var notifications = db.GetNotifications(userId);
+        //    var requests = users.
+        //}
     }
 }
 

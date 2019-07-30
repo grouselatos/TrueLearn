@@ -175,7 +175,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CertificatesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
-    <Compile Include="Controllers\CourseTasksController.cs" />
     <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -184,21 +183,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907271626472_init.cs" />
-    <Compile Include="Migrations\201907271626472_init.Designer.cs">
-      <DependentUpon>201907271626472_init.cs</DependentUpon>
+    <Compile Include="Migrations\201907301509393_Providers.cs" />
+    <Compile Include="Migrations\201907301509393_Providers.Designer.cs">
+      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907291116556_friends.cs" />
-    <Compile Include="Migrations\201907291116556_friends.Designer.cs">
-      <DependentUpon>201907291116556_friends.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907291236334_friendDateTime.cs" />
-    <Compile Include="Migrations\201907291236334_friendDateTime.Designer.cs">
-      <DependentUpon>201907291236334_friendDateTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907291628026_hashset.cs" />
-    <Compile Include="Migrations\201907291628026_hashset.Designer.cs">
-      <DependentUpon>201907291628026_hashset.cs</DependentUpon>
+    <Compile Include="Migrations\201907301531012_Providers2.cs" />
+    <Compile Include="Migrations\201907301531012_Providers2.Designer.cs">
+      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -246,6 +237,13 @@
     <Content Include="Content\dashboard.html" />
     <Content Include="Content\gallery.html" />
     <Content Include="Content\Images\CEE-Resources_Background.jpg" />
+    <Content Include="Content\Images\Icons\Coursera.png" />
+    <Content Include="Content\Images\Icons\Edx.png" />
+    <Content Include="Content\Images\Icons\FutureLearn.png" />
+    <Content Include="Content\Images\Icons\Khan.png" />
+    <Content Include="Content\Images\Icons\Skillshare.png" />
+    <Content Include="Content\Images\Icons\Udacity.png" />
+    <Content Include="Content\Images\Icons\Udemy.png" />
     <Content Include="Content\layout.html" />
     <Content Include="Content\main.js" />
     <Content Include="Content\settings.html" />
@@ -381,17 +379,11 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907271626472_init.resx">
-      <DependentUpon>201907271626472_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907301509393_Providers.resx">
+      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907291116556_friends.resx">
-      <DependentUpon>201907291116556_friends.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907291236334_friendDateTime.resx">
-      <DependentUpon>201907291236334_friendDateTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907291628026_hashset.resx">
-      <DependentUpon>201907291628026_hashset.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907301531012_Providers2.resx">
+      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

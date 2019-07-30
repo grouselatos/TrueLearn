@@ -13,6 +13,16 @@ namespace TrueLearn.Models
         InProgress,
         Completed
     }
+    public enum CourseProvider
+    {
+        Udemy,
+        Edx,
+        Udacity,
+        Coursera,
+        KhanAcademy,
+        Skillshare,
+        Futurelearn
+    }
     public class Course
     {
         [Key]
@@ -23,7 +33,7 @@ namespace TrueLearn.Models
         public string headline { get; set; }
         public string description { get; set; }
         public byte[] image { get; set; }
-        public string provider { get; set; }
+        public CourseProvider provider { get; set; }
         public string url { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         public string title { get; set; }
