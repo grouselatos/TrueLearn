@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using TrueLearn.Models;
+using TrueLearn.ViewModels;
 
 namespace TrueLearn.Managers
 {
@@ -75,7 +76,42 @@ namespace TrueLearn.Managers
             }
         }
 
-		#endregion
+        public ApplicationUser GetUser(string id)
+        {
+            ApplicationUser result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Users.Find(id);
+            }
+            return result;
+        }
+
+        public ICollection<ApplicationUser> GetUsers()
+        {
+            List<ApplicationUser> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Users.ToList();
+            }
+            return result;
+        }
+
+        public ICollection<ApplicationUser> GetUsers(string search)
+        {
+            List<ApplicationUser> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var query = db.Users.AsQueryable();
+                if (!String.IsNullOrEmpty(search))
+                {
+                    query = query.Where(x => x.UserName.Contains(search) || x.Email.Contains(search) || ((x.first_name.ToString()) + (" ") + (x.last_name.ToString())).Contains(search));
+                }
+                result = query.ToList();
+            }
+            return result;
+        }
+
+        #endregion
 
         #region Certificate
         public ICollection<Certificate> GetCertificates()
@@ -137,15 +173,9 @@ namespace TrueLearn.Managers
             }
         }
         #endregion
-        public ICollection<ApplicationUser> GetUsers()
-        {
-            List<ApplicationUser> result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                result = db.Users.ToList();
-            }
-            return result;
-        }
+
+
+        
 		public void AddTodoTask(TodoTask todoTask, List<int> courseIds)
 		{
 			using (ApplicationDbContext db = new ApplicationDbContext())
@@ -164,20 +194,7 @@ namespace TrueLearn.Managers
 			}
 		}
 
-        public ICollection<ApplicationUser> GetUsers(string search)
-        {
-            List<ApplicationUser> result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                var query = db.Users.AsQueryable();
-                if (!String.IsNullOrEmpty(search))
-                {
-                    query = query.Where(x => x.UserName.Contains(search) || x.Email.Contains(search) || ((x.first_name.ToString()) +(" ") + (x.last_name.ToString())).Contains(search));
-                }
-                result = query.ToList();
-            }
-            return result;
-        }
+        
 		public TodoTask GetTodoTask(int id)
 		{
 			TodoTask result;
@@ -200,15 +217,7 @@ namespace TrueLearn.Managers
 			return result;
 		}
 
-        public ApplicationUser GetUser(string id)
-        {
-            ApplicationUser result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                result = db.Users.Find(id);
-            }
-            return result;
-        }
+        
 		public void UpdateTodoTask(TodoTask todoTask, List <int> courseIds)
 		{
 			using (ApplicationDbContext db = new ApplicationDbContext())
@@ -239,6 +248,9 @@ namespace TrueLearn.Managers
 				db.SaveChanges();
 			}
 		}
+
+        #region Friends
+
         public void AddFriend(Friend friend)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
@@ -295,7 +307,32 @@ namespace TrueLearn.Managers
         }
 
         #endregion
+
+        #region Global Chat
+
+        public ICollection<GlobalChatViewModel> GetGlobalChatHistory()
+        {
+            ICollection<GlobalChatViewModel> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var GlobalChatHistory = db.GlobalChats.Join(db.Users,
+                                                            sender => sender.UserId,
+                                                            user => user.Id,
+                                                            (sender, user) => new { Sender = sender, User = user })
+                                                      .Where(x => x.User.Id == x.Sender.UserId)
+                                                      .Select(x => new GlobalChatViewModel
+                                                      {
+                                                          UserName = x.User.UserName,
+                                                          Sent = x.Sender.sent,
+                                                          Message = x.Sender.message
+                                                      })
+                                                      .ToList();
+                result = GlobalChatHistory;
+            }
+            return result;
+        }
+
+        #endregion
+
     }
-		#endregion
-	}
 }
