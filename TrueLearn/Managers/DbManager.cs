@@ -249,16 +249,50 @@ namespace TrueLearn.Managers
             }
         }
 
-        public ICollection<Friend> GetNotifications(string userId)
+        public ICollection<ApplicationUser> GetNotifications(string userId)
         {
-            ICollection<Friend> result;
+            ICollection<ApplicationUser> result;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                result = db.Friends.Where(x => (x.receiverId == userId) && (x.status == FriendStatus.Pending)).ToList();
+                var query = db.Users.Join(db.Friends,
+                                        user => user.Id,
+                                        friend => friend.senderId,
+                                        (user, sender) => new { User = user, Sender = sender })
+                                    .Where((x => x.User.Id == x.Sender.senderId && x.Sender.receiverId == userId && x.Sender.status == FriendStatus.Pending))
+                                    .Select(x => x.User)
+                                    .ToList();
+                result = query;
+            }
+            return result;
+        }
+
+        public void AcceptRequest(string senderId, string receiverId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var friends = db.Friends.Where(x => x.senderId == senderId && x.receiverId == receiverId).FirstOrDefault();
+                db.Friends.Attach(friends);
+                friends.status = FriendStatus.Approved;
+                db.Entry(friends).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public ICollection<ApplicationUser> GetFriends(string userId)
+        {
+            ICollection<ApplicationUser> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var query = db.Users.Join(db.Friends,
+                                        user => user.Id,
+                                        friend => friend.senderId,
+                                        (user, sender) => new { User = user, Sender = sender })
+                                    .Where((x => x.User.Id == x.Sender.senderId && x.Sender.receiverId == userId && x.Sender.status == FriendStatus.Approved))
+                                    .Select(x => x.User)
+                                    .ToList();
+                result = query;
             }
             return result;
         }
     }
-		#endregion
-	}
 }

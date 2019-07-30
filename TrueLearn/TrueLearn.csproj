@@ -350,6 +350,7 @@
     <Content Include="Views\TodoTasks\Edit.cshtml" />
     <Content Include="Views\TodoTasks\Delete.cshtml" />
     <Content Include="Views\TodoTasks\Create.cshtml" />
+    <Content Include="Views\Friends\FriendList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
