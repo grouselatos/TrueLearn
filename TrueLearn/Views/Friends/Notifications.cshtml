@@ -7,24 +7,41 @@
 <h2>Notifications</h2>
 
 
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.senderId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.receiverId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.triggered)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <p>@item.UserName has sent you a friend request.</p>
+            </td>
+            <td>
+                <button class="btn-primary accept" id="@item.Id" type="button">Accept</button>
+            </td>
+        </tr>
+    }
 
 </table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(() => {
+        $(".accept").click((e) => {
+            $.ajax({
+                method: 'POST',
+                url: '/Friends/AcceptRequest',
+                data: {
+                    senderId: e.target.id
+                },
+                success: (response) => {
+                    e.target.innerText = 'Accepted';
+                },
+                error: (response) => {
+                    e.target.innerText = 'Error';
+                }
+            })
+        });
+
+    });
+</script>
+
