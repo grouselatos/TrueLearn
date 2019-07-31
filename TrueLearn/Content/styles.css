@@ -8,7 +8,12 @@
 .fa-2x {
     font-size: 2em;
 }
-
+.card {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    border: 1px !important;
+    border-radius: 15px !important;
+    font-family: 'Titillium Web', sans-serif;
+}
 
 .fa {
     width: 60px;
@@ -573,3 +578,9 @@ a {
         width: 100%;
     }
 }
+
+
+
+
+
+

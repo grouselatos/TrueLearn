@@ -3,20 +3,31 @@
     ViewBag.Title = "Add Friend";
 }
 
+<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script rel="js" src="~/Content/main.js"></script>
+<script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <h2>Add Friend</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <p>Add Friend - Are you sure?</p>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Yes" class="btn btn-default" />
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Add Friend - Are you sure?</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="submit" value="Yes" class="submit" style="margin-left: auto" />
+                </div>
+                <div class="col">
+                    <input type="submit" value="No" class="submit" style="margin-left: auto" />
+                </div>
+            </div>
         </div>
-        <div class="col-md-offset-2 col-md-10">
-            <input type="reset" value="No" class="btn btn-default" />
-        </div>
-    </div>
-}
+    }
+</div>
