@@ -6,30 +6,27 @@
 
 <h2>Delete</h2>
 
+<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script rel="js" src="~/Content/main.js"></script>
+
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Certificate</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.first_name)
+            @Html.DisplayNameFor(model => model.CertificatePath)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.first_name)
+            <img src="@Url.Content(Model.CertificatePath)" width="100" height="100" />
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Photo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Photo)
-        </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

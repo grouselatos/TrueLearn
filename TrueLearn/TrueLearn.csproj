@@ -183,13 +183,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907301509393_Providers.cs" />
-    <Compile Include="Migrations\201907301509393_Providers.Designer.cs">
-      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907301531012_Providers2.cs" />
-    <Compile Include="Migrations\201907301531012_Providers2.Designer.cs">
-      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
+    <Compile Include="Migrations\201907311813029_withUI.cs" />
+    <Compile Include="Migrations\201907311813029_withUI.Designer.cs">
+      <DependentUpon>201907311813029_withUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -357,18 +353,18 @@
     <Content Include="Views\Friends\Index.cshtml" />
     <Content Include="Views\Friends\AddFriend.cshtml" />
     <Content Include="Views\Friends\Notifications.cshtml" />
-    <Content Include="Views\Certificates\Index.cshtml" />
-    <Content Include="Views\Certificates\Create.cshtml" />
-    <Content Include="Views\Certificates\Edit.cshtml" />
-    <Content Include="Views\Certificates\Delete.cshtml" />
     <Content Include="Views\TodoTasks\Index.cshtml" />
     <Content Include="Views\TodoTasks\Edit.cshtml" />
     <Content Include="Views\TodoTasks\Delete.cshtml" />
     <Content Include="Views\TodoTasks\Create.cshtml" />
     <Content Include="Views\Friends\FriendList.cshtml" />
+    <Content Include="Views\Certificates\Create.cshtml" />
+    <Content Include="Views\Certificates\Index.cshtml" />
+    <Content Include="Views\Certificates\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -380,11 +376,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907301509393_Providers.resx">
-      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907301531012_Providers2.resx">
-      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907311813029_withUI.resx">
+      <DependentUpon>201907311813029_withUI.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

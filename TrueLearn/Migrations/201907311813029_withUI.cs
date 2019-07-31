@@ -3,7 +3,7 @@ namespace TrueLearn.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Providers : DbMigration
+    public partial class withUI : DbMigration
     {
         public override void Up()
         {
@@ -13,7 +13,7 @@ namespace TrueLearn.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         UserId = c.String(maxLength: 128),
-                        Photo = c.Binary(),
+                        CertificatePath = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
@@ -186,7 +186,7 @@ namespace TrueLearn.Migrations
                         headline = c.String(),
                         description = c.String(),
                         image = c.Binary(),
-                        provider = c.String(),
+                        provider = c.Int(nullable: false),
                         url = c.String(),
                         title = c.String(),
                         category = c.String(),

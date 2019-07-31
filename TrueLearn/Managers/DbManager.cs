@@ -88,16 +88,6 @@ namespace TrueLearn.Managers
             return result;
         }
 
-        public ICollection<TodoTask> GetTodoTasks()
-        {
-            ICollection<TodoTask> result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                result = db.TodoTasks.Include("Courses")
-                                     .ToList();
-            }
-            return result;
-        }
         public Certificate GetCertificate(int Id)
         {
             Certificate result;
@@ -138,15 +128,18 @@ namespace TrueLearn.Managers
         }
         #endregion
 
-        public ICollection<ApplicationUser> GetUsers()
+        #region TodoTask
+        public ICollection<TodoTask> GetTodoTasks()
         {
-            List<ApplicationUser> result;
+            ICollection<TodoTask> result;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                result = db.Users.ToList();
+                result = db.TodoTasks.Include("Courses")
+                                     .ToList();
             }
             return result;
         }
+
         public void AddTodoTask(TodoTask todoTask, List<int> courseIds)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
@@ -165,20 +158,6 @@ namespace TrueLearn.Managers
             }
         }
 
-        public ICollection<ApplicationUser> GetUsers(string search)
-        {
-            List<ApplicationUser> result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                var query = db.Users.AsQueryable();
-                if (!String.IsNullOrEmpty(search))
-                {
-                    query = query.Where(x => x.UserName.Contains(search) || x.Email.Contains(search) || ((x.first_name.ToString()) + (" ") + (x.last_name.ToString())).Contains(search));
-                }
-                result = query.ToList();
-            }
-            return result;
-        }
         public TodoTask GetTodoTask(int id)
         {
             TodoTask result;
@@ -201,15 +180,6 @@ namespace TrueLearn.Managers
             return result;
         }
 
-        public ApplicationUser GetUser(string id)
-        {
-            ApplicationUser result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                result = db.Users.Find(id);
-            }
-            return result;
-        }
         public void UpdateTodoTask(TodoTask todoTask, List<int> courseIds)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
@@ -240,40 +210,14 @@ namespace TrueLearn.Managers
                 db.SaveChanges();
             }
         }
+        #endregion
+
+        #region Friend
         public void AddFriend(Friend friend)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 db.Friends.Add(friend);
-                db.SaveChanges();
-            }
-        }
-
-        public ICollection<ApplicationUser> GetNotifications(string userId)
-        {
-            ICollection<ApplicationUser> result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                var query = db.Users.Join(db.Friends,
-                                        user => user.Id,
-                                        friend => friend.senderId,
-                                        (user, sender) => new { User = user, Sender = sender })
-                                    .Where((x => x.User.Id == x.Sender.senderId && x.Sender.receiverId == userId && x.Sender.status == FriendStatus.Pending))
-                                    .Select(x => x.User)
-                                    .ToList();
-                result = query;
-            }
-            return result;
-        }
-
-        public void AcceptRequest(string senderId, string receiverId)
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                var friends = db.Friends.Where(x => x.senderId == senderId && x.receiverId == receiverId).FirstOrDefault();
-                db.Friends.Attach(friends);
-                friends.status = FriendStatus.Approved;
-                db.Entry(friends).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }
@@ -294,5 +238,74 @@ namespace TrueLearn.Managers
             }
             return result;
         }
+
+        public void AcceptRequest(string senderId, string receiverId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var friends = db.Friends.Where(x => x.senderId == senderId && x.receiverId == receiverId).FirstOrDefault();
+                db.Friends.Attach(friends);
+                friends.status = FriendStatus.Approved;
+                db.Entry(friends).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+        #endregion
+
+        #region User
+        public ICollection<ApplicationUser> GetUsers()
+        {
+            List<ApplicationUser> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Users.ToList();
+            }
+            return result;
+        }
+
+        public ICollection<ApplicationUser> GetUsers(string search)
+        {
+            List<ApplicationUser> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var query = db.Users.AsQueryable();
+                if (!String.IsNullOrEmpty(search))
+                {
+                    query = query.Where(x => x.UserName.Contains(search) || x.Email.Contains(search) || ((x.first_name.ToString()) + (" ") + (x.last_name.ToString())).Contains(search));
+                }
+                result = query.ToList();
+            }
+            return result;
+        }
+
+        public ApplicationUser GetUser(string id)
+        {
+            ApplicationUser result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Users.Find(id);
+            }
+            return result;
+        }
+        #endregion
+
+        #region Notifications
+        public ICollection<ApplicationUser> GetNotifications(string userId)
+        {
+            ICollection<ApplicationUser> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var query = db.Users.Join(db.Friends,
+                                        user => user.Id,
+                                        friend => friend.senderId,
+                                        (user, sender) => new { User = user, Sender = sender })
+                                    .Where((x => x.User.Id == x.Sender.senderId && x.Sender.receiverId == userId && x.Sender.status == FriendStatus.Pending))
+                                    .Select(x => x.User)
+                                    .ToList();
+                result = query;
+            }
+            return result;
+        }
+        #endregion
     }
 }
