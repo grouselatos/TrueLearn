@@ -1,0 +1,48 @@
+﻿@model TrueLearn.ViewModels.PersonalChatViewModel
+
+@{
+    ViewBag.Title = "Chat";
+}
+
+<h2>Chat</h2>
+
+<div>
+    @Html.HiddenFor(model => model.Friend.UserName, new { id = "friend" })
+    @Html.HiddenFor(model => model.Chat.Id, new { id = "chatId"})
+    <input id="message" type="text" />
+    <button id="send">Send</button>
+</div>
+
+<div id="messages">
+    @foreach (var message in Model.Messages)
+    {
+        <p>@message.sent  | @message.sender  : @message.text</p>
+    }
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(document).ready(() => {
+            let chat = $.connection.PersonalChatHub;
+
+
+
+            chat.client.gotMessage = (from, message) => {
+                $('#messages').append(`<p> ${from}: ${message}</p>`);
+            }
+
+            $.connection.hub.start().done(() => {
+                $('#send').click(() => {
+                    chat.server.sendToUser($('#chatId').val(), $('#friend').val(), $('#message').val());
+
+                    $('#messages').append(`<p>Me: ${$('#message').val()}</p>`);
+                    $('#message').val('').focus();
+
+                });
+            });
+
+        });
+    </script>
+}
