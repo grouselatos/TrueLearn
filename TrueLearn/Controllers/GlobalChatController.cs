@@ -12,10 +12,10 @@ namespace TrueLearn.Controllers
     {
         private DbManager db = new DbManager();
         // GET: GlobalChat
-        public ActionResult Index()
-        {
-            var ChatHistory = db.GetChatHistory();
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    var ChatHistory = db.GetChatHistory();
+        //    return View();
+        //}
     }
 }

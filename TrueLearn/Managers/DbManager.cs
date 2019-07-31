@@ -285,25 +285,91 @@ namespace TrueLearn.Managers
                 db.Friends.Attach(friends);
                 friends.status = FriendStatus.Approved;
                 db.Entry(friends).State = EntityState.Modified;
+                AddPersonalChat(friends.Id);
                 db.SaveChanges();
             }
         }
 
-        public ICollection<ApplicationUser> GetFriends(string userId)
+        public ICollection<ApplicationUser> GetFriendList(string userId)
         {
             ICollection<ApplicationUser> result;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 var query = db.Users.Join(db.Friends,
                                         user => user.Id,
-                                        friend => friend.senderId,
-                                        (user, sender) => new { User = user, Sender = sender })
-                                    .Where((x => x.User.Id == x.Sender.senderId && x.Sender.receiverId == userId && x.Sender.status == FriendStatus.Approved))
+                                        friend => friend.senderId == userId ? friend.receiverId : friend.senderId,
+                                        (user, friendship) => new { User = user, Friendship = friendship })
+                                    .Where(x => (userId == x.Friendship.senderId || userId  == x.Friendship.receiverId) && x.Friendship.status == FriendStatus.Approved)
                                     .Select(x => x.User)
                                     .ToList();
                 result = query;
             }
             return result;
+        }
+
+        public Friend GetFriendship(string userId, string friendId)
+        {
+            Friend result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var friendship = db.Friends.Where(x => (userId == x.senderId && friendId == x.receiverId) ||
+                                                       (friendId == x.senderId && userId == x.receiverId) &&
+                                                        x.status == FriendStatus.Approved).FirstOrDefault();
+                result = friendship;
+            }
+            return result;
+        }
+
+        #endregion
+
+        #region Personal Chat
+
+        public void AddPersonalChat(int friendshipId)
+        {
+            Chat chat = new Chat()
+            {
+                Id = friendshipId
+            };
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Chats.Add(chat);
+                db.SaveChanges();
+            }
+        }
+
+        public Chat GetPersonalChat(int friendId)
+        {
+            Chat result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var chat = db.Chats.Find(friendId);
+                result = chat;
+            }
+            return result;
+        }
+
+        #endregion
+
+        #region Messages
+
+        public ICollection<Message> GetMessages(int chatId)
+        {
+            ICollection<Message> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var messages = db.Messages.Where(x => x.ChatId == chatId).ToList();
+                result = messages;
+            }
+            return result;
+        }
+
+        public void AddMessage(Message message)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Messages.Add(message);
+                db.SaveChanges();
+            }
         }
 
         #endregion

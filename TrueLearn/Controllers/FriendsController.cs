@@ -64,7 +64,7 @@ namespace TrueLearn.Controllers
         public ActionResult FriendList()
         {
             ICollection<ApplicationUser> friends;
-            friends = db.GetFriends(User.Identity.GetUserId());
+            friends = db.GetFriendList(User.Identity.GetUserId());
             return View(friends);
         }
     }
