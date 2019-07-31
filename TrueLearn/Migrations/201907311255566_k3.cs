@@ -3,7 +3,7 @@ namespace TrueLearn.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Providers : DbMigration
+    public partial class k3 : DbMigration
     {
         public override void Up()
         {
@@ -186,7 +186,7 @@ namespace TrueLearn.Migrations
                         headline = c.String(),
                         description = c.String(),
                         image = c.Binary(),
-                        provider = c.String(),
+                        provider = c.Int(nullable: false),
                         url = c.String(),
                         title = c.String(),
                         category = c.String(),

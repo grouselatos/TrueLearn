@@ -9,34 +9,47 @@
 <script rel="js" src="~/Content/main.js"></script>
 <script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="~/Content/assets/css/fullcalendar.css" />
 
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-    <a class="nav-link" href="~/Courses/Create" title="CreateCourse">
-        <i class="fa fa-plus" style="color: white;"></i>
-    </a>
-</p>
 
-<table class="table">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <p>
+                @*@Html.ActionLink("Create New", "Create")*@
+                <a class="nav-link" href="~/Courses/Create" title="Create Course">
+                    <i class="fa fa-plus" style="color: white;"></i>
+                </a>
+            </p>
+        </div>
+        <div class="col-sm">
+            @*Filter for Status*@
+        </div>
+        <div class="col-sm">
+            @*Filter for Provider*@
+        </div>
+    </div>
+</div>
+
+<table class="table" style= "border-top: none;">
     <tr>
-        <th>
+        <th style= "border-top: none;">
             @Html.DisplayNameFor(model => model.provider)
         </th>
-        <th>
+        <th style="border-top: none;">
             @Html.DisplayNameFor(model => model.title)
         </th>
-        <th style="padding-left: 45px">
+        <th style="padding-left: 45px; border-top: none;">
             @Html.DisplayNameFor(model => model.url)
         </th>
-        <th class="listitem">
+        <th class="listitem" style= "border-top: none;">
             @Html.DisplayNameFor(model => model.status)
         </th>
-        <th>
+        <th style= "border-top: none;">
 
         </th>
-        <th></th>
+        <th style= "border-top: none;"></th>
     </tr>
 
     @foreach (var item in Model)
@@ -66,7 +79,7 @@
                 @Html.DisplayFor(modelItem => item.title)
             </td>
             <td>
-                <a class="nav-link" href="@item.url" title="Go To Course">
+                <a class="nav-link" href="@item.url" title="Go To Course" target="_blank">
                     <i class="fa fa-globe"></i>
                 </a>
             </td>

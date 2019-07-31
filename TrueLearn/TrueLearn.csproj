@@ -183,13 +183,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907301509393_Providers.cs" />
-    <Compile Include="Migrations\201907301509393_Providers.Designer.cs">
-      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907301531012_Providers2.cs" />
-    <Compile Include="Migrations\201907301531012_Providers2.Designer.cs">
-      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
+    <Compile Include="Migrations\201907311255566_k3.cs" />
+    <Compile Include="Migrations\201907311255566_k3.Designer.cs">
+      <DependentUpon>201907311255566_k3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -211,11 +207,6 @@
     <Compile Include="ViewModels\FriendsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\assets\css\fullcalendar.css" />
-    <Content Include="Content\assets\css\fullcalendar.print.css" />
-    <Content Include="Content\assets\js\fullcalendar.js" />
-    <Content Include="Content\assets\js\jquery-1.10.2.js" />
-    <Content Include="Content\assets\js\jquery-ui.custom.min.js" />
     <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.css" />
@@ -380,11 +371,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907301509393_Providers.resx">
-      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907301531012_Providers2.resx">
-      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907311255566_k3.resx">
+      <DependentUpon>201907311255566_k3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

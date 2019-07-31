@@ -10,12 +10,12 @@
 <table class="table">
     @foreach (var item in Model)
     {
-        <tr>
+        <tr style="border: none;">
             <td>
                 <p>@item.UserName has sent you a friend request.</p>
             </td>
             <td>
-                <button class="btn-primary accept" id="@item.Id" type="button">Accept</button>
+                <button class="btn btn-primary accept" id="@item.Id" type="button">Accept</button>
             </td>
         </tr>
     }
