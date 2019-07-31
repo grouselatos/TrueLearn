@@ -183,13 +183,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201907301509393_Providers.cs" />
-    <Compile Include="Migrations\201907301509393_Providers.Designer.cs">
-      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907301531012_Providers2.cs" />
-    <Compile Include="Migrations\201907301531012_Providers2.Designer.cs">
-      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
+    <Compile Include="Migrations\201907301555348_init.cs" />
+    <Compile Include="Migrations\201907301555348_init.Designer.cs">
+      <DependentUpon>201907301555348_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -380,11 +376,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907301509393_Providers.resx">
-      <DependentUpon>201907301509393_Providers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907301531012_Providers2.resx">
-      <DependentUpon>201907301531012_Providers2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907301555348_init.resx">
+      <DependentUpon>201907301555348_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
