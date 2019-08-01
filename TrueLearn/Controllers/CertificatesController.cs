@@ -62,11 +62,13 @@ namespace TrueLearn.Controllers
         [ActionName("Delete")]
         public ActionResult DeleteConfirmed(Certificate certificate, int id)
         {
-            string certificatefilename = Path.Combine(Server.MapPath("~/Images/"), certificate.ToString());
-            certificate.CertificatePath = "~/Images/" + certificatefilename;
-            if ((System.IO.File.Exists(certificatefilename)))
+            certificate.UserId = User.Identity.GetUserId();
+            string certificatefilename = db.GetCertificate(id).CertificatePath;
+            string certificatefilepath = Server.MapPath(certificatefilename);
+            FileInfo file = new FileInfo(certificatefilepath);
+            if (file.Exists)
             {
-                System.IO.File.Delete(certificatefilename);
+                file.Delete();
             }
             db.DeleteCertificate(id);
             return RedirectToAction("Index");
