@@ -289,40 +289,20 @@ namespace TrueLearn.Managers
                 db.SaveChanges();
             }
         }
-        #endregion
 
-        #region User
-        public ICollection<ApplicationUser> GetUsers()
+        public ICollection<ApplicationUser> GetFriendList(string userId)
         {
-            List<ApplicationUser> result;
+            ICollection<ApplicationUser> result;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                result = db.Users.ToList();
-            }
-            return result;
-        }
-
-        public ICollection<ApplicationUser> GetUsers(string search)
-        {
-            List<ApplicationUser> result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                var query = db.Users.AsQueryable();
-                if (!String.IsNullOrEmpty(search))
-                {
-                    query = query.Where(x => x.UserName.Contains(search) || x.Email.Contains(search) || ((x.first_name.ToString()) + (" ") + (x.last_name.ToString())).Contains(search));
-                }
-                result = query.ToList();
-            }
-            return result;
-        }
-
-        public ApplicationUser GetUser(string id)
-        {
-            ApplicationUser result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                result = db.Users.Find(id);
+                var query = db.Users.Join(db.Friends,
+                                        user => user.Id,
+                                        friend => friend.senderId == userId ? friend.receiverId : friend.senderId,
+                                        (user, friendship) => new { User = user, Friendship = friendship })
+                                    .Where(x => (userId == x.Friendship.senderId || userId == x.Friendship.receiverId) && x.Friendship.status == FriendStatus.Approved)
+                                    .Select(x => x.User)
+                                    .ToList();
+                result = query;
             }
             return result;
         }
