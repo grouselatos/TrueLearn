@@ -10,29 +10,42 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="~/Content/assets/css/fullcalendar.css" />
 
-<h2>Index</h2>
 
-<p>
+<div class="col-sm">
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+        <a class="nav-link" href="~/Certificates/Create" title="Upload Certificate">
+            <i class="fa fa-upload fa-2x" style="color: white;"></i>
+        </a>
+    </p>
+</div>
+
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+</p>*@
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CertificatePath)
         </th>
         <th></th>
     </tr>
+    </table>
+*@
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                <img src="@Url.Content(item.CertificatePath)" width="100" height="100" />
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
 
-</table>
+@foreach (var item in Model)
+{
+    <img src="@Url.Content(item.CertificatePath)" id="myImg" width="300" height="200" style="margin: 10px; box-shadow: 7px 7px 8px black;" />
+
+
+
+    @*</td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+        </tr>*@
+
+}
+
+
