@@ -22,6 +22,10 @@
     vertical-align: middle;
     font-size: 20px;
 }
+.img{
+    padding: 10px !important;
+    margin: 10px !important;
+}
 
 .main-menu:hover,
 nav.main-menu.expanded {
@@ -131,13 +135,14 @@ col {
 }
 
 .form-horizontal {
-    width: 50% !important;
+    width: 70% !important;
     background-color: rgba(255, 255, 255, 0.4) !important;
     border: 1px;
     border-radius: 15px;
-    padding: 20px;
+    padding: 30px;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 a:any-link {
@@ -147,6 +152,7 @@ a:any-link {
 body,
 html {
     height: 100%;
+    overflow:hidden;
 }
 
 .navbar-text {
@@ -217,6 +223,7 @@ nav {
     margin-left: auto;
     margin-right: auto;
     padding-top: 2%;
+    overflow-y: auto;
 }
 
 @font-face {
