@@ -124,16 +124,6 @@ namespace TrueLearn.Managers
             return result;
         }
 
-        public ICollection<TodoTask> GetTodoTasks()
-        {
-            ICollection<TodoTask> result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                result = db.TodoTasks.Include("Courses")
-                                     .ToList();
-            }
-            return result;
-        }
         public Certificate GetCertificate(int Id)
         {
             Certificate result;
