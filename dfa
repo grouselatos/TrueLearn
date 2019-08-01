@@ -1,0 +1,35 @@
+[33mfc5f05f[m[33m ([m[1;36mHEAD -> [m[1;32mGlobalChat[m[33m)[m random commit
+[33m1865207[m commit after merge
+[33m0c27aac[m commit before merge
+[33m03d75b5[m[33m ([m[1;32mFriends[m[33m)[m finished friends
+[33m82144fc[m[33m ([m[1;31morigin/GlobalChat[m[33m, [m[1;31morigin/FrontEnd[m[33m)[m fixed TodoTasks
+[33mff4ff83[m merged friends
+[33mac32a4b[m[33m ([m[1;31morigin/Friends[m[33m)[m Added Friends
+[33me0f1364[m[33m ([m[1;31morigin/TodoTask[m[33m, [m[1;32mTodoTask[m[33m)[m Added TodoTasks
+[33mf5f1d5d[m[33m ([m[1;31morigin/Gr1[m[33m)[m Added CRUD, controller and views for Certificicate.cs
+[33maf2816d[m UI Changaz
+[33ma5f1344[m new views
+[33m81fb9bd[m[33m ([m[1;32mcourseControllers[m[33m)[m Finalized Models
+[33m9a8ec21[m[33m ([m[1;31morigin/courseControllers[m[33m)[m Working Views
+[33mc4537ac[m Fixed the universe
+[33m281a2f8[m Merge branch 'master' of https://github.com/grouselatos/TrueLearn
+[33mf34153f[m Layout ALMOST Finalized
+[33m9780b62[m Added a ton of shit
+[33mdb251f4[m Layout
+[33med4b6b4[m LAYOUT BITCHES
+[33ma6d8967[m changes connection string
+[33m9341c00[m Merge pull request #2 from grouselatos/revert-1-branch-1
+[33m64c9676[m[33m ([m[1;31morigin/revert-1-branch-1[m[33m)[m Revert "Branch 1"
+[33m68c43d6[m Merge pull request #1 from grouselatos/branch-1
+[33m722c197[m Updated dbmanager
+[33m32df1cf[m Added feature upgrading the user to PremiumUser
+[33m07c1cf3[m Added feature initiating user as FreeUser on register
+[33m9a01313[m Added courses CRUD
+[33ma6ad53a[m fixed startup (roles and admin didn't work before)
+[33m0185e7c[m Added roles (Admin, FreeUser, PremiumUser) and created admin user (name: admin, password: iamtheadmin)
+[33m7e9d697[m fixed register and login. Downgraded to bootstrap 3.4.1
+[33m9a307f1[m Commented out user properties and modified registration
+[33m30078fe[m excluded models
+[33mdeac74d[m Made changes in IdentityModel
+[33m74f49ef[m Add project files.
+[33mda790aa[m Add .gitignore and .gitattributes.

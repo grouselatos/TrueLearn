@@ -14,6 +14,7 @@ namespace TrueLearn
 		{
 			ConfigureAuth(app);
 			createRolesandUsers();
+            app.MapSignalR();
 		}
 
 		private void createRolesandUsers()

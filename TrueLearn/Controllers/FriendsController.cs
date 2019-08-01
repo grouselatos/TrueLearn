@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TrueLearn.Managers;
@@ -57,13 +58,13 @@ namespace TrueLearn.Controllers
         public ActionResult AcceptRequest(string senderId)
         {
             db.AcceptRequest(senderId, User.Identity.GetUserId());
-            return new EmptyResult();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         public ActionResult FriendList()
         {
             ICollection<ApplicationUser> friends;
-            friends = db.GetFriends(User.Identity.GetUserId());
+            friends = db.GetFriendList(User.Identity.GetUserId());
             return View(friends);
         }
     }
