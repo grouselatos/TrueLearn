@@ -21,8 +21,8 @@
 </div>
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 @*<table class="table">
     <tr>
         <th>
@@ -38,6 +38,15 @@
 {
     <img src="@Url.Content(item.CertificatePath)" id="myImg" width="300" height="200" style="margin: 10px; box-shadow: 7px 7px 8px black;" />
 
+    <div id="myModal" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+        <button>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
+    </div>
 
 
     @*</td>
@@ -45,7 +54,29 @@
             @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
         </tr>*@
-
 }
 
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+
+    var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+
+
+    img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+</script>
 
