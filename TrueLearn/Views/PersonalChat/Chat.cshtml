@@ -3,46 +3,95 @@
 @{
     ViewBag.Title = "Chat";
 }
+<style>
+.message{
+  border-radius: 25px;
+  padding: 15px;
+  width: 60%;
+  font: 14px/22px "Lato", Arial, sans-serif;
+  color: white;
+}
+textarea{
+  width: 90%;
+  padding: 20px;
+  border-radius: 10px;
+  resize: none;
+  margin-top: 20px;
+}
+
+button {
+      float: right;
+      font-size: 16px;
+      text-transform: uppercase;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 15px;
+      margin-top: 10px;
+      background-color: #9f72b0;
+  color: white;
+      float: inherit;
+  transition: 0.7s;
+}    
+      
+.message:nth-child(n){
+  background-color: #9f72b0;
+  float: right;
+}
+
+.message:nth-child(2n){
+  background-color: #a7abab;
+  float: left;
+}
+button:hover{
+  background-color: white;
+  color: #9f72b0;
+  transition: 0.7s;
+}
+</style>
 
 <h2>Chat</h2>
 
-<div>
-    @Html.HiddenFor(model => model.Friend.UserName, new { id = "friend" })
-    @Html.HiddenFor(model => model.Chat.Id, new { id = "chatId"})
-    <input id="message" type="text" />
-    <button id="send">Send</button>
-</div>
-
-<div id="messages">
+<div class="chatwindow">
     @foreach (var message in Model.Messages)
     {
         <p>@message.sent  | @message.sender  : @message.text</p>
     }
 </div>
 
-@section scripts {
-    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    <script>
-        $(document).ready(() => {
-            let chat = $.connection.PersonalChatHub;
+<div>
+    @Html.HiddenFor(model => model.Friend.UserName, new { id = "friend" })
+    @Html.HiddenFor(model => model.Chat.Id, new { id = "chatId" })
+    <div class="chat-message clearfix">
+        <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
+        <button id="send">Send</button>
+    </div>
+</div>
+
+
+    @section scripts {
+        <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+        <script>
+            $(document).ready(() => {
+                let chat = $.connection.PersonalChatHub;
 
 
 
-            chat.client.gotMessage = (from, message) => {
-                $('#messages').append(`<p> ${from}: ${message}</p>`);
-            }
+                chat.client.gotMessage = (from, message) => {
+                    $('#messages').append(`<p> ${from}: ${message}</p>`);
+                }
 
-            $.connection.hub.start().done(() => {
-                $('#send').click(() => {
-                    chat.server.sendToUser($('#chatId').val(), $('#friend').val(), $('#message').val());
+                $.connection.hub.start().done(() => {
+                    $('#send').click(() => {
+                        chat.server.sendToUser($('#chatId').val(), $('#friend').val(), $('#message').val());
 
-                    $('#messages').append(`<p>Me: ${$('#message').val()}</p>`);
-                    $('#message').val('').focus();
+                        $('#messages').append(`<p>Me: ${$('#message').val()}</p>`);
+                        $('#message').val('').focus();
 
+                    });
                 });
-            });
 
-        });
-    </script>
-}
+            });
+        </script>
+    }
