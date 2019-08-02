@@ -3,7 +3,7 @@ namespace TrueLearn.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class k5 : DbMigration
+    public partial class test_roles_and_settings : DbMigration
     {
         public override void Up()
         {

@@ -197,9 +197,9 @@
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201908011023312_k5.cs" />
-    <Compile Include="Migrations\201908011023312_k5.Designer.cs">
-      <DependentUpon>201908011023312_k5.cs</DependentUpon>
+    <Compile Include="Migrations\201908021229397_test_roles_and_settings.cs" />
+    <Compile Include="Migrations\201908021229397_test_roles_and_settings.Designer.cs">
+      <DependentUpon>201908021229397_test_roles_and_settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -376,6 +376,7 @@
     <Content Include="Views\GlobalChat\Index.cshtml" />
     <Content Include="Views\PersonalChat\Chat.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -391,8 +392,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908011023312_k5.resx">
-      <DependentUpon>201908011023312_k5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908021229397_test_roles_and_settings.resx">
+      <DependentUpon>201908021229397_test_roles_and_settings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
