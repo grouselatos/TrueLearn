@@ -48,23 +48,32 @@ button:hover{
   color: #9f72b0;
   transition: 0.7s;
 }
+.chatwindow{
+    overflow: auto;
+    height: 60vh;
+}
+.container{
+background-color: rgba(255, 255, 255, 0.4) !important;
+    border: 1px !important;
+    border-radius: 15px !important;
+    font-family: 'Titillium Web', sans-serif;
+}
+
 </style>
-
-<h2>Chat</h2>
-
-<div class="chatwindow">
-    @foreach (var message in Model.Messages)
-    {
-        <p>@message.sent  | @message.sender  : @message.text</p>
-    }
-</div>
-
-<div>
-    @Html.HiddenFor(model => model.Friend.UserName, new { id = "friend" })
-    @Html.HiddenFor(model => model.Chat.Id, new { id = "chatId" })
-    <div class="chat-message clearfix">
-        <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
-        <button id="send">Send</button>
+<div class="contrainer">
+    <div class="chatwindow" id="messages">
+        @foreach (var message in Model.Messages)
+        {
+            <p class="message" id="messages"><b>@message.sent  | @message.sender  : </b>@message.text</p>
+        }
+    </div>
+    <div>
+        @Html.HiddenFor(model => model.Friend.UserName, new { id = "friend" })
+        @Html.HiddenFor(model => model.Chat.Id, new { id = "chatId" })
+        <div class="chat-message clearfix">
+            <textarea name="message" id="message" placeholder="Type your message" rows="1"></textarea>
+            <button id="send">Send</button>
+        </div>
     </div>
 </div>
 
@@ -79,14 +88,14 @@ button:hover{
 
 
                 chat.client.gotMessage = (from, message) => {
-                    $('#messages').append(`<p> ${from}: ${message}</p>`);
+                    $('#messages').append(`<p class="message"> ${from}: ${message}</p>`);
                 }
 
                 $.connection.hub.start().done(() => {
                     $('#send').click(() => {
                         chat.server.sendToUser($('#chatId').val(), $('#friend').val(), $('#message').val());
 
-                        $('#messages').append(`<p>Me: ${$('#message').val()}</p>`);
+                        $('#messages').append(`<p class="message">Me: ${$('#message').val()}</p>`);
                         $('#message').val('').focus();
 
                     });

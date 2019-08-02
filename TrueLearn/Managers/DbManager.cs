@@ -318,7 +318,7 @@ namespace TrueLearn.Managers
                                         user => user.Id,
                                         friend => friend.senderId == userId ? friend.receiverId : friend.senderId,
                                         (user, friendship) => new { User = user, Friendship = friendship })
-                                    .Where(x => (userId == x.Friendship.senderId || userId  == x.Friendship.receiverId) && x.Friendship.status == FriendStatus.Approved)
+                                    .Where(x =>  userId  == x.Friendship.receiverId && x.Friendship.status == FriendStatus.Pending)
                                     .Select(x => x.User)
                                     .ToList();
                 result = query;

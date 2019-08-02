@@ -33,19 +33,14 @@
     </table>
 *@
 
-
 @foreach (var item in Model)
 {
-
-    <img src="@Url.Content(item.CertificatePath)" id="myImg" width="300" height="200" style="margin: 10px; box-shadow: 7px 7px 8px black;" />
+    <img src="@Url.Content(item.CertificatePath)" id="myImg" width="300" height="200" style="margin: 10px; box-shadow: 7px 7px 8px black;" onclick="openModal();" />
 
     <div id="myModal" class="modal">
-
-
-        <span class="close">&times;</span>
-
-        <img class="modal-content" id="img01">
-        <button>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <img class="modal-content" src="@Url.Content(item.CertificatePath)">
+        <button type="button" class="btn btn-danger" style="margin: 50px; margin-left: 45%;">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
     </div>
 
 
@@ -55,25 +50,72 @@
         </td>
         </tr>*@
 
+
+    @*<script>
+            var modal = document.getElementById("myModal");
+            var img = document.getElementById("myImg");
+            var modalImg = document.getElementById("img01");
+
+
+            img.onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+
+
+            var span = document.getElementsByClassName("close")[0];
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+        </script>*@
+    
+    <script>
+        // Open the Modal
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        // Close the Modal
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        var slideIndex = 0;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+        var span = document.getElementsByClassName("close")[0];
+    </script>
+
 }
-<script>
 
-    var modal = document.getElementById("myModal");
-    var img = document.getElementById("myImg");
-    var modalImg = document.getElementById("img01");
-
-
-    img.onclick = function () {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-    }
-
-
-    var span = document.getElementsByClassName("close")[0];
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-</script>
 
 

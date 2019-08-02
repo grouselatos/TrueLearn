@@ -21,9 +21,7 @@
             <div class="container">
                 <div class="row" style="margin-top: 0px;">
                     <div class="col-6">
-                        <a class="nav-link" href="~/Courses/Create" title="Message">
-                            <i class="fa fa-envelope"></i>
-                        </a>
+                        @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.Id }, null)
                     </div>
                     <div class="col-6">
                         <a class="nav-link" href="~/Courses/Create" title="Profile">

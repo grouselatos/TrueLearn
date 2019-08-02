@@ -197,9 +197,9 @@
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201908011023312_k5.cs" />
-    <Compile Include="Migrations\201908011023312_k5.Designer.cs">
-      <DependentUpon>201908011023312_k5.cs</DependentUpon>
+    <Compile Include="Migrations\201908021300041_K6.cs" />
+    <Compile Include="Migrations\201908021300041_K6.Designer.cs">
+      <DependentUpon>201908021300041_K6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -391,8 +391,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908011023312_k5.resx">
-      <DependentUpon>201908011023312_k5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908021300041_K6.resx">
+      <DependentUpon>201908021300041_K6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
