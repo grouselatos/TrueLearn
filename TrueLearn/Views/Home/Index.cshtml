@@ -1,46 +1,85 @@
-﻿<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
-<link rel="stylesheet" href="~/Content/styles.css" />
-<script rel="js" src="~/Content/main.js"></script>
-<script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.js"></script>
-<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
-<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
-<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css" />
+﻿@model TrueLearn.ViewModels.TaskViewModel
 
-<!-- If you use the default popups, use this. -->
-<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
-<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
+    <div id="calender"></div>
 
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <p id="pDetails"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div>
-    <div id="calendar" style="height: 800px;"></div>
-</div>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
 
-@section scripts{
-    <script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.js"></script>
-    <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
-    <script>
-        $(document).ready(() => {
+    @section Scripts{
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 
-            var Calendar = tui.Calendar;
+        <script>
+            $(document).ready(function () {
+                var events = [];
+                $.ajax({
+                    type: "GET",
+                    url: "/home/GetEvents",
+                    success: function (data) {
+                        $.each(data, function (i, v) {
+                            events.push({
+                                title: v.Subject,
+                                description: v.Description,
+                                start: moment(v.Start),
+                                end: v.End != null ? moment(v.End) : null,
+                                color: v.ThemeColor,
+                                allDay: v.IsFullDay
+                            });
+                        })
 
-            $('#calendar').tuiCalendar({
-                defaultView: 'month',
-                taskView: true,
-                template: {
-                    monthGridHeader: function (model) {
-                        var date = new Date(model.date);
-                        var template = '<span class="tui-full-calendar-weekday-grid-date">' + date.getDate() + '</span>';
-                        return template;
+                        GenerateCalender(events);
+                    },
+                    error: function (error) {
+                        alert('failed');
                     }
+                })
+
+                function GenerateCalender(events) {
+                    $('#calender').fullCalendar('destroy');
+                    $('#calender').fullCalendar({
+                        contentHeight: 400,
+                        defaultDate: new Date(),
+                        timeFormat: 'h(:mm)a',
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,basicWeek,basicDay,agenda'
+                        },
+                        eventLimit: true,
+                        eventColor: '#378006',
+                        events: events,
+                        eventClick: function (calEvent, jsEvent, view) {
+                            $('#myModal #eventTitle').text(calEvent.title);
+                            var $description = $('<div/>');
+                            $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
+                            if (calEvent.end != null) {
+                                $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+                            }
+                            $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                            $('#myModal #pDetails').empty().html($description);
+
+                            $('#myModal').modal();
+                        }
+                    })
                 }
-            });
-
-
-        });
-
-    </script>
-
-}
-
+            })
+        </script>
+    }
