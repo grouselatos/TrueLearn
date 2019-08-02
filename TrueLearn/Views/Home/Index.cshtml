@@ -19,6 +19,8 @@
         </div>
     </div>
 
+
+
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
 
@@ -34,14 +36,12 @@
                     type: "GET",
                     url: "/home/GetEvents",
                     success: function (data) {
-                        $.each(data, function (i, v) {
+                        $.each(data, function (i, x) {
                             events.push({
-                                title: v.Subject,
-                                description: v.Description,
-                                start: moment(v.Start),
-                                end: v.End != null ? moment(v.End) : null,
-                                color: v.ThemeColor,
-                                allDay: v.IsFullDay
+                                title: x.title,
+                                description: x.description,
+                                start: x.start_date,
+                                end: x.end_date
                             });
                         })
 
