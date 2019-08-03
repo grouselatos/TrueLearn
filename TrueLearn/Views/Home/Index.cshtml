@@ -3,195 +3,44 @@
 <script rel="js" src="~/Content/main.js"></script>
 <script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="~/Content/assets/css/fullcalendar.css" />
+<script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.js"></script>
+<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
+<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
+<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css" />
 
-<script>
-    $(document).ready(function () {
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-
-        /*  className colors
-
-        className: default(transparent), important(red), chill(pink), success(green), info(blue)
-
-        */
+<!-- If you use the default popups, use this. -->
+<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
+<link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
 
 
-        /* initialize the external events
-        -----------------------------------------------------------------*/
+<div>
+    <div id="calendar" style="height: 600px; margin-top: 50px;"></div>
+</div>
 
-        $('#external-events div.external-event').each(function () {
+@section scripts{
+    <script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.js"></script>
+    <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.js"></script>
+    <script>
+        $(document).ready(() => {
 
-            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-            // it doesn't need to have a start or end
-            var eventObject = {
-                title: $.trim($(this).text()) // use the element's text as the event title
-            };
+            var Calendar = tui.Calendar;
 
-            // store the Event Object in the DOM element so we can get to it later
-            $(this).data('eventObject', eventObject);
-
-            // make the event draggable using jQuery UI
-            $(this).draggable({
-                zIndex: 999,
-                revert: true, // will cause the event to go back to its
-                revertDuration: 0 //  original position after the drag
+            $('#calendar').tuiCalendar({
+                defaultView: 'month',
+                taskView: true,
+                template: {
+                    monthGridHeader: function (model) {
+                        var date = new Date(model.date);
+                        var template = '<span class="tui-full-calendar-weekday-grid-date">' + date.getDate() + '</span>';
+                        return template;
+                    }
+                }
             });
 
+
         });
 
+    </script>
 
-        /* initialize the calendar
-        -----------------------------------------------------------------*/
-
-        var calendar = $('#calendar').fullCalendar({
-            header: {
-                left: 'title',
-                center: 'agendaDay,agendaWeek,month',
-                right: 'prev,next today'
-            },
-            editable: true,
-            firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
-            selectable: true,
-            defaultView: 'month',
-
-            axisFormat: 'h:mm',
-            columnFormat: {
-                month: 'ddd', // Mon
-                week: 'ddd d', // Mon 7
-                day: 'dddd M/d', // Monday 9/7
-                agendaDay: 'dddd d'
-            },
-            titleFormat: {
-                month: 'MMMM yyyy', // September 2009
-                week: "MMMM yyyy", // September 2009
-                day: 'MMMM yyyy' // Tuesday, Sep 8, 2009
-            },
-            allDaySlot: false,
-            selectHelper: true,
-            select: function (start, end, allDay) {
-                var title = prompt('Event Title:');
-                if (title) {
-                    calendar.fullCalendar('renderEvent', {
-                        title: title,
-                        start: start,
-                        end: end,
-                        allDay: allDay
-                    },
-                        true // make the event "stick"
-                    );
-                }
-                calendar.fullCalendar('unselect');
-            },
-            droppable: true, // this allows things to be dropped onto the calendar !!!
-            drop: function (date, allDay) { // this function is called when something is dropped
-
-                // retrieve the dropped element's stored Event Object
-                var originalEventObject = $(this).data('eventObject');
-
-                // we need to copy it, so that multiple events don't have a reference to the same object
-                var copiedEventObject = $.extend({}, originalEventObject);
-
-                // assign it the date that was reported
-                copiedEventObject.start = date;
-                copiedEventObject.allDay = allDay;
-
-                // render the event on the calendar
-                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove();
-                }
-
-            },
-
-            events: [{
-                title: 'Meeting',
-                start: new Date(y, m, d, 10, 30),
-                allDay: false,
-                className: 'important'
-            },
-            {
-                title: 'Lunch',
-                start: new Date(y, m, d, 12, 0),
-                end: new Date(y, m, d, 14, 0),
-                allDay: false,
-                className: 'important'
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d + 1, 19, 0),
-                end: new Date(y, m, d + 1, 22, 30),
-                allDay: false,
-            }
-            ],
-        });
-
-
-    });
-</script>
-<script>
-    $(document).ready(function () {
-
-        $("#togglecalendar").click(function () {
-            $("#calendar").toggle('slow', function () {
-                $(".log").text('Toggle Transition Complete');
-            });
-        });
-    });
-</script>
-<style>
-    body {
-        text-align: center;
-        font-size: 14px;
-        font-family: 'Titillium Web', sans-serif;
-        background-color: rgba(0, 0, 0, 0);
-    }
-
-    #wrap {
-        width: 1100px;
-        margin: 0 auto;
-    }
-
-    #external-events {
-        float: left;
-        width: 150px;
-        padding: 0 10px;
-        text-align: left;
-    }
-
-        #external-events h4 {
-            font-size: 16px;
-            margin-top: 0;
-            padding-top: 1em;
-        }
-
-        #external-events p {
-            margin: 1.5em 0;
-            font-size: 11px;
-            color: #666;
-        }
-
-            #external-events p input {
-                margin: 0;
-                vertical-align: middle;
-            }
-
-    #calendar {
-        /* 		float: right; */
-        margin: 0 auto;
-        width: 900px;
-        background-color: rgba(255, 255, 255, 0.4) !important;
-        font-family: 'Titillium Web', sans-serif;
-        border-radius: 6px;
-        box-shadow: 0 4px 8px rgb(44, 44, 44);
-    }
-</style>
-
-<div id="calendar"></div>
+}
 

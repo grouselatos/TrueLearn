@@ -2,20 +2,47 @@
 @{
     ViewBag.Title = "Premium";
 }
+<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script rel="js" src="~/Content/main.js"></script>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <h2>Premium</h2>
-    <script src="https://kit.fontawesome.com/82b062aa43.js"></script>
-    <p>Upgrade to Premium - Are you sure?</p>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Yes" class="btn btn-default" />
+    <div class="snip1214">
+        <div class="plan">
+            <h3 class="plan-title">
+                Free
+            </h3>
+            <div class="plan-cost">
+                <span class="plan-price">$0</span><span class="plan-type">/ Monthly</span>
+            </div>
+            <ul class="plan-features">
+                <li><i class="ion-checkmark"> </i>MOOC Organizer</li>
+                <li><i class="ion-checkmark"> </i>Friends & Messaging</li>
+                <li><i class="ion-checkmark"> </i>Month Tracking</li>
+                <li><i class="ion-checkmark"> </i>Achievements</li>
+            </ul>
+            <div class="plan-select"><a href="">Stay Free</a></div>
         </div>
-        <div class="col-md-offset-2 col-md-10">
-            <input type="reset" value="No" class="btn btn-default" />
+        <div class="plan featured">
+            <h3 class="plan-title">
+                Premium
+            </h3>
+            <div class="plan-cost">
+                <span class="plan-price">$4.99</span><span class="plan-type">/ Monthly</span>
+            </div>
+            <ul class="plan-features">
+                <li><i class="ion-checkmark"> </i>MOOC Organizer</li>
+                <li><i class="ion-checkmark"> </i>Friends & Messaging</li>
+                <li><i class="ion-checkmark"> </i>Month Tracking</li>
+                <li><i class="ion-checkmark"> </i>Achievements</li>
+                <li><i class="ion-checkmark"> </i>Certification Gallery</li>
+                <li><i class="ion-checkmark"> </i>Suggested Courses</li>
+            </ul>
+            <div class="plan-select"><a href="">Upgrade</a></div>
         </div>
     </div>
 }

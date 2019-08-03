@@ -5,6 +5,7 @@ using Owin;
 using System;
 using TrueLearn.Models;
 
+
 [assembly: OwinStartupAttribute(typeof(TrueLearn.Startup))]
 namespace TrueLearn
 {
@@ -14,6 +15,7 @@ namespace TrueLearn
 		{
 			ConfigureAuth(app);
 			createRolesandUsers();
+            app.MapSignalR();
 		}
 
 		private void createRolesandUsers()
@@ -50,6 +52,21 @@ namespace TrueLearn
 				var role = new IdentityRole();
 				role.Name = "PremiumUser";
 				roleManager.Create(role);
+
+                //var user = new ApplicationUser();
+                //user.UserName = "premium";
+                //user.Email = "premium@gmail.com";
+                //user.birth_date = new DateTime(1986, 4, 8);
+                //user.country = "Greece";
+                //user.first_name = "premium";
+                //user.last_name = "premium";
+                //string userPWD = "iamthepremium";
+                //var chkUser = UserManager.Create(user, userPWD);
+
+                //if(chkUser.Succeeded)
+                //{
+                //    var result1 = UserManager.AddToRole(user.Id, "Premium");
+                //}
 			}
 
 			if (!roleManager.RoleExists("FreeUser"))

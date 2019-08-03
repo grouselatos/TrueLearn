@@ -56,6 +56,15 @@
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -93,6 +102,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -175,13 +185,28 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CertificatesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Controllers\FriendsController.cs" />
+    <Compile Include="Controllers\GlobalChatController.cs" />
+>>>>>>> 26ac4b8c3ef8ecef2a6077e02ff4205830e73f5d
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PersonalChatController.cs" />
     <Compile Include="Controllers\TodoTasksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\GlobalChatHub.cs" />
+    <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Migrations\201908021300041_K6.cs" />
+    <Compile Include="Migrations\201908021300041_K6.Designer.cs">
+      <DependentUpon>201908021300041_K6.cs</DependentUpon>
+    </Compile>
+>>>>>>> 26ac4b8c3ef8ecef2a6077e02ff4205830e73f5d
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -197,14 +222,13 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\GlobalChatViewModel.cs" />
+    <Compile Include="ViewModels\PersonalChatViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
+    <Compile Include="ViewModels\FriendsNotificationViewModel.cs" />
+    <Compile Include="ViewModels\FriendsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\assets\css\fullcalendar.css" />
-    <Content Include="Content\assets\css\fullcalendar.print.css" />
-    <Content Include="Content\assets\js\fullcalendar.js" />
-    <Content Include="Content\assets\js\jquery-1.10.2.js" />
-    <Content Include="Content\assets\js\jquery-ui.custom.min.js" />
     <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.css" />
@@ -226,6 +250,13 @@
     <Content Include="Content\dashboard.html" />
     <Content Include="Content\gallery.html" />
     <Content Include="Content\Images\CEE-Resources_Background.jpg" />
+    <Content Include="Content\Images\Icons\Coursera.png" />
+    <Content Include="Content\Images\Icons\Edx.png" />
+    <Content Include="Content\Images\Icons\FutureLearn.png" />
+    <Content Include="Content\Images\Icons\Khan.png" />
+    <Content Include="Content\Images\Icons\Skillshare.png" />
+    <Content Include="Content\Images\Icons\Udacity.png" />
+    <Content Include="Content\Images\Icons\Udemy.png" />
     <Content Include="Content\layout.html" />
     <Content Include="Content\main.js" />
     <Content Include="Content\settings.html" />
@@ -275,6 +306,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -301,7 +334,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -336,17 +368,34 @@
     <Content Include="Views\Courses\Index.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Delete.cshtml" />
+<<<<<<< HEAD
+=======
+    <Content Include="Views\Friends\Index.cshtml" />
+    <Content Include="Views\Friends\AddFriend.cshtml" />
+    <Content Include="Views\Friends\Notifications.cshtml" />
+>>>>>>> 26ac4b8c3ef8ecef2a6077e02ff4205830e73f5d
     <Content Include="Views\TodoTasks\Index.cshtml" />
     <Content Include="Views\TodoTasks\Edit.cshtml" />
     <Content Include="Views\TodoTasks\Delete.cshtml" />
     <Content Include="Views\TodoTasks\Create.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Certificates\Index.cshtml" />
     <Content Include="Views\Certificates\Create.cshtml" />
     <Content Include="Views\Certificates\Edit.cshtml" />
     <Content Include="Views\Certificates\Delete.cshtml" />
+=======
+    <Content Include="Views\Friends\FriendList.cshtml" />
+    <Content Include="Views\Certificates\Create.cshtml" />
+    <Content Include="Views\Certificates\Index.cshtml" />
+    <Content Include="Views\Certificates\Delete.cshtml" />
+    <Content Include="Views\GlobalChat\Index.cshtml" />
+    <Content Include="Views\PersonalChat\Chat.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+>>>>>>> 26ac4b8c3ef8ecef2a6077e02ff4205830e73f5d
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -357,6 +406,14 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908021300041_K6.resx">
+      <DependentUpon>201908021300041_K6.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+>>>>>>> 26ac4b8c3ef8ecef2a6077e02ff4205830e73f5d
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

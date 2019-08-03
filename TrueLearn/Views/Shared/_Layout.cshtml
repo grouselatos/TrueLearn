@@ -9,22 +9,21 @@
     <link rel="stylesheet" href="~/Content/styles.css" />
     <script rel="js" src="~/Content/main.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
 </head>
 <body>
     <div class="bg-image">
         <div class="area">
             <nav class="navbar" role="navigation">
                 <div class="container-fluid">
-
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="" class="navbar-text">
-                                <i class="fas fa-users fa-2x"
+                            <a href="../Courses/Index" class="navbar-text">
+                                <i class="fas fa-list-alt fa-2x"
                                    id="login-icon"></i>
                             </a>
                         </li>
                     </ul>
-
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a id="" class="navbar-text"><i class="far fa-calendar fa-2x" id="togglecalendar"></i></a>
@@ -32,23 +31,26 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="" class="navbar-text">
-                                <i class="fas fa-cog fa-2x"
+                            <a href="../Friends/FriendList" class="navbar-text">
+                                <i class="fas fa-users fa-2x"
                                    id="login-icon"></i>
                             </a>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="" class="navbar-text">
-                                <i class="fas fa-sign-in-alt fa-2x"
-                                   id="login-icon"></i>
-                            </a>
-                        </li>
-                    </ul>
+
+
+
+                    @*<ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="" class="navbar-text">
+                                    <i class="fas fa-sign-in-alt fa-2x"
+                                       id="login-icon"></i>
+                                </a>
+                            </li>
+                        </ul>*@
                 </div>
             </nav>
-            <div class="main-body">
+            <div class="main-body" style="margin-top:5%;">
                 @RenderBody()
             </div>
         </div>
@@ -66,7 +68,7 @@
 
             </li>
             <li class="has-subnav">
-                <a href="#">
+                <a href="~/Certificates/Index">
                     <i class="fa fa-user fa-2x"></i>
                     <span class="nav-text">
                         Profile
@@ -74,17 +76,16 @@
                 </a>
 
             </li>
+            @*<li class="has-subnav">
+                    <a href="~/Courses/Index">
+                        <i class="fa fa-list-alt fa-2x"></i>
+                        <span class="nav-text">
+                            Courses
+                        </span>
+                    </a>
+                </li>*@
             <li class="has-subnav">
-                <a href="Courses/Index">
-                    <i class="fa fa-list-alt fa-2x"></i>
-                    <span class="nav-text">
-                        Courses
-                    </span>
-                </a>
-
-            </li>
-            <li class="has-subnav">
-                <a href="gallery.html">
+                <a href="~/Certificates/Index">
                     <i class="fa fa-certificate fa-2x"></i>
                     <span class="nav-text">
                         Certificates
@@ -93,13 +94,13 @@
 
             </li>
             @*<li>
-                <a href="#">
-                    <i class="fa fa-trophy fa-2x"></i>
-                    <span class="nav-text">
-                        Achievements
-                    </span>
-                </a>
-            </li>*@
+                    <a href="#">
+                        <i class="fa fa-trophy fa-2x"></i>
+                        <span class="nav-text">
+                            Achievements
+                        </span>
+                    </a>
+                </li>*@
             <li>
                 <a href="#">
                     <i class="fa fa-thumbs-up fa-2x"></i>
@@ -111,7 +112,7 @@
         </ul>
         <ul class="logout">
             <li>
-                <a href="#">
+                <a href="~/Account/Premium">
                     <i class="fa fa-star fa-2x"></i>
                     <span class="nav-text">
                         Subscription
@@ -119,7 +120,15 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="">
+                    <i class="fa fa-cog fa-2x"></i>
+                    <span class="nav-text">
+                        Settings
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href=" ">
                     <i class="fa fa-power-off fa-2x"></i>
                     <span class="nav-text">
                         Logout
@@ -128,10 +137,10 @@
             </li>
         </ul>
     </nav>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>

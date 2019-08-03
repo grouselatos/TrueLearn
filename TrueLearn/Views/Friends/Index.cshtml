@@ -1,0 +1,48 @@
+﻿@model TrueLearn.ViewModels.FriendsViewModel
+
+@{
+    ViewBag.Title = "Friends";
+}
+<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script rel="js" src="~/Content/main.js"></script>
+<script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="~/Content/assets/css/fullcalendar.css" />
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <h2>Search For a User:</h2>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            @using (Html.BeginForm("Index", "Friends", FormMethod.Get))
+            {
+                <div id="filters">
+                    <div class="col-6">
+                        @Html.EditorFor(x => x.Search, new { htmlAttributes = new { @class = "form-control px-0", placeholder = "Search" } })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@foreach (var friend in Model.Friends)
+{
+    <hr />
+    <div class="row">
+        <div class="col-md-9">
+            <p>@friend.first_name</p>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-outline-dark">
+                @Html.ActionLink("Add Friend", "AddFriend", new { id = friend.Id })
+            </button>
+        </div>
+    </div>
+
+}

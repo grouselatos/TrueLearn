@@ -15,12 +15,19 @@ namespace TrueLearn.Models
     public class Friend
     {
         public int Id { get; set; }
-        public virtual ApplicationUser sender { get; set; }
-        public virtual ApplicationUser receiver { get; set; }
+
+        [ForeignKey("Sender")]
+        public string senderId { get; set; }
+        
+        [ForeignKey("Receiver")]
+        public string receiverId { get; set; }
 
         public FriendStatus status { get; set; }
+        public DateTime triggered { get; set; }
 
         public virtual Chat Chat { get; set; }
+        public virtual ApplicationUser Sender { get; set; }
+        public virtual ApplicationUser Receiver { get; set; }
         public virtual ICollection<FriendNotification> FriendNotifications { get; set; }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TrueLearn.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "FriendList";
+}
+
+<h2>Friend List</h2>
+<hr />
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="card" style="width: 15rem;">
+            <img class="card-img-top" src="https://shawetcanada.files.wordpress.com/2019/05/gettyimages-858077430.jpg?quality=80&strip=all&w=720&h=480&crop=1" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.first_name @item.last_name</h5>
+                <h6 class="card-title">@item.country</h6>
+                <h6 class="card-title">@item.birth_date.ToShortDateString()</h6>
+            </div>
+            <div class="container">
+                <div class="row" style="margin-top: 0px;">
+                    <div class="col-6">
+                        @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.Id }, null)
+                    </div>
+                    <div class="col-6">
+                        <a class="nav-link" href="~/Courses/Create" title="Profile">
+                            <i class="fa fa-user"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</table>

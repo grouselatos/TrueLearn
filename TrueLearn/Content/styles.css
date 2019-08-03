@@ -1,22 +1,36 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
-.fa-2x {
-    font-size: 2em;
+#calendar {
+    background-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 
+
+.fa-2x {
+    font-size: 2em;
+}
+.card {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    border: 1px !important;
+    border-radius: 15px !important;
+    font-family: 'Titillium Web', sans-serif;
+}
+
 .fa {
-    position: relative;
-    display: table-cell;
     width: 60px;
     height: 36px;
     text-align: center;
     vertical-align: middle;
     font-size: 20px;
+}
+.img{
+    padding: 10px !important;
+    margin: 10px !important;
 }
 
 .main-menu:hover,
@@ -26,7 +40,7 @@ nav.main-menu.expanded {
 }
 
 .main-menu {
-    background: rgb(0, 0, 0,0.6) !important;
+    background: rgba(0, 0, 0,0.6) !important;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -108,14 +122,49 @@ nav.main-menu.expanded {
     background-size: cover;
 }
 
+th, td, tr {
+    font-family: 'Titillium Web', sans-serif !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-size: 20px !important;
+}
+
+table {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    border: 1px;
+    border-radius: 15px;
+}
+
+col {
+    padding: 0px;
+    margin: 0px;
+}
+
+.form-horizontal {
+    width: 70% !important;
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    border: 1px;
+    border-radius: 15px;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+a:any-link {
+    color: rebeccapurple;
+}
+
 body,
 html {
     height: 100%;
+    overflow:hidden;
 }
 
 .navbar-text {
     background: none;
     border: none;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .navbar > .container-fluid {
@@ -139,7 +188,7 @@ html {
     }
 
 nav {
-    background: rgb(95, 44, 130,0) !important;
+    background: rgba(95, 44, 130,0) !important;
     color: white;
     font-family: 'Titillium Web', sans-serif;
 }
@@ -165,20 +214,20 @@ nav {
         color: #fff;
         margin-left: 30px;
     }
+
 #main-content {
-    padding: 15%;
+    padding: 5%;
     margin-left: auto;
     width: auto;
     height: auto;
     margin-right: auto;
 }
-.main-body{
-   width: 70%; 
-   height: 70%;
-   margin-left: auto;
-   margin-right: auto;
-    padding-top: 10vh;
-    padding-bottom: 5vh;
+
+.main-body {
+    width: 70%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @font-face {
@@ -290,7 +339,8 @@ form.form1 {
     padding-bottom: 10px;
     padding-top: 10px;
     font-family: 'Titillium Web', sans-serif;
-    margin-left: 35%;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 15px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
@@ -539,3 +589,83 @@ a {
         width: 100%;
     }
 }
+
+/* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    #myImg:hover {
+        opacity: 0.7;
+    }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+
+
+

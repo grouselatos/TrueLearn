@@ -50,8 +50,9 @@ namespace TrueLearn.Models
         public virtual DbSet<TodoTask> TodoTasks { get; set; }
         public virtual DbSet<Certificate> Certificates { get; set; }
         public virtual DbSet<Friend> Friends { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<FriendNotification> FriendNotifications { get; set; }
         public virtual DbSet<ChatNotification> ChatNotifications { get; set; }
         public virtual DbSet<GlobalChat> GlobalChats { get; set; }
-	}
+    }
 }

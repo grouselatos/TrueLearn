@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TrueLearn.ViewModels.GlobalChatViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Global Chat</h2>
+<div>
+
+    <input id="message" type="text" />
+    <button id="send">Send</button>
+</div>
+
+
+<div id="messages">
+    @foreach (var message in Model)
+    {
+        <p>@message.Sent | @message.UserName : @message.Message</p>
+    }
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(document).ready(() => {
+            let chat = $.connection.chatHub;
+
+            chat.client.gotMessage = (from, message) => {
+                $('#messages').append(`<p>${from}: ${message}</p>`);
+            }
+
+            //Start the connection
+            $.connection.hub.start().done(() => {
+                // Only when connected call chat.server
+                $('#send').click(() => {
+                    //Send message to Hub by calling its Method
+                    chat.server.sendToUser($('#user').val(), $('#message').val());
+
+                    $('#messages').append(`<p>Me: ${message}</p>`);
+                    // Reset message input
+                    $('#message').val('').focus();
+                });
+            });
+
+        });
+    </script>
+}
