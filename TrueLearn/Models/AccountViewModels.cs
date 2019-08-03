@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace TrueLearn.Models
 {
@@ -125,5 +127,45 @@ namespace TrueLearn.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class SettingsViewModel
+    {
+        [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        public string first_name { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string last_name { get; set; }
+        [Required]
+        [Display(Name = "Birth Date")]
+        public DateTime birth_date { get; set; }
+        [Required]
+        [Display(Name = "Country")]
+        public string country { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase ProfileImageFile { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

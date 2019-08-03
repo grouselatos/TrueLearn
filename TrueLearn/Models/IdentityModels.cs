@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -18,6 +20,9 @@ namespace TrueLearn.Models
         public string last_name { get; set; }
         public DateTime birth_date { get; set; }
         public string country { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ProfileImageFile { get; set; }
+
         public virtual ICollection<Friend> Friends { get; set; }
         public virtual ICollection<Certificate> Certificates { get; set; }
         public virtual ICollection<TodoTask> TodoTasks { get; set; }

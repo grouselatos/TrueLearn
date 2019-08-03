@@ -503,5 +503,12 @@ namespace TrueLearn.Controllers
 		}
 
 		#endregion
+
+        [HttpGet]
+        public ActionResult Settings()
+        {
+            return View();
+        }
+            
 	}
 }
