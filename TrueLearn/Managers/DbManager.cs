@@ -76,8 +76,6 @@ namespace TrueLearn.Managers
             }
         }
 
-<<<<<<< HEAD
-=======
         public ApplicationUser GetUser(string id)
         {
             ApplicationUser result;
@@ -113,7 +111,6 @@ namespace TrueLearn.Managers
             return result;
         }
 
->>>>>>> 26ac4b8c3ef8ecef2a6077e02ff4205830e73f5d
         #endregion
 
         #region Certificate
@@ -167,7 +164,6 @@ namespace TrueLearn.Managers
         }
         #endregion
 
-<<<<<<< HEAD
 		#region TodoTasks
 
 		public ICollection<TodoTask> GetTodoTasks()
@@ -180,8 +176,6 @@ namespace TrueLearn.Managers
 			}
 			return result;
 		}
-=======
-        #region TodoTask
         public ICollection<TodoTask> GetTodoTasks()
         {
             ICollection<TodoTask> result;
@@ -192,7 +186,6 @@ namespace TrueLearn.Managers
             }
             return result;
         }
->>>>>>> 26ac4b8c3ef8ecef2a6077e02ff4205830e73f5d
 
         public void AddTodoTask(TodoTask todoTask, List<int> courseIds)
         {
@@ -266,12 +259,9 @@ namespace TrueLearn.Managers
                 db.SaveChanges();
             }
         }
-        #endregion
+        
+	#endregion
 
-<<<<<<< HEAD
-		#endregion
-	}
-=======
         #region Friend
         public void AddFriend(Friend friend)
         {
@@ -442,5 +432,4 @@ namespace TrueLearn.Managers
         #endregion
 
     }
->>>>>>> 26ac4b8c3ef8ecef2a6077e02ff4205830e73f5d
 }
