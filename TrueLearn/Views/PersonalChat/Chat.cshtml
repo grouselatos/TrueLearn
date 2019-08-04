@@ -4,63 +4,94 @@
     ViewBag.Title = "Chat";
 }
 <style>
-.message{
-  border-radius: 25px;
-  padding: 15px;
-  width: 60%;
-  font: 14px/22px "Lato", Arial, sans-serif;
-  color: white;
-}
-textarea{
-  width: 90%;
-  padding: 20px;
-  border-radius: 10px;
-  resize: none;
-  margin-top: 20px;
+    .message {
+        border-radius: 25px;
+        padding: 15px;
+        width: 60%;
+        font: 14px/22px "Lato", Arial, sans-serif;
+        color: white;
+    }
+
+    textarea {
+        width: 90%;
+        padding: 20px;
+        border-radius: 10px;
+        resize: none;
+        margin-top: 20px;
+    }
+
+    button {
+        float: right;
+        font-size: 16px;
+        text-transform: uppercase;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 15px;
+        margin-top: 10px;
+        background-color: #9f72b0;
+        color: white;
+        float: inherit;
+        transition: 0.7s;
+    }
+
+    .message:nth-child(n) {
+        background-color: #9f72b0;
+        float: right;
+        margin-right: 17px;
+    }
+
+    .message:nth-child(2n) {
+        background-color: #a7abab;
+        float: left;
+        margin-right: 17px;
+    }
+
+    button:hover {
+        background-color: white;
+        color: #9f72b0;
+        transition: 0.7s;
+    }
+
+    .chatwindow {
+        overflow: auto;
+        height: 50vh;
+        
+    }
+
+    .container {
+        background-color: rgba(255, 255, 255, 0.4) !important;
+        border: 1px !important;
+        border-radius: 15px !important;
+        font-family: 'Titillium Web', sans-serif;
+            width: 60% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 3%;
+    }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-button {
-      float: right;
-      font-size: 16px;
-      text-transform: uppercase;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      padding: 15px;
-      margin-top: 10px;
-      background-color: #9f72b0;
-  color: white;
-      float: inherit;
-  transition: 0.7s;
-}    
-      
-.message:nth-child(n){
-  background-color: #9f72b0;
-  float: right;
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
 }
 
-.message:nth-child(2n){
-  background-color: #a7abab;
-  float: left;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
 }
-button:hover{
-  background-color: white;
-  color: #9f72b0;
-  transition: 0.7s;
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
-.chatwindow{
-    overflow: auto;
-    height: 60vh;
-}
-.container{
-background-color: rgba(255, 255, 255, 0.4) !important;
-    border: 1px !important;
-    border-radius: 15px !important;
-    font-family: 'Titillium Web', sans-serif;
-}
+
 
 </style>
-<div class="contrainer">
+<div class="container">
     <div class="chatwindow" id="messages">
         @foreach (var message in Model.Messages)
         {
@@ -78,29 +109,34 @@ background-color: rgba(255, 255, 255, 0.4) !important;
 </div>
 
 
-    @section scripts {
-        <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
-        <script src="~/signalr/hubs"></script>
-        <script>
-            $(document).ready(() => {
-                let chat = $.connection.PersonalChatHub;
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(document).ready(() => {
+            let chat = $.connection.PersonalChatHub;
 
 
 
-                chat.client.gotMessage = (from, message) => {
-                    $('#messages').append(`<p class="message"> ${from}: ${message}</p>`);
-                }
+            chat.client.gotMessage = (from, message) => {
+                $('#messages').append(`<p class="message"> ${from}: ${message}</p>`);
+                var objDiv = document.getElementById("messages");
+                objDiv.scrollTop = objDiv.scrollHeight;
 
-                $.connection.hub.start().done(() => {
-                    $('#send').click(() => {
-                        chat.server.sendToUser($('#chatId').val(), $('#friend').val(), $('#message').val());
+            }
 
-                        $('#messages').append(`<p class="message">Me: ${$('#message').val()}</p>`);
-                        $('#message').val('').focus();
+            $.connection.hub.start().done(() => {
+                $('#send').click(() => {
+                    chat.server.sendToUser($('#chatId').val(), $('#friend').val(), $('#message').val());
 
-                    });
+                    $('#messages').append(`<p class="message">Me: ${$('#message').val()}</p>`);
+                    $('#message').val('').focus();
+                    var objDiv = document.getElementById("messages");
+                    objDiv.scrollTop = objDiv.scrollHeight;
                 });
-
             });
-        </script>
-    }
+
+        });
+
+    </script>
+}
