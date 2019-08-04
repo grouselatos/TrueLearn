@@ -419,5 +419,26 @@ namespace TrueLearn.Managers
 
         #endregion
 
+        #region Suggestions_in_progress
+        public ICollection<SuggestionDummy> GetSuggestions()
+        {
+            ICollection<SuggestionDummy> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.SuggestionDummies.ToList();
+            }
+            return result;
+        }
+
+        public SuggestionDummy GetSuggestion(int Id)
+        {
+            SuggestionDummy result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.SuggestionDummies.Find(Id);
+            }
+            return result;
+        }
+        #endregion
     }
 }

@@ -10,7 +10,7 @@ using TrueLearn.Models;
 
 namespace TrueLearn.Controllers
 {
-    //[Authorize(Roles = "PremiumUser")]
+    [CustomAuthorize(Roles = "PremiumUser")]
     public class CertificatesController : Controller
     {
         private DbManager db = new DbManager();
