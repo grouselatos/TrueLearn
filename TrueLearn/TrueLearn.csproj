@@ -251,6 +251,13 @@
     <Content Include="Content\Images\Icons\Skillshare.png" />
     <Content Include="Content\Images\Icons\Udacity.png" />
     <Content Include="Content\Images\Icons\Udemy.png" />
+    <Content Include="Content\Landing\animate.css" />
+    <Content Include="Content\Landing\index.html" />
+    <Content Include="Content\Landing\landingstyles.css" />
+    <Content Include="Content\Landing\undraw_finish_line_katerina_limpitsouni_xy20.svg" />
+    <Content Include="Content\Landing\undraw_online_organizer_ofxm.svg" />
+    <Content Include="Content\Landing\undraw_organize_resume_utk5.svg" />
+    <Content Include="Content\Landing\undraw_steps_ngvm.svg" />
     <Content Include="Content\layout.html" />
     <Content Include="Content\main.js" />
     <Content Include="Content\settings.html" />
@@ -326,8 +333,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
