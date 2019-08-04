@@ -3,7 +3,7 @@ namespace TrueLearn.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class testlogout : DbMigration
+    public partial class TestLogin : DbMigration
     {
         public override void Up()
         {

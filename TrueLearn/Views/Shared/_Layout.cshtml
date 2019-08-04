@@ -128,10 +128,11 @@
                 </a>
             </li>
             <li>
-            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {
+                @Html.AntiForgeryToken()
             <li>
-                <a href="~/Home/Index">
+                <a href="javascript:document.getElementById('logoutForm').submit()">
                     <i class="fa fa-power-off fa-2x"></i>
                     <span class="nav-text">
                         Logout

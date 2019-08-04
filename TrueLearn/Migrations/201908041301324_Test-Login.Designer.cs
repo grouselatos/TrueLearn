@@ -7,13 +7,13 @@ namespace TrueLearn.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class testlogout : IMigrationMetadata
+    public sealed partial class TestLogin : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(testlogout));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TestLogin));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908041025379_testlogout"; }
+            get { return "201908041301324_Test-Login"; }
         }
         
         string IMigrationMetadata.Source
