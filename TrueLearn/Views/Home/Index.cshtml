@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +15,7 @@
     <!--BS & MORE-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="landingstyles.css">
+    <link rel="stylesheet" href="~/Content/Landing/landingstyles.css">
 
     <!--ICONS-->
     <script src="https://kit.fontawesome.com/82b062aa43.js"></script>
@@ -41,11 +44,7 @@
                         <a class="nav-link scroll-link" href="#contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link scroll-link" href=""
-                           style="border: solid 1px; border-radius: 10px; border-color: purple; margin-left: 20px;">
-                            Log
-                            In
-                        </a>
+                        @Html.ActionLink("Login ", "Login", "Account", new { id = "loginForm" }, new { @class = "nav-link scroll-link", style = "border: solid 1px; border-radius: 10px; border-color: purple; margin-left: 20px;" })
                     </li>
                 </ul>
             </div>
@@ -56,14 +55,14 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2 text">
                     <h1>Project</h1>
-                    <img src="undraw_online_organizer_ofxm.svg" class="top-ill">
+                    <img src="~/Content/Landing/undraw_online_organizer_ofxm.svg" class="top-ill">
                     <div class="description wow fadeInLeftBig">
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         </p>
                     </div>
                     <div class="top-big-link wow fadeInUp">
-                        <a class="btn btn-primary btn-link-1" href="https://azmind.com">Join</a>
+                        @Html.ActionLink("Join", "Register", "Account", new { id = "registerForm" }, new { @class = "btn btn-primary btn-link-1" })
                         <a class="btn btn-primary btn-link-1 scroll-link" href="#features">Learn more</a>
                     </div>
                 </div>
@@ -93,7 +92,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 services-box wow fadeInUp">
-                    <img class="feat-img" src="undraw_organize_resume_utk5.svg">
+                    <img class="feat-img" src="~/Content/Landing/undraw_organize_resume_utk5.svg">
                     <h4>Organize</h4>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni possimus ratione nostrum corrupti
@@ -102,7 +101,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 services-box wow fadeInDown">
-                    <img class="feat-img" src="undraw_finish_line_katerina_limpitsouni_xy20.svg">
+                    <img class="feat-img" src="~/Content/Landing/undraw_finish_line_katerina_limpitsouni_xy20.svg">
                     <h4>Achieve</h4>
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum, similique et delectus ullam beatae
@@ -111,7 +110,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 services-box wow fadeInUp">
-                    <img class="feat-img" src="undraw_steps_ngvm.svg">
+                    <img class="feat-img" src="~/Content/Landing/undraw_steps_ngvm.svg">
                     <h4>Showcase</h4>
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus nesciunt dolorem velit! Vel,
