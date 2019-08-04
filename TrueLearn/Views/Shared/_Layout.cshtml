@@ -128,14 +128,18 @@
                 </a>
             </li>
             <li>
-                <a href="">
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+            {
+            <li>
+                <a href="~/Home/Index">
                     <i class="fa fa-power-off fa-2x"></i>
                     <span class="nav-text">
                         Logout
                     </span>
                 </a>
             </li>
-        </ul>
+            }
+            </ul>
     </nav>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
