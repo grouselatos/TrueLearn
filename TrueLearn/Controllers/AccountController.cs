@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -523,6 +524,7 @@ namespace TrueLearn.Controllers
             usersettingsmodel.last_name = usersettings.last_name;
             usersettingsmodel.birth_date = usersettings.birth_date;
             usersettingsmodel.country = usersettings.country;
+            usersettingsmodel.ProfilePhotoFile = usersettings.ProfilePhotoFile;
 
             return View(usersettingsmodel);
         }
@@ -538,14 +540,16 @@ namespace TrueLearn.Controllers
             string username = User.Identity.GetUserId();
             ApplicationUser usersettings = db.GetUserSettings(username);
 
+            string photofilename = Path.GetFileNameWithoutExtension(usersettingsmodel.ProfilePhotoFile.FileName);
+            string photofileextension = Path.GetExtension(usersettingsmodel.ProfilePhotoFile.FileName);
+            photofilename = Guid.NewGuid() + photofileextension;
+            usersettingsmodel.ProfilePhotoPath = "~/ProfileImage/" + photofilename;
+            photofilename = Path.Combine(Server.MapPath("~/ProfileImage/"), photofilename);
+            usersettings.ProfilePhotoFile.SaveAs(photofilename);
+            ModelState.Clear();
 
             db.UpdateUserSettings(usersettingsmodel, usersettings);
 
-            //using (ApplicationDbContext db = new ApplicationDbContext())
-            //{
-            //    db.Entry(settings).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //}
             return View(usersettingsmodel);
         }
 	}
