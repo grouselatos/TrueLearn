@@ -1,49 +1,294 @@
-﻿@model TrueLearn.ViewModels.TaskViewModel
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
 
-    <div id="calender"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Titillium+Web&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+    <!--BS & MORE-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/Landing/landingstyles.css">
 
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><span id="eventTitle"></span></h4>
-                </div>
-                <div class="modal-body">
-                    <p id="pDetails"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <!--ICONS-->
+    <script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light fixed-top navbar-expand-md navbar-no-bg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Landing Page</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#top">Top</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scroll-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Login ", "Login", "Account", new { id = "loginForm" }, new { @class = "nav-link scroll-link", style = "border: solid 1px; border-radius: 10px; border-color: purple; margin-left: 20px;" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class=top-container section-container id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text">
+                    <h1>Project</h1>
+                    <img src="~/Content/Landing/undraw_online_organizer_ofxm.svg" class="top-ill">
+                    <div class="description wow fadeInLeftBig">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <div class="top-big-link wow fadeInUp">
+                        @Html.ActionLink("Join", "Register", "Account", new { id = "registerForm" }, new { @class = "btn btn-primary btn-link-1" })
+                        <a class="btn btn-primary btn-link-1 scroll-link" href="#features">Learn more</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+                <a href="#features"><i class="fas fa-angle-double-down fa-2x" id="scroll-btn"></i></a>
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+    </div>
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
 
-    @section Scripts{
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <div class=features-container section-container" id="features">
+        <div class="container">
+            <div class="row">
 
-        <script>
-            $(document).ready(function () {
-                var events = [];
-                $.ajax({
-                    type: "GET",
-                    url: "/home/GetEvents",
-                    success: function (data) {
-                        $.each(data, function (i, v) {
-                            events.push({
-                                title: v.Subject,
-                                description: v.Description,
-                                start: moment(v.Start),
-                                end: v.End != null ? moment(v.End) : null,
-                                color: v.ThemeColor,
-                                allDay: v.IsFullDay
-                            });
-                        })
+                <div class="col features section-description wow">
+                    <h2>Features</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 services-box wow fadeInUp">
+                    <img class="feat-img" src="~/Content/Landing/undraw_organize_resume_utk5.svg">
+                    <h4>Organize</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni possimus ratione nostrum corrupti
+                        officia, numquam impedit veniam. Dolore totam commodi quas, perferendis nisi itaque voluptate,
+                        maxime id accusantium culpa ex.
+                    </p>
+                </div>
+                <div class="col-md-4 services-box wow fadeInDown">
+                    <img class="feat-img" src="~/Content/Landing/undraw_finish_line_katerina_limpitsouni_xy20.svg">
+                    <h4>Achieve</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum, similique et delectus ullam beatae
+                        aperiam necessitatibus totam, atque assumenda, distinctio vitae. Ipsum beatae corrupti fugiat
+                        obcaecati nobis similique excepturi quam?
+                    </p>
+                </div>
+                <div class="col-md-4 services-box wow fadeInUp">
+                    <img class="feat-img" src="~/Content/Landing/undraw_steps_ngvm.svg">
+                    <h4>Showcase</h4>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus nesciunt dolorem velit! Vel,
+                        aspernatur? Recusandae iste tempora, beatae minus, eveniet molestias adipisci voluptatibus quam
+                        quis inventore nisi quidem aliquam. Repellendus.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator">
+        <hr>
+    </div>
+    <div class=about-container section-container" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col about section-description wow">
+                    <h2>About Us</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 services-box wow fadeInUp">
+                    <img class="our-img"
+                         src="https://scontent.fath6-1.fna.fbcdn.net/v/t1.0-9/17017_10205541246507266_443061740211320726_n.jpg?_nc_cat=106&_nc_oc=AQk1iAFv_OBeEqrJrYD_tISoYPCee5ltj3Wha1X868oXfEvtL_ZzOMzVs2xYeG-H7oM&_nc_ht=scontent.fath6-1.fna&oh=077829e71a880eb342a572e5abaed7f6&oe=5DEB959A">
+                    <h4>Giorgos</h4>
+                    <h6>Back-End / Coordinator</h6>
+                </div>
+                <div class="col-md-4 services-box wow fadeInDown">
+                    <img class="our-img"
+                         src="https://scontent.fath6-1.fna.fbcdn.net/v/t1.0-9/9350_10201145342012914_1294390134_n.jpg?_nc_cat=104&_nc_oc=AQkHcpA63-yzj8K3FBfizZEu1Ff_TvA2CKgyyg6LvjrTr6Wg7pUfdrTBmH0KC9-Y9OM&_nc_ht=scontent.fath6-1.fna&oh=9121f56253f5e8ee800172b089b6db76&oe=5DA95B33">
+                    <h4>Tasos</h4>
+                    <h6>Back-End Mastermind</h6>
+
+                </div>
+                <div class="col-md-4 services-box wow fadeInUp">
+                    <img class="our-img"
+                         src="https://scontent.fath6-1.fna.fbcdn.net/v/t1.0-9/48168583_2389918481037422_7592545922039414784_n.jpg?_nc_cat=101&_nc_oc=AQnSPo4KZomXmtxX1ehDxlSCLnuvPTKSCmGHv-WJmbhmEIPVFiEmLUZNjeS6rSYvPe0&_nc_ht=scontent.fath6-1.fna&oh=276bb50b07adca7324b4623108f72d08&oe=5DDFCC9F">
+                    <h4>Katerina</h4>
+                    <h6>Front End Designer</h6>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator">
+
+    </div>
+    <div class=contact-container section-container" id="contact">
+        <div class="jumbotron jumbotron-fluid effect7">
+            <div class="container">
+                <h3>Contact Us</h3>
+                <hr>
+                <div class="form-group">
+                    <input type="email" placeholder="Enter your Email" class="form-control" id="..." required />
+                    <div class="invalid-feedback">
+                        Please provide a valid email.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">What do you want to know?</label>
+                    <textarea class="form-control" placeholder="Enter your message here..." id="exampleFormControlTextarea1" resize="none" rows="3"></textarea>
+                </div>
+                <button class="btn btn-secondary" type="submit">Submit form</button>
+            </div>
+        </div>
+    </div>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p class="text-justify">Bowerbuff Devs</p>
+                    <p class="text-justify">This is our team project for AFDEMP Bootcamp 8 C# Full Time. </p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Providers</h6>
+                    <ul class="footer-links">
+                        <li><a href="">Coursera</a></li>
+                        <li><a href="">Skillshare</a></li>
+                        <li><a href="">Edx</a></li>
+                        <li><a href="">Khan Academy</a></li>
+                        <li><a href="">Udemy</a></li>
+                        <li><a href="">Udacity</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Navigation</h6>
+                    <ul class="footer-links">
+                        <li><a href="">Top</a></li>
+                        <li><a href="">Features</a></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">
+                        Copyright &copy; 2019 All Rights Reserved by
+                        <a href="#">Bowerbuff Devs</a>.
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--JS Scripts-->
+    <script>
+        $(function () {
+            function after_form_submitted(data) {
+                if (data.result == 'success') {
+                    $('form#reused_form').hide();
+                    $('#success_message').show();
+                    $('#error_message').hide();
+                } else {
+                    $('#error_message').append('<ul></ul>');
+
+                    jQuery.each(data.errors, function (key, val) {
+                        $('#error_message ul').append('<li>' + key + ':' + val + '</li>');
+                    });
+                    $('#success_message').hide();
+                    $('#error_message').show();
+
+                    //reverse the response on the button
+                    $('button[type="button"]', $form).each(function () {
+                        $btn = $(this);
+                        label = $btn.prop('orig_label');
+                        if (label) {
+                            $btn.prop('type', 'submit');
+                            $btn.text(label);
+                            $btn.prop('orig_label', '');
+                        }
+                    });
+
+                } //else
+            }
+
+            $('#reused_form').submit(function (e) {
+                e.preventDefault();
+
+                $form = $(this);
+                //show some response on the button
+                $('button[type="submit"]', $form).each(function () {
+                    $btn = $(this);
+                    $btn.prop('type', 'button');
+                    $btn.prop('orig_label', $btn.text());
+                    $btn.text('Sending ...');
+                });
 
                         GenerateCalender(events);
                     },
@@ -52,34 +297,26 @@
                     }
                 })
 
-                function GenerateCalender(events) {
-                    $('#calender').fullCalendar('destroy');
-                    $('#calender').fullCalendar({
-                        contentHeight: 400,
-                        defaultDate: new Date(),
-                        timeFormat: 'h(:mm)a',
-                        header: {
-                            left: 'prev,next today',
-                            center: 'title',
-                            right: 'month,basicWeek,basicDay,agenda'
-                        },
-                        eventLimit: true,
-                        eventColor: '#378006',
-                        events: events,
-                        eventClick: function (calEvent, jsEvent, view) {
-                            $('#myModal #eventTitle').text(calEvent.title);
-                            var $description = $('<div/>');
-                            $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
-                            if (calEvent.end != null) {
-                                $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
-                            }
-                            $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
-                            $('#myModal #pDetails').empty().html($description);
+                $.ajax({
+                    type: "POST",
+                    url: 'handler.php',
+                    data: $form.serialize(),
+                    success: after_form_submitted,
+                    dataType: 'json'
+                });
 
-                            $('#myModal').modal();
-                        }
-                    })
-                }
-            })
-        </script>
-    }
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

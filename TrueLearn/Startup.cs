@@ -53,27 +53,42 @@ namespace TrueLearn
 				role.Name = "PremiumUser";
 				roleManager.Create(role);
 
-                //var user = new ApplicationUser();
-                //user.UserName = "premium";
-                //user.Email = "premium@gmail.com";
-                //user.birth_date = new DateTime(1986, 4, 8);
-                //user.country = "Greece";
-                //user.first_name = "premium";
-                //user.last_name = "premium";
-                //string userPWD = "iamthepremium";
-                //var chkUser = UserManager.Create(user, userPWD);
+                var user = new ApplicationUser();
+                user.UserName = "premium";
+                user.Email = "premium@gmail.com";
+                user.birth_date = new DateTime(1986, 4, 8);
+                user.country = "Greece";
+                user.first_name = "premium";
+                user.last_name = "premium";
+                string userPWD = "iamthepremium";
+                var chkUser = UserManager.Create(user, userPWD);
 
-                //if(chkUser.Succeeded)
-                //{
-                //    var result1 = UserManager.AddToRole(user.Id, "Premium");
-                //}
-			}
+                if (chkUser.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(user.Id, "PremiumUser");
+                }
+            }
 
 			if (!roleManager.RoleExists("FreeUser"))
 			{
 				var role = new IdentityRole();
 				role.Name = "FreeUser";
 				roleManager.Create(role);
+
+                var user = new ApplicationUser();
+                user.UserName = "free";
+                user.Email = "freeuser@gmail.com";
+                user.birth_date = new DateTime(1985, 5, 6);
+                user.country = "Greece";
+                user.first_name = "free";
+                user.last_name = "free";
+                string userPWD = "iamthefree";
+                var chkUser = UserManager.Create(user, userPWD);
+
+                if (chkUser.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(user.Id, "FreeUser");
+                }
 			}
 		}
 	}

@@ -9,7 +9,7 @@ using System.Web.Security;
 
 namespace TrueLearn.Models
 {
-    //[Authorize(Roles="Admin, PremiumUser")]
+    [CustomAuthorize(Roles="PremiumUser")]
     public class Certificate
     {
         public int Id { get; set; }

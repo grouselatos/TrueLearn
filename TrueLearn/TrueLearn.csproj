@@ -190,17 +190,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PersonalChatController.cs" />
+    <Compile Include="Controllers\SuggestionsController.cs" />
     <Compile Include="Controllers\TodoTasksController.cs" />
+    <Compile Include="CustomAuthorize.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201908021300041_K6.cs" />
-    <Compile Include="Migrations\201908021300041_K6.Designer.cs">
-      <DependentUpon>201908021300041_K6.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -209,6 +207,7 @@
     <Compile Include="Models\FriendNotification.cs" />
     <Compile Include="Models\GlobalChat.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\SuggestionDummy.cs" />
     <Compile Include="Models\TodoTask.cs" />
     <Compile Include="Models\Certificate.cs" />
     <Compile Include="Models\Friend.cs" />
@@ -251,6 +250,13 @@
     <Content Include="Content\Images\Icons\Skillshare.png" />
     <Content Include="Content\Images\Icons\Udacity.png" />
     <Content Include="Content\Images\Icons\Udemy.png" />
+    <Content Include="Content\Landing\animate.css" />
+    <Content Include="Content\Landing\index.html" />
+    <Content Include="Content\Landing\landingstyles.css" />
+    <Content Include="Content\Landing\undraw_finish_line_katerina_limpitsouni_xy20.svg" />
+    <Content Include="Content\Landing\undraw_online_organizer_ofxm.svg" />
+    <Content Include="Content\Landing\undraw_organize_resume_utk5.svg" />
+    <Content Include="Content\Landing\undraw_steps_ngvm.svg" />
     <Content Include="Content\layout.html" />
     <Content Include="Content\main.js" />
     <Content Include="Content\settings.html" />
@@ -325,29 +331,18 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -376,6 +371,7 @@
     <Content Include="Views\GlobalChat\Index.cshtml" />
     <Content Include="Views\PersonalChat\Chat.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Suggestions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -389,11 +385,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908021300041_K6.resx">
-      <DependentUpon>201908021300041_K6.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
