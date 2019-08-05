@@ -4,46 +4,69 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.start_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.end_date)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.start_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.end_date)
-        </td>
-		<td>
-			@foreach (var course in item.Courses)
-			{
-				@Html.DisplayFor(x => course.title) @Html.Encode(", ")
+<style>
+#calendar{
+    width: 70vw;
+    height: 70vh;
+}
+
+
+
+</style>
+
+
+<h2>Task Calendar</h2>
+
+<button id="btnCreate" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
+	<span class="glyphicon glyphicon-pencil"></span> Create
+</button>
+
+<div id="calendar"></div>
+
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><span id="eventTitle"></span></h4>
+			</div>
+			<div class="modal-body">
+				<button id="btnDelete" class="btn btn-default btn-sm pull-right">
+					<span class="glyphicon glyphicon-remove"></span> Remove
+				</button>
+				<button id="btnEdit" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
+					<span class="glyphicon glyphicon-pencil"></span> Edit
+				</button>
+				<p id="pDetails"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="myModalCreate" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><span id="eventTitle"></span></h4>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="title" required />
+				<input type="text" id="description" />
+				<input type="date" id="start" required />
+				<input type="date" id="end" required />
+
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<button type="button" class="btn btn-default" id="create">Create Task</button>
+					</div>
+				</div>
+			</div>
 			}
 		</td>
         <td>
