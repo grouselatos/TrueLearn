@@ -108,6 +108,8 @@ namespace TrueLearn.Managers
                 usersettings.last_name = usersettingsmodel.last_name;
                 usersettings.birth_date = usersettingsmodel.birth_date;
                 usersettings.country = usersettingsmodel.country;
+                usersettings.ProfilePhotoFile = usersettingsmodel.ProfilePhotoFile;
+                usersettings.ProfilePhotoPath = usersettingsmodel.ProfilePhotoPath;
                 db.Users.Attach(usersettings);
                 db.Entry(usersettings).State = EntityState.Modified;
                 db.SaveChanges();
