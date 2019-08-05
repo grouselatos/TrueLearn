@@ -13,84 +13,84 @@
 
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <p>
-                @*@Html.ActionLink("Create New", "Create")*@
-                <a class="nav-link" href="~/Courses/Create" title="Create Course">
-                    <i class="fa fa-plus" style="color: white;"></i>
-                </a>
-            </p>
-        </div>
-        <div class="col-sm">
-            @*Filter for Status*@
-        </div>
-        <div class="col-sm">
-            @*Filter for Provider*@
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <p>
+                    @*@Html.ActionLink("Create New", "Create")*@
+                    <a class="nav-link" href="~/Courses/Create" title="Create Course">
+                        <i class="fa fa-plus" style="color: white;"></i>
+                    </a>
+                </p>
+            </div>
+            <div class="col-sm">
+                <p>Filter</p>
+            </div>
+            <div class="col-sm">
+                <p>Filter</p>
+            </div>
         </div>
     </div>
-</div>
 
-<table class="table" style= "border-top: none;">
-    <tr>
-        <th style= "border-top: none;">
-            @Html.DisplayNameFor(model => model.provider)
-        </th>
-        <th style="border-top: none;">
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th style="padding-left: 45px; border-top: none;">
-            @Html.DisplayNameFor(model => model.url)
-        </th>
-        <th class="listitem" style= "border-top: none;">
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th style= "border-top: none;">
-
-        </th>
-        <th style= "border-top: none;"></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table" style="border-top: none;">
         <tr>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.provider)*@
-                @switch (item.provider)
-                {
-                    case CourseProvider.Udemy:<img src="~/Content/Images/Icons/Udemy.png" />
-                        break;
-                    case CourseProvider.Coursera: <img src="~/Content/Images/Icons/Coursera.png" />
-                        break;
-                    case CourseProvider.Edx: <img src="~/Content/Images/Icons/Edx.png" />
-                        break;
-                    case CourseProvider.Futurelearn: <img src="~/Content/Images/Icons/FutureLearn.png" />
-                        break;
-                    case CourseProvider.KhanAcademy: <img src="~/Content/Images/Icons/Khan.png" />
-                        break;
-                    case CourseProvider.Skillshare: <img src="~/Content/Images/Icons/Skillshare.png" />
-                        break;
-                    case CourseProvider.Udacity: <img src="~/Content/Images/Icons/Udacity.png" />
-                        break;
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.title)
-            </td>
-            <td>
-                <a class="nav-link" href="@item.url" title="Go To Course" target="_blank">
-                    <i class="fa fa-globe"></i>
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
-            </td>
-        </tr>
-    }
+            <th style="border-top: none;">
+                @Html.DisplayNameFor(model => model.provider)
+            </th>
+            <th style="border-top: none;">
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th style="padding-left: 45px; border-top: none;">
+                @Html.DisplayNameFor(model => model.url)
+            </th>
+            <th class="listitem" style="border-top: none;">
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th style="border-top: none;">
 
-</table>
+            </th>
+            <th style="border-top: none;"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.provider)*@
+                    @switch (item.provider)
+                    {
+                        case CourseProvider.Udemy:<img src="~/Content/Images/Icons/Udemy.png" />
+                            break;
+                        case CourseProvider.Coursera: <img src="~/Content/Images/Icons/Coursera.png" />
+                            break;
+                        case CourseProvider.Edx: <img src="~/Content/Images/Icons/Edx.png" />
+                            break;
+                        case CourseProvider.Futurelearn: <img src="~/Content/Images/Icons/FutureLearn.png" />
+                            break;
+                        case CourseProvider.KhanAcademy: <img src="~/Content/Images/Icons/Khan.png" />
+                            break;
+                        case CourseProvider.Skillshare: <img src="~/Content/Images/Icons/Skillshare.png" />
+                            break;
+                        case CourseProvider.Udacity: <img src="~/Content/Images/Icons/Udacity.png" />
+                            break;
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    <a class="nav-link" href="@item.url" title="Go To Course" target="_blank">
+                        <i class="fa fa-globe"></i>
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>

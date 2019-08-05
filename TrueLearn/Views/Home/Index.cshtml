@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Landing Page</title>
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Titillium+Web&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/82b062aa43.js"></script>
@@ -54,12 +54,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 text">
-                    <h1>Project</h1>
-                    <img src="~/Content/Landing/undraw_online_organizer_ofxm.svg" class="top-ill">
+                    <h1>Online MOOC Organizer</h1>
+                    <img src="~/Content/Images/landingimage.png" class="top-ill">
                     <div class="description wow fadeInLeftBig">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        </p>
                     </div>
                     <div class="top-big-link wow fadeInUp">
                         @Html.ActionLink("Join", "Register", "Account", new { id = "registerForm" }, new { @class = "btn btn-primary btn-link-1" })
@@ -80,7 +77,9 @@
             </div>
         </div>
     </div>
-
+    <div class="separator">
+        <hr>
+    </div>
 
     <div class=features-container section-container" id="features">
         <div class="container">
@@ -95,27 +94,21 @@
                     <img class="feat-img" src="~/Content/Landing/undraw_organize_resume_utk5.svg">
                     <h4>Organize</h4>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni possimus ratione nostrum corrupti
-                        officia, numquam impedit veniam. Dolore totam commodi quas, perferendis nisi itaque voluptate,
-                        maxime id accusantium culpa ex.
+                        Add your courses from all popular MOOC providers and track your progress. Choose which ones you are attending right now, which are completed and which you want to undertake in the future. Simple and easy.
                     </p>
                 </div>
                 <div class="col-md-4 services-box wow fadeInDown">
                     <img class="feat-img" src="~/Content/Landing/undraw_finish_line_katerina_limpitsouni_xy20.svg">
                     <h4>Achieve</h4>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum, similique et delectus ullam beatae
-                        aperiam necessitatibus totam, atque assumenda, distinctio vitae. Ipsum beatae corrupti fugiat
-                        obcaecati nobis similique excepturi quam?
+                        Earn achievements as you complete courses and fullfill you learning path. FEATURE TO BE INCLUDED SOON!
                     </p>
                 </div>
                 <div class="col-md-4 services-box wow fadeInUp">
                     <img class="feat-img" src="~/Content/Landing/undraw_steps_ngvm.svg">
                     <h4>Showcase</h4>
                     <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus nesciunt dolorem velit! Vel,
-                        aspernatur? Recusandae iste tempora, beatae minus, eveniet molestias adipisci voluptatibus quam
-                        quis inventore nisi quidem aliquam. Repellendus.
+                        Wouldn't it be great if you had one hub for all of your MOOC certificates? Upload all your stashed certifications and access them in order to showcase them to a job or boast to a friend.
                     </p>
                 </div>
             </div>
@@ -290,23 +283,23 @@
                     $btn.text('Sending ...');
                 });
 
-                        GenerateCalender(events);
-                    },
-                    error: function (error) {
-                        alert('failed');
-                    }
-                })
+                GenerateCalender(events);
+            },
+                error: function (error) {
+                    alert('failed');
+                }
+                    })
 
-                $.ajax({
-                    type: "POST",
-                    url: 'handler.php',
-                    data: $form.serialize(),
-                    success: after_form_submitted,
-                    dataType: 'json'
-                });
-
-            });
+        $.ajax({
+            type: "POST",
+            url: 'handler.php',
+            data: $form.serialize(),
+            success: after_form_submitted,
+            dataType: 'json'
         });
+
+                });
+            });
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

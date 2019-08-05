@@ -12,7 +12,7 @@
 
 
 <div>
-    <div class="form1" align="center">
+    <div class="form" align="center">
         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             <h2 class="sign" align="center" style="padding: 0px; margin: 20px;">@ViewBag.Title</h2>
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <div class="col-12 m-0 p-0">
-                    <input type="submit" value="Log in" class="submit" style="margin-left: auto" />
+                    <input type="submit" value="Log in" onclick="location.href('/TodoTasks/Index');" class="submit" style="margin-left: auto"/>
                 </div>
             </div>
             <p class="create" align="center">
