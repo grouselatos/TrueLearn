@@ -86,6 +86,34 @@ namespace TrueLearn.Managers
             return result;
         }
 
+        public ApplicationUser GetUserSettings(string id)
+        {
+            ApplicationUser result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.Users.Find(id);
+            }
+            return result;
+        }
+
+        public void UpdateUserSettings(SettingsViewModel usersettingsmodel, ApplicationUser usersettings)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                usersettings.UserName = usersettingsmodel.UserName;
+                usersettings.Email = usersettingsmodel.Email;
+                usersettings.PasswordHash = usersettingsmodel.Password;
+                usersettings.PasswordHash = usersettingsmodel.ConfirmPassword;
+                usersettings.first_name = usersettingsmodel.first_name;
+                usersettings.last_name = usersettingsmodel.last_name;
+                usersettings.birth_date = usersettingsmodel.birth_date;
+                usersettings.country = usersettingsmodel.country;
+                db.Users.Attach(usersettings);
+                db.Entry(usersettings).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
         public ICollection<ApplicationUser> GetUsers()
         {
             List<ApplicationUser> result;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
@@ -20,8 +21,10 @@ namespace TrueLearn.Models
         public string last_name { get; set; }
         public DateTime birth_date { get; set; }
         public string country { get; set; }
+        [DisplayName("Upload File")]
+        public string ProfilePhotoPath { get; set; }
         [NotMapped]
-        public HttpPostedFileBase ProfileImageFile { get; set; }
+        public HttpPostedFileBase ProfilePhotoFile { get; set; }
 
         public virtual ICollection<Friend> Friends { get; set; }
         public virtual ICollection<Certificate> Certificates { get; set; }
@@ -59,5 +62,7 @@ namespace TrueLearn.Models
         public virtual DbSet<FriendNotification> FriendNotifications { get; set; }
         public virtual DbSet<ChatNotification> ChatNotifications { get; set; }
         public virtual DbSet<GlobalChat> GlobalChats { get; set; }
+
+        public System.Data.Entity.DbSet<TrueLearn.Models.SettingsViewModel> SettingsViewModels { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace TrueLearn.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class test_roles_and_settings : IMigrationMetadata
+    public sealed partial class testsettingswithphoto : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(test_roles_and_settings));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(testsettingswithphoto));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908021229397_test_roles_and_settings"; }
+            get { return "201908050947554_test-settings-with-photo"; }
         }
         
         string IMigrationMetadata.Source

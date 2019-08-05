@@ -87,7 +87,7 @@ namespace TrueLearn.Models
 		public string ConfirmPassword { get; set; }
 
 		[Required]
-		[Display(Name = "Name")]
+		[Display(Name = "First Name")]
 		public string first_name { get; set; }
 		[Required]
 		[Display(Name = "Last Name")]
@@ -131,16 +131,16 @@ namespace TrueLearn.Models
 
     public class SettingsViewModel
     {
-        [Required]
+        [Key]
+        public int id { get; set; }
+
         [Display(Name = "Username")]
         public string UserName { get; set; }
 
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -151,21 +151,23 @@ namespace TrueLearn.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "First Name")]
         public string first_name { get; set; }
-        [Required]
+
         [Display(Name = "Last Name")]
         public string last_name { get; set; }
-        [Required]
+
         [Display(Name = "Birth Date")]
         public DateTime birth_date { get; set; }
-        [Required]
+
         [Display(Name = "Country")]
         public string country { get; set; }
 
+        [Display(Name = "Upload File")]
+        public string ProfilePhotoPath { get; set; }
+
         [NotMapped]
-        public HttpPostedFileBase ProfileImageFile { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public HttpPostedFileBase ProfilePhotoFile { get; set; }
+
     }
 }

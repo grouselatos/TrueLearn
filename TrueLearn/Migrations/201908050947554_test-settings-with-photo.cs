@@ -3,7 +3,7 @@ namespace TrueLearn.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class test_roles_and_settings : DbMigration
+    public partial class testsettingswithphoto : DbMigration
     {
         public override void Up()
         {
@@ -28,6 +28,7 @@ namespace TrueLearn.Migrations
                         last_name = c.String(),
                         birth_date = c.DateTime(nullable: false),
                         country = c.String(),
+                        ProfilePhotoPath = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -207,6 +208,23 @@ namespace TrueLearn.Migrations
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
+                "dbo.SettingsViewModels",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        UserName = c.String(),
+                        Email = c.String(),
+                        Password = c.String(maxLength: 100),
+                        ConfirmPassword = c.String(),
+                        first_name = c.String(),
+                        last_name = c.String(),
+                        birth_date = c.DateTime(nullable: false),
+                        country = c.String(),
+                        ProfilePhotoPath = c.String(),
+                    })
+                .PrimaryKey(t => t.id);
+            
+            CreateTable(
                 "dbo.FriendNotificationFriends",
                 c => new
                     {
@@ -276,6 +294,7 @@ namespace TrueLearn.Migrations
             DropIndex("dbo.Certificates", new[] { "UserId" });
             DropTable("dbo.CourseTodoTasks");
             DropTable("dbo.FriendNotificationFriends");
+            DropTable("dbo.SettingsViewModels");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Courses");
             DropTable("dbo.TodoTasks");

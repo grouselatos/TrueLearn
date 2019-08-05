@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using TrueLearn.Managers;
 using TrueLearn.Models;
 
+
 namespace TrueLearn.Controllers
 {
     [Authorize]
@@ -165,7 +166,7 @@ namespace TrueLearn.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "TodoTasks");
                 }
                 AddErrors(result);
             }
@@ -507,8 +508,43 @@ namespace TrueLearn.Controllers
         [HttpGet]
         public ActionResult Settings()
         {
-            return View();
+            string username = User.Identity.GetUserId();
+
+            ApplicationUser usersettings = db.GetUserSettings(username);
+
+            SettingsViewModel usersettingsmodel = new SettingsViewModel();
+            usersettingsmodel.UserName = usersettings.UserName;
+            usersettingsmodel.Email = usersettings.Email;
+            usersettingsmodel.Password = usersettings.PasswordHash;
+            usersettingsmodel.ConfirmPassword = usersettings.PasswordHash;
+            usersettingsmodel.first_name = usersettings.first_name;
+            usersettingsmodel.last_name = usersettings.last_name;
+            usersettingsmodel.birth_date = usersettings.birth_date;
+            usersettingsmodel.country = usersettings.country;
+
+            return View(usersettingsmodel);
         }
-            
+         
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Settings(SettingsViewModel usersettingsmodel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(usersettingsmodel);
+            }
+            string username = User.Identity.GetUserId();
+            ApplicationUser usersettings = db.GetUserSettings(username);
+
+
+            db.UpdateUserSettings(usersettingsmodel, usersettings);
+
+            //using (ApplicationDbContext db = new ApplicationDbContext())
+            //{
+            //    db.Entry(settings).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //}
+            return View(usersettingsmodel);
+        }
 	}
 }
