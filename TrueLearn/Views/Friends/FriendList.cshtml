@@ -3,34 +3,69 @@
 @{
     ViewBag.Title = "FriendList";
 }
+<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script rel="js" src="~/Content/main.js"></script>
+<script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    .card{
+        width: 20%;
+    }
+</style>
 
-<h2>Friend List</h2>
-<hr />
-<table class="table">
 
+<div class="card-deck">
     @foreach (var item in Model)
     {
+        <div class="card" style="max-width: 30%;">
 
-        <div class="card" style="width: 15rem;">
-            <img class="card-img-top" src="https://shawetcanada.files.wordpress.com/2019/05/gettyimages-858077430.jpg?quality=80&strip=all&w=720&h=480&crop=1" alt="Card image cap">
+            <div class="view overlay">
+                <img class="card-img-top" src="https://shawetcanada.files.wordpress.com/2019/05/gettyimages-858077430.jpg?quality=80&strip=all&w=720&h=480&crop=1" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+
             <div class="card-body">
-                <h5 class="card-title">@item.first_name @item.last_name</h5>
+
+                <h4 class="card-title">@item.first_name @item.last_name</h4>
                 <h6 class="card-title">@item.country</h6>
                 <h6 class="card-title">@item.birth_date.ToShortDateString()</h6>
-            </div>
-            <div class="container">
-                <div class="row" style="margin-top: 0px;">
-                    <div class="col-6">
-                        @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.Id }, null)
-                    </div>
-                    <div class="col-6">
-                        <a class="nav-link" href="~/Courses/Create" title="Profile">
-                            <i class="fa fa-user"></i>
-                        </a>
-                    </div>
-                </div>
+                <!-- Link -->
+                @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.Id }, null)
             </div>
         </div>
-    }
 
-</table>
+
+        @*<div class="container">
+                <div class="card" style="width: 200px; padding: 2%; margin: 5%;">
+                    <img class="card-img-top" src="https://shawetcanada.files.wordpress.com/2019/05/gettyimages-858077430.jpg?quality=80&strip=all&w=720&h=480&crop=1" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.first_name @item.last_name</h5>
+                        <h6 class="card-title">@item.country</h6>
+                        <h6 class="card-title">@item.birth_date.ToShortDateString()</h6>
+                    </div>
+                    <div class="container">
+                        <div class="row" style="margin-top: 0px;">
+                            <div class="col-6">
+                                @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.Id }, null)
+                            </div>
+                            <div class="col-6">
+                                <p>Profile</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+
+
+
+
+
+    }
+</div>
+
+
+

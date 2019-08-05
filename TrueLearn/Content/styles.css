@@ -19,6 +19,8 @@
     border: 1px !important;
     border-radius: 15px !important;
     font-family: 'Titillium Web', sans-serif;
+    margin: 2% !important;
+    margin-right: 10px !important;
 }
 
 .fa {
