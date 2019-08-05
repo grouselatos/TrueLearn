@@ -27,6 +27,16 @@ namespace TrueLearn
                       "~/Content/site.css",
                       "~/Content/styles.css"));
 
-        }
-    }
+			//Calendar css file
+			bundles.Add(new StyleBundle("~/Content/fullcalendarcss").Include(
+						 "~/Content/themes/jquery.ui.all.css",
+						 "~/Content/fullcalendar.css"));
+
+			//Calendar Script file
+			bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
+						"~/Scripts/jquery-ui-1.10.4.min.js",
+						"~/Scripts/fullcalendar.min.js"));
+
+		}
+	}
 }

@@ -1,146 +1,151 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>@Page.Title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://kit.fontawesome.com/82b062aa43.js"></script>
-    <link rel="stylesheet" href="~/Content/styles.css" />
-    <script rel="js" src="~/Content/main.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+	<title>@Page.Title</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+	<link rel="stylesheet" href="~/Content/styles.css" />
+	<script rel="js" src="~/Content/main.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+	<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+	@Styles.Render("~/Content/fullcalendarcss")
 </head>
 <body>
-    <div class="bg-image">
-        <div class="area">
-            <nav class="navbar" role="navigation">
-                <div class="container-fluid">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="../Courses/Index" class="navbar-text">
-                                <i class="fas fa-list-alt fa-2x"
-                                   id="login-icon"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a id="" class="navbar-text"><i class="far fa-calendar fa-2x" id="togglecalendar"></i></a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="../Friends/FriendList" class="navbar-text">
-                                <i class="fas fa-users fa-2x"
-                                   id="login-icon"></i>
-                            </a>
-                        </li>
-                    </ul>
+	<div class="bg-image">
+		<div class="area">
+			<nav class="navbar" role="navigation">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="../Courses/Index" class="navbar-text">
+								<i class="fas fa-list-alt fa-2x"
+								   id="login-icon"></i>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a id="" class="navbar-text"><i class="far fa-calendar fa-2x" id="togglecalendar"></i></a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="../Friends/FriendList" class="navbar-text">
+								<i class="fas fa-users fa-2x"
+								   id="login-icon"></i>
+							</a>
+						</li>
+					</ul>
 
 
 
-                    @*<ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="" class="navbar-text">
-                                    <i class="fas fa-sign-in-alt fa-2x"
-                                       id="login-icon"></i>
-                                </a>
-                            </li>
-                        </ul>*@
-                </div>
-            </nav>
-            <div class="main-body">
-                @RenderBody()
-            </div>
-        </div>
+					@*<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="" class="navbar-text">
+									<i class="fas fa-sign-in-alt fa-2x"
+									   id="login-icon"></i>
+								</a>
+							</li>
+						</ul>*@
+				</div>
+			</nav>
+			<div class="main-body">
+				@RenderBody()
+			</div>
+		</div>
 
-    </div>
-    <nav class="main-menu">
-        <ul>
-            <li class="has-subnav">
-                <a href="dashboard.html">
-                    <i class="fa fa-home fa-2x"></i>
-                    <span class="nav-text">
-                        Dashboard
-                    </span>
-                </a>
+	</div>
+	<nav class="main-menu">
+		<ul>
+			<li class="has-subnav">
+				<a href="dashboard.html">
+					<i class="fa fa-home fa-2x"></i>
+					<span class="nav-text">
+						Dashboard
+					</span>
+				</a>
 
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-                    <i class="fa fa-user fa-2x"></i>
-                    <span class="nav-text">
-                        Profile
-                    </span>
-                </a>
+			</li>
+			<li class="has-subnav">
+				<a href="#">
+					<i class="fa fa-user fa-2x"></i>
+					<span class="nav-text">
+						Profile
+					</span>
+				</a>
 
-            </li>
-            @*<li class="has-subnav">
-                    <a href="~/Courses/Index">
-                        <i class="fa fa-list-alt fa-2x"></i>
-                        <span class="nav-text">
-                            Courses
-                        </span>
-                    </a>
-                </li>*@
-            <li class="has-subnav">
-                <a href="gallery.html">
-                    <i class="fa fa-certificate fa-2x"></i>
-                    <span class="nav-text">
-                        Certificates
-                    </span>
-                </a>
+			</li>
+			@*<li class="has-subnav">
+					<a href="~/Courses/Index">
+						<i class="fa fa-list-alt fa-2x"></i>
+						<span class="nav-text">
+							Courses
+						</span>
+					</a>
+				</li>*@
+			<li class="has-subnav">
+				<a href="gallery.html">
+					<i class="fa fa-certificate fa-2x"></i>
+					<span class="nav-text">
+						Certificates
+					</span>
+				</a>
 
-            </li>
-            @*<li>
-                    <a href="#">
-                        <i class="fa fa-trophy fa-2x"></i>
-                        <span class="nav-text">
-                            Achievements
-                        </span>
-                    </a>
-                </li>*@
-            <li>
-                <a href="#">
-                    <i class="fa fa-thumbs-up fa-2x"></i>
-                    <span class="nav-text">
-                        Recommendations
-                    </span>
-                </a>
-            </li>
-        </ul>
-        <ul class="logout">
-            <li>
-                <a href="~/Account/Premium">
-                    <i class="fa fa-star fa-2x"></i>
-                    <span class="nav-text">
-                        Subscription
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="fa fa-cog fa-2x"></i>
-                    <span class="nav-text">
-                        Settings
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i class="fa fa-power-off fa-2x"></i>
-                    <span class="nav-text">
-                        Logout
-                    </span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-    @RenderSection("scripts", required: false)
+			</li>
+			@*<li>
+					<a href="#">
+						<i class="fa fa-trophy fa-2x"></i>
+						<span class="nav-text">
+							Achievements
+						</span>
+					</a>
+				</li>*@
+			<li>
+				<a href="#">
+					<i class="fa fa-thumbs-up fa-2x"></i>
+					<span class="nav-text">
+						Recommendations
+					</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="logout">
+			<li>
+				<a href="~/Account/Premium">
+					<i class="fa fa-star fa-2x"></i>
+					<span class="nav-text">
+						Subscription
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<i class="fa fa-cog fa-2x"></i>
+					<span class="nav-text">
+						Settings
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<i class="fa fa-power-off fa-2x"></i>
+					<span class="nav-text">
+						Logout
+					</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/fullcalendarjs")
+	@RenderSection("scripts", required: false)
 </body>
 </html>

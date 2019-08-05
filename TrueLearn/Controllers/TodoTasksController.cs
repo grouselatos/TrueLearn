@@ -17,11 +17,25 @@ namespace TrueLearn.Controllers
 
 		public ActionResult Index()
 		{
-			var todoTasks = db.GetTodoTasks().Where(x => x.UserId == User.Identity.GetUserId()).ToList();
-			return View(todoTasks);
+			return View();
 		}
 
-		public ActionResult Create()
+		[HttpGet]
+		public JsonResult Events()
+		{
+			var events = db.GetTodoTasks().Where(x => x.UserId == User.Identity.GetUserId()).ToList();
+			var result = events.Select(x => new
+			{
+				Id = x.Id,
+				title = x.title,
+				description = x.description,
+				start = x.start_date,
+				end = x.end_date
+			});
+			return Json(result, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult _Create()
 		{
 			TaskViewModel vm = new TaskViewModel()
 			{
@@ -32,20 +46,29 @@ namespace TrueLearn.Controllers
 					Text = x.title
 				})
 			};
-			return View(vm);
+			return PartialView(vm);
 		}
 
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Create(TaskViewModel vm)
+		//[HttpPut]
+		//[ActionName("Event")]
+		//public JsonResult AddEvent(TaskViewModel vm)
+		//{
+		//	vm.TodoTask.UserId = User.Identity.GetUserId();
+		//	db.AddTodoTask(vm.TodoTask, vm.SelectedCourses);
+		//	return Json(vm);
+		//}
+
+		[HttpPut]
+		[ActionName("Event")]
+		public JsonResult AddEvent(TodoTask todoTask)
 		{
-			if (!ModelState.IsValid)
+			todoTask.UserId = User.Identity.GetUserId();
+			TaskViewModel vm = new TaskViewModel()
 			{
-				return View(vm);
-			}
-			vm.TodoTask.UserId = User.Identity.GetUserId();
-			db.AddTodoTask(vm.TodoTask, vm.SelectedCourses);
-			return RedirectToAction("Index", new { id = User.Identity.GetUserId() });
+				TodoTask = todoTask
+			};
+			bool result = db.AddTodoTaskBool(todoTask);
+			return Json(result);
 		}
 
 		public ActionResult Edit(int id)
@@ -79,23 +102,12 @@ namespace TrueLearn.Controllers
 			return RedirectToAction("Index", new { id = User.Identity.GetUserId() });
 		}
 
-		public ActionResult Delete(int id)
+		[HttpDelete]
+		[ActionName("Event")]
+		public JsonResult DeleteEvent(int id)
 		{
-			TodoTask todoTask = db.GetTodoTaskFull(id);
-			if (todoTask == null)
-			{
-				return HttpNotFound();
-			}
-			return View(todoTask);
-		}
-
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		[ActionName("Delete")]
-		public ActionResult DeleteConfirmed(int id)
-		{
-			db.DeleteTodoTask(id);
-			return RedirectToAction("Index", new { id = User.Identity.GetUserId() });
+			bool result = db.DeleteTodoTaskBool(id);
+			return Json(result);
 		}
 	}
 }
