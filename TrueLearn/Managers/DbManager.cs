@@ -384,12 +384,16 @@ namespace TrueLearn.Managers
             ICollection<ChatNotificationViewModel> result;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-
+                
                 var chatNots = db.Friends.Where(x => x.senderId == userId ||
                                                   x.receiverId == userId &&
                                                   x.status == FriendStatus.Approved)
+                                         .Join(db.Users,
+                                             friend => (friend.senderId == userId ? friend.receiverId : friend.senderId),
+                                             user => user.Id,
+                                             (friend, user) => new {F = friend, U = user})
                                          .Join(db.Chats,
-                                             friend => friend.Id,
+                                             friend => friend.F.Id,
                                              chat => chat.Id,
                                              (friend, chat) => new { F = friend, C = chat })
                                          .Join(db.ChatNotifications,
@@ -402,9 +406,11 @@ namespace TrueLearn.Managers
                                              (chatNot, message) => new { CHN = chatNot, M = message })
                                          .Select(x => new ChatNotificationViewModel
                                          {
+                                             friend = x.CHN.Chat.F.U.UserName,
                                              senderName = x.CHN.CN.senderName,
                                              timeSent = x.M.sent,
-                                             text = x.M.text
+                                             text = x.M.text,
+                                             chatId = x.CHN.Chat.C.Id
                                          })
                                          .ToList();
                                            
