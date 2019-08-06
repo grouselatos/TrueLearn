@@ -201,7 +201,7 @@
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-   
+    
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
