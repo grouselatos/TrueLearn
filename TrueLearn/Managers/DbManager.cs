@@ -164,18 +164,8 @@ namespace TrueLearn.Managers
         }
         #endregion
 
-		#region TodoTasks
+        #region TodoTasks
 
-		public ICollection<TodoTask> GetTodoTasks()
-		{
-			ICollection<TodoTask> result;
-			using (ApplicationDbContext db = new ApplicationDbContext())
-			{
-				result = db.TodoTasks.Include("Courses")
-									 .ToList();
-			}
-			return result;
-		}
         public ICollection<TodoTask> GetTodoTasks()
         {
             ICollection<TodoTask> result;
@@ -205,50 +195,50 @@ namespace TrueLearn.Managers
             }
         }
 
-        
-		public TodoTask GetTodoTask(int id)
-		{
-			TodoTask result;
-			using (ApplicationDbContext db = new ApplicationDbContext())
-			{
-				result = db.TodoTasks.Find(id);
-			}
-			return result;
-		}
 
-		public TodoTask GetTodoTaskFull(int id)
-		{
-			TodoTask result;
-			using (ApplicationDbContext db = new ApplicationDbContext())
-			{
-				result = db.TodoTasks.Include("Courses")
-									 .Where(x => x.Id == id)
-									 .FirstOrDefault();
-			}
-			return result;
-		}
+        public TodoTask GetTodoTask(int id)
+        {
+            TodoTask result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.TodoTasks.Find(id);
+            }
+            return result;
+        }
 
-        
-		public void UpdateTodoTask(TodoTask todoTask, List <int> courseIds)
-		{
-			using (ApplicationDbContext db = new ApplicationDbContext())
-			{
-				db.TodoTasks.Attach(todoTask);
-				db.Entry(todoTask).Collection("Courses").Load();
-				todoTask.Courses.Clear();
-				db.SaveChanges();
-				foreach (int id in courseIds)
-				{
-					Course course = db.Courses.Find(id);
-					if (course != null)
-					{
-						todoTask.Courses.Add(course);
-					}
-				}
-				db.Entry(todoTask).State = EntityState.Modified;
-				db.SaveChanges();
-			}
-		}
+        public TodoTask GetTodoTaskFull(int id)
+        {
+            TodoTask result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                result = db.TodoTasks.Include("Courses")
+                                     .Where(x => x.Id == id)
+                                     .FirstOrDefault();
+            }
+            return result;
+        }
+
+
+        public void UpdateTodoTask(TodoTask todoTask, List<int> courseIds)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.TodoTasks.Attach(todoTask);
+                db.Entry(todoTask).Collection("Courses").Load();
+                todoTask.Courses.Clear();
+                db.SaveChanges();
+                foreach (int id in courseIds)
+                {
+                    Course course = db.Courses.Find(id);
+                    if (course != null)
+                    {
+                        todoTask.Courses.Add(course);
+                    }
+                }
+                db.Entry(todoTask).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
 
         public void DeleteTodoTask(int id)
         {
@@ -259,8 +249,8 @@ namespace TrueLearn.Managers
                 db.SaveChanges();
             }
         }
-        
-	#endregion
+
+        #endregion
 
         #region Friend
         public void AddFriend(Friend friend)
@@ -298,6 +288,7 @@ namespace TrueLearn.Managers
                 friends.status = FriendStatus.Approved;
                 db.Entry(friends).State = EntityState.Modified;
                 AddPersonalChat(friends.Id);
+                AddChatNotification(friends.Id);
                 db.SaveChanges();
             }
         }
@@ -320,6 +311,95 @@ namespace TrueLearn.Managers
         }
         #endregion
 
+        #region Chat Notifications
+
+        public void AddChatNotification(int chatId)
+        {
+            ChatNotification chatNotification = new ChatNotification
+            {
+                ChatId = chatId,
+            };
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.ChatNotifications.Add(chatNotification);
+                db.SaveChanges();
+            }
+        }
+
+        public ChatNotification GetChatNotification(int chatId, string user)
+        {
+            ChatNotification result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var ChatNot = db.ChatNotifications.FirstOrDefault(x => x.ChatId == chatId && x.receiver != user);
+                result = ChatNot;
+            }
+            return result;
+        }
+
+        public ICollection<ChatNotification> GetChatNotifications(int chatId)
+        {
+            ICollection<ChatNotification> result;
+
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var chatNots = db.ChatNotifications.Where(x => x.ChatId == chatId).ToList();
+                result = chatNots;
+            }
+            return result;
+        }
+
+        public ICollection<ChatNotificationViewModel> GetChatNotifications(string userId)
+        {
+            ICollection<ChatNotificationViewModel> result;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+
+                var chatNots = db.Friends.Where(x => x.senderId == userId ||
+                                                  x.receiverId == userId &&
+                                                  x.status == FriendStatus.Approved)
+                                      .Join(db.Chats,
+                                            friend => friend.Id,
+                                            chat => chat.Id,
+                                            (friend, chat) => new { F = friend, C = chat })
+                                      .Join(db.ChatNotifications,
+                                            chat => chat.C.Id,
+                                            chatNot => chatNot.ChatId,
+                                            (chat, chatNot) => new { Chat = chat, CN = chatNot })
+                                      .Join(db.Messages,
+                                            chatNot => chatNot.CN.MessageId,
+                                            message => message.Id,
+                                            (chatNot, message) => new { CHN = chatNot, M = message })
+                                      .Select(x => new ChatNotificationViewModel
+                                      {
+                                          senderName = x.CHN.CN.senderName,
+                                          timeSent = x.M.sent,
+                                          text = x.M.text
+                                      })
+                                      .ToList();
+                                           
+
+                result = chatNots;
+            }
+            return result;
+        }
+
+
+
+        public void UpdateChatNotification(Message message, string senderName)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                ChatNotification chatNot = db.ChatNotifications.FirstOrDefault(x => x.ChatId == message.ChatId);
+                chatNot.MessageId = message.Id;
+                db.ChatNotifications.Attach(chatNot);
+                db.Entry(chatNot).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        #endregion
+
         #region Notifications
         public ICollection<ApplicationUser> GetNotifications(string userId)
         {
@@ -330,7 +410,7 @@ namespace TrueLearn.Managers
                                         user => user.Id,
                                         friend => friend.senderId == userId ? friend.receiverId : friend.senderId,
                                         (user, friendship) => new { User = user, Friendship = friendship })
-                                    .Where(x =>  userId  == x.Friendship.receiverId && x.Friendship.status == FriendStatus.Pending)
+                                    .Where(x => userId == x.Friendship.receiverId && x.Friendship.status == FriendStatus.Pending)
                                     .Select(x => x.User)
                                     .ToList();
                 result = query;

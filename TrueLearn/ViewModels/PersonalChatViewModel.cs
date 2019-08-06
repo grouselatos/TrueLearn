@@ -12,5 +12,6 @@ namespace TrueLearn.ViewModels
         public ApplicationUser Friend { get; set; }
         public Chat Chat { get; set; }
         public ICollection<Message> Messages { get; set; }
+        public ICollection<ChatNotification> chatNotifications { get; set; }
     }
 }

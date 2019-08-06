@@ -6,8 +6,8 @@ using TrueLearn.Models;
 
 namespace TrueLearn.ViewModels
 {
-    public class FriendsNotificationViewModel
+    public class ProfileViewModel
     {
-        public IEnumerable<ApplicationUser> Users { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

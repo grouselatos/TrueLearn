@@ -184,7 +184,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CertificatesController.cs" />
+    <Compile Include="Controllers\ChatNotificationsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\GlobalChatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -197,9 +199,21 @@
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201908021300041_K6.cs" />
-    <Compile Include="Migrations\201908021300041_K6.Designer.cs">
-      <DependentUpon>201908021300041_K6.cs</DependentUpon>
+    <Compile Include="Migrations\201908051114402_chatnot.cs" />
+    <Compile Include="Migrations\201908051114402_chatnot.Designer.cs">
+      <DependentUpon>201908051114402_chatnot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908052040386_chatnotvm.cs" />
+    <Compile Include="Migrations\201908052040386_chatnotvm.Designer.cs">
+      <DependentUpon>201908052040386_chatnotvm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908052156295_chatnotvm2.cs" />
+    <Compile Include="Migrations\201908052156295_chatnotvm2.Designer.cs">
+      <DependentUpon>201908052156295_chatnotvm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908052235108_chatnotvm3.cs" />
+    <Compile Include="Migrations\201908052235108_chatnotvm3.Designer.cs">
+      <DependentUpon>201908052235108_chatnotvm3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -216,8 +230,11 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ChatNotificationViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\GlobalChatViewModel.cs" />
     <Compile Include="ViewModels\PersonalChatViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="ViewModels\FriendsNotificationViewModel.cs" />
     <Compile Include="ViewModels\FriendsViewModel.cs" />
@@ -380,6 +397,11 @@
     <Content Include="Views\GlobalChat\Index.cshtml" />
     <Content Include="Views\PersonalChat\Chat.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ChatNotifications\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\_Profile.cshtml" />
+    <Content Include="Views\Dashboard\_ChatNotifications.cshtml" />
+    <Content Include="Views\Dashboard\_FriendsNotifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -395,8 +417,17 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908021300041_K6.resx">
-      <DependentUpon>201908021300041_K6.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908051114402_chatnot.resx">
+      <DependentUpon>201908051114402_chatnot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908052040386_chatnotvm.resx">
+      <DependentUpon>201908052040386_chatnotvm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908052156295_chatnotvm2.resx">
+      <DependentUpon>201908052156295_chatnotvm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908052235108_chatnotvm3.resx">
+      <DependentUpon>201908052235108_chatnotvm3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

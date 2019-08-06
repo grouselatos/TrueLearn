@@ -1,0 +1,49 @@
+﻿@model TrueLearn.Models.ApplicationUser
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birth_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country)
+        </th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.last_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.birth_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.country)
+        </td>
+        
+    </tr>
+
+</table>
