@@ -12,16 +12,12 @@
 
 
 <style>
-    #calendar {
-        height: 50%;
-        background: none !important;
-    }
 
     .main-body {
         margin-top: 0px !important;
     }
     .modal-dialogue{
-        background-image:linear-gradient(white, white. 0.4) !important;
+        background-image:linear-gradient(white, white, 0.4) !important;
     }
 </style>
 
@@ -29,9 +25,9 @@
 <button id="btnCreate" class="btn btn-default">
     <i class="fas fa-edit fa-2x" style="color: white;"></i>
 </button>
-
-<div id="calendar"></div>
-
+<div class="container">
+    <div id="calendar"></div>
+</div>
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -88,7 +84,7 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         @*<button type="button" class="btn btn-default" id="create">Create Task</button>*@
-                        <input type="submit" value="Create Task" class="submit" style="margin:30px" />
+                        <input type="submit" id="create" value="Create Task" class="submit" style="margin:30px" />
                     </div>
                 </div>
             </div>
