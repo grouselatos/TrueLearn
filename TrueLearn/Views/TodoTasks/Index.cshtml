@@ -20,6 +20,9 @@
     .main-body {
         margin-top: 0px !important;
     }
+    .modal-dialogue{
+        background-image:linear-gradient(white, white. 0.4) !important;
+    }
 </style>
 
 
@@ -57,25 +60,40 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                <h4 class="modal-title"><span id="eventTitle">Add New Task</span></h4>
             </div>
             <div class="modal-body">
-                <input type="text" id="title" required />
-                <input type="text" id="description" />
-                <input type="date" id="start" required />
-                <input type="date" id="end" required />
-
+                @*<input type="text" id="title" required />
+            <input type="text" id="description" />
+            <input type="date" id="start" required />
+            <input type="date" id="end" required />*@
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" id="title" class="form-control" placeholder="Course">
+                        </div>
+                        <div class="col">
+                            <input type="text" id="description" class="form-control" placeholder="Task">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="date" id="start" class="form-control">
+                        </div>
+                        <div class="col">
+                            <input type="date" id="end" class="form-control">
+                        </div>
+                    </div>
+                </form>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button type="button" class="btn btn-default" id="create">Create Task</button>
+                        @*<button type="button" class="btn btn-default" id="create">Create Task</button>*@
+                        <input type="submit" value="Create Task" class="submit" style="margin:30px" />
                     </div>
                 </div>
             </div>
-            }
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+        
     </div>
 </div>
 

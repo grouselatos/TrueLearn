@@ -1,24 +1,12 @@
 ﻿@model IEnumerable<TrueLearn.ViewModels.ChatNotificationViewModel>
 
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.friend)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.senderName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.timeSent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.text)
-        </th>
-        <th></th>
-    </tr>
 
     @foreach (var item in Model)
+
     {
+<<<<<<< HEAD
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.friend)
@@ -36,6 +24,26 @@
                 @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.FriendId }, null)
             </td>
         </tr>
+=======
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.timeSent)
+        </td>
+        <td>
+            Chat with: @Html.DisplayFor(modelItem => item.friend)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.senderName)
+        </td>*@
+
+        <td>
+            Last Message: @Html.DisplayFor(modelItem => item.text)
+        </td>
+        <td>
+            @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.FriendId }, null)
+        </td>
+    </tr>
+>>>>>>> 46cc091c4e06f6fde396ae5827295837a2a0b00a
     }
 
 </table>

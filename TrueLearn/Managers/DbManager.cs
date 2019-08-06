@@ -424,14 +424,14 @@ namespace TrueLearn.Managers
             ICollection<ChatNotificationViewModel> result;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                
+
                 var chatNots = db.Friends.Where(x => x.senderId == userId ||
                                                   x.receiverId == userId &&
                                                   x.status == FriendStatus.Approved)
                                          .Join(db.Users,
                                              friend => (friend.senderId == userId ? friend.receiverId : friend.senderId),
                                              user => user.Id,
-                                             (friend, user) => new {F = friend, U = user})
+                                             (friend, user) => new { F = friend, U = user })
                                          .Join(db.Chats,
                                              friend => friend.F.Id,
                                              chat => chat.Id,

@@ -1,49 +1,20 @@
 ﻿@model TrueLearn.Models.ApplicationUser
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.first_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.last_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.birth_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.country)
-        </th>
-        <th></th>
-    </tr>
+    <div class="card">
+        <img class="card-img-top" src="https://steamuserimages-a.akamaihd.net/ugc/258216445146961784/52C251916EF3EC6AC1DCC6912D025403AF81B207/" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title"> @Html.DisplayFor(modelItem => Model.first_name)  @Html.DisplayFor(modelItem => Model.last_name)</h5> 
+            <h6 class="card-title"> @Html.DisplayFor(modelItem => Model.UserName)</h6> 
+        </div>
+        <div class="description" style="padding-left: 20px;">
+            <p>@Html.DisplayFor(modelItem => Model.Email)</p>
+            <p>@Html.DisplayFor(modelItem => Model.birth_date)</p>
+            <p>@Html.DisplayFor(modelItem => Model.country)</p>
+        </div>
+        <div class="card-body">
+            <a href="~/Courses/Index" class="card-link">My Courses</a>
+            <a href="~/Certificates/Index" class="card-link">My Certificates</a>
+        </div>
+    </div>
 
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => Model.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => Model.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => Model.first_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => Model.last_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => Model.birth_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => Model.country)
-        </td>
-        
-    </tr>
-
-</table>

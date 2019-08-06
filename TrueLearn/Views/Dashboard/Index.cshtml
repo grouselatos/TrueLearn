@@ -2,11 +2,41 @@
 @{
     ViewBag.Title = "Profile";
 }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script rel="js" src="~/Content/main.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<h2>Profile</h2>
+<style>
+    .tag{
+        font-family: 'Titillium Web', sans-serif;
+    }
+</style>
 
 
-@Html.Partial("_Profile", Model.User)
-@Html.Partial("_ChatNotifications", Model.chatNotifications)
-@Html.Partial("_FriendsNotifications", Model.friendNotifications)
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            @Html.Partial("_Profile", Model.User)
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <div class="row">
+                <h3 class="tag">Chat Notifications</h3>
+                @Html.Partial("_ChatNotifications", Model.chatNotifications)
+            </div>
+
+            <div class="row">
+                <h3 class="tag">Friend Requests</h3>
+                @Html.Partial("_FriendsNotifications", Model.friendNotifications)
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 

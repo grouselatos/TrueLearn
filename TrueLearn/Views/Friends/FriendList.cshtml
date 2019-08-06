@@ -9,12 +9,25 @@
 <script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style>
-    .card{
+    .card {
         width: 20%;
     }
 </style>
 
-
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1">
+            <p>
+                @*@Html.ActionLink("Create New", "Create")*@
+                <a class="nav-link" href="~/Friends/Index" title="All Users">
+                    <i class="fa fa-search fa-2x" style="color: white;"> </i>
+                </a>
+            </p>
+        </div>
+        <div class="col-sm-2">
+            <h5 style="color: white;"></h5>
+        </div>
+    </div>
 <div class="card-deck">
     @foreach (var item in Model)
     {
