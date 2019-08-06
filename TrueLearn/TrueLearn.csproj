@@ -201,9 +201,9 @@
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201908061023573_k8.cs" />
-    <Compile Include="Migrations\201908061023573_k8.Designer.cs">
-      <DependentUpon>201908061023573_k8.cs</DependentUpon>
+    <Compile Include="Migrations\201908061319448_skata2.cs" />
+    <Compile Include="Migrations\201908061319448_skata2.Designer.cs">
+      <DependentUpon>201908061319448_skata2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -505,8 +505,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908061023573_k8.resx">
-      <DependentUpon>201908061023573_k8.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908061319448_skata2.resx">
+      <DependentUpon>201908061319448_skata2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

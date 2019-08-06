@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Chat";
 }
+
+<script src="https://kit.fontawesome.com/82b062aa43.js"></script>
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script rel="js" src="~/Content/main.js"></script>
+<script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style>
     .message {
         border-radius: 25px;
@@ -56,7 +62,6 @@
     .chatwindow {
         overflow: auto;
         height: 50vh;
-        
     }
 
     .container {
@@ -64,32 +69,30 @@
         border: 1px !important;
         border-radius: 15px !important;
         font-family: 'Titillium Web', sans-serif;
-            width: 60% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 3%;
+        width: 60% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 3%;
     }
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888; 
-}
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-
-
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
 </style>
 <div class="container">
     <div class="chatwindow" id="messages">

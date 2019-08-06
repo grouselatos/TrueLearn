@@ -7,13 +7,13 @@ namespace TrueLearn.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class k8 : IMigrationMetadata
+    public sealed partial class skata2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(k8));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(skata2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908061023573_k8"; }
+            get { return "201908061319448_skata2"; }
         }
         
         string IMigrationMetadata.Source
