@@ -32,6 +32,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.text)
             </td>
+            <td>
+                @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.FriendId }, null)
+            </td>
         </tr>
     }
 

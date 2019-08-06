@@ -410,7 +410,7 @@ namespace TrueLearn.Managers
                                              senderName = x.CHN.CN.senderName,
                                              timeSent = x.M.sent,
                                              text = x.M.text,
-                                             chatId = x.CHN.Chat.C.Id
+                                             FriendId = x.CHN.Chat.F.U.Id.ToString()
                                          })
                                          .ToList();
                                            
