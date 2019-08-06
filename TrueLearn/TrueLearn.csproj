@@ -201,7 +201,10 @@
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-    
+    <Compile Include="Migrations\201908060819409_skata.cs" />
+    <Compile Include="Migrations\201908060819409_skata.Designer.cs">
+      <DependentUpon>201908060819409_skata.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -482,6 +485,10 @@
     <Content Include="Views\GlobalChat\Index.cshtml" />
     <Content Include="Views\PersonalChat\Chat.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\_ChatNotifications.cshtml" />
+    <Content Include="Views\Dashboard\_FriendsNotifications.cshtml" />
+    <Content Include="Views\Dashboard\_Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -498,7 +505,9 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-
+    <EmbeddedResource Include="Migrations\201908060819409_skata.resx">
+      <DependentUpon>201908060819409_skata.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
