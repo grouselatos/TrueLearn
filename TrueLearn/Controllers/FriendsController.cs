@@ -26,25 +26,24 @@ namespace TrueLearn.Controllers
             return View(vm);
         }
 
-        public ActionResult AddFriend(string id)
-        {
-            Session["FriendId"] = id;
-            return View();
-        }
+        //public ActionResult AddFriend(string id)
+        //{
+        //    Session["FriendId"] = id;
+        //    return View();
+        //}
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddFriend()
+        public ActionResult AddFriend(string id)
         {
             Friend friend = new Friend()
             {
                 senderId = User.Identity.GetUserId(),
-                receiverId = Session["FriendId"].ToString(),
+                receiverId = id,
                 status = FriendStatus.Pending,
                 triggered = DateTime.Now
             };
             db.AddFriend(friend);
-            return RedirectToAction("Index");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         public ActionResult Notifications()

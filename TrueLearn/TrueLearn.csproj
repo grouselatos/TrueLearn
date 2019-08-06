@@ -199,9 +199,9 @@
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201908051057437_almostfinal.cs" />
-    <Compile Include="Migrations\201908051057437_almostfinal.Designer.cs">
-      <DependentUpon>201908051057437_almostfinal.cs</DependentUpon>
+    <Compile Include="Migrations\201908060147579_chatnotvm5.cs" />
+    <Compile Include="Migrations\201908060147579_chatnotvm5.Designer.cs">
+      <DependentUpon>201908060147579_chatnotvm5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -493,8 +493,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908051057437_almostfinal.resx">
-      <DependentUpon>201908051057437_almostfinal.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908060147579_chatnotvm5.resx">
+      <DependentUpon>201908060147579_chatnotvm5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

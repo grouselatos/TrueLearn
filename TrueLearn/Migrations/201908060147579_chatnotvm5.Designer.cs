@@ -7,13 +7,13 @@ namespace TrueLearn.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class almostfinal : IMigrationMetadata
+    public sealed partial class chatnotvm5 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(almostfinal));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(chatnotvm5));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908051057437_almostfinal"; }
+            get { return "201908060147579_chatnotvm5"; }
         }
         
         string IMigrationMetadata.Source

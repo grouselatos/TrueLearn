@@ -3,7 +3,7 @@ namespace TrueLearn.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class almostfinal : DbMigration
+    public partial class chatnotvm5 : DbMigration
     {
         public override void Up()
         {
