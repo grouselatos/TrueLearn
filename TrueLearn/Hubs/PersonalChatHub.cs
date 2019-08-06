@@ -15,14 +15,16 @@ namespace TrueLearn.Hubs
         private DbManager db = new DbManager();
         public void SendToUser(int chatId, string to, string message)
         {
+            var senderName = Context.User.Identity.Name;
             Message newMessage = new Message
             {
                 sent = DateTime.Now,
                 ChatId = chatId,
-                sender = Context.User.Identity.Name,
+                sender =senderName,
                 text = message
             };
             db.AddMessage(newMessage);
+            db.UpdateChatNotification(newMessage, senderName);
             Clients.User(to).gotMessage(Context.User.Identity.Name, message);
         }
     }

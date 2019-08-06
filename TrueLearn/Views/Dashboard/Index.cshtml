@@ -1,0 +1,12 @@
+﻿@model TrueLearn.ViewModels.DashboardViewModel
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+
+
+@Html.Partial("_Profile", Model.User)
+@Html.Partial("_ChatNotifications", Model.chatNotifications)
+@Html.Partial("_FriendsNotifications", Model.friendNotifications)
+

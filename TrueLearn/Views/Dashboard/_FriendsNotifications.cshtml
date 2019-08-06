@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TrueLearn.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Notifications";
+}
+
+<h2>Notifications</h2>
+
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr style="border: none;">
+            <td>
+                <p>@item.UserName has sent you a friend request.</p>
+            </td>
+            <td>
+                <button class="btn btn-primary accept" id="@item.Id" type="button">Accept</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(() => {
+        $(".accept").click((e) => {
+            $.ajax({
+                method: 'POST',
+                url: '/Friends/AcceptRequest',
+                data: {
+                    senderId: e.target.id
+                },
+                success: (response) => {
+                    e.target.innerText = 'Accepted';
+                },
+                error: (response) => {
+                    e.target.innerText = 'Error';
+                }
+            })
+        });
+
+    });
+</script>

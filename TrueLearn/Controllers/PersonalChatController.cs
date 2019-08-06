@@ -23,7 +23,8 @@ namespace TrueLearn.Controllers
                 Chat = chat,
                 User = db.GetUser(User.Identity.GetUserId()),
                 Friend = db.GetUser(friendId),
-                Messages = db.GetMessages(chat.Id)
+                Messages = db.GetMessages(chat.Id),
+                chatNotifications = db.GetChatNotifications(chat.Id)
             };
             return View(vm);
         }
