@@ -1,27 +1,29 @@
-﻿@model IEnumerable<TrueLearn.Models.TodoTask>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Task Calendar";
 }
+<link href='~/Content/packages/core/main.css' rel='stylesheet' />
+<link href='~/Content/packages/daygrid/main.css' rel='stylesheet' />
 <script src="https://kit.fontawesome.com/82b062aa43.js"></script>
 <link rel="stylesheet" href="~/Content/styles.css" />
 <script rel="js" src="~/Content/main.js"></script>
-<script rel="js" src="~/Content/assets/js/fullcalendar.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src='~/Content/packages/core/main.js'></script>
+<script src='~/Content/packages/daygrid/main.js'></script>
 
 
 <style>
     #calendar {
-        width: 70vw;
-        height: 70vh;
+        height: 50%;
+        background: none !important;
+    }
+    .main-body{
+        margin-top: 0px !important;
     }
 </style>
 
 
-<h2>Task Calendar</h2>
-
-<button id="btnCreate" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
-    <span class="glyphicon glyphicon-pencil"></span> Create
+<button id="btnCreate" class="btn btn-default">
+    <i class="fas fa-edit fa-2x" style="color: white;"></i>
 </button>
 
 <div id="calendar"></div>
@@ -70,10 +72,146 @@
             </div>
             }
         </div>
-        @*<div>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </div>*@
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
     </div>
 </div>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+@section scripts{
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Content/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['dayGrid']
+            });
+
+            calendar.render();
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(() => {
+            let events = [];
+            var selectedEvent = null;
+            FetchEventAndRenderCalendar();
+            function FetchEventAndRenderCalendar() {
+                events = []
+                $.ajax({
+                    method: "GET",
+                    url: "/TodoTasks/Events",
+                    success: function (response) {
+                        for (let x of response) {
+                            events.push({
+                                id: x.Id,
+                                title: x.title,
+                                description: x.description,
+                                start: x.start,
+                                end: x.end,
+                                allDay: true
+                            });
+                        }
+                        console.log(events);
+                        GenerateCalendar(events)
+                    },
+                    error: function (response) {
+                        alert('failed');
+                    }
+                })
+            }
+
+
+            function GenerateCalendar(events) {
+                $('#calendar').fullCalendar('destroy');
+                $('#calendar').fullCalendar({
+                    contentHeight: 400,
+                    defaultDate: new Date(),
+                    timeFormat: 'h(:mm)a',
+                    header: {
+                        left: 'prev, next today',
+                        center: 'title',
+                    },
+                    eventColor: '#378006',
+                    events: events,
+                    eventClick: function (calEvent, jsEvent, view) {
+                        selectedEvent = calEvent;
+                        $('#myModal #eventTitle').text(calEvent.title);
+                        var $description = $('<div/>');
+                        $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
+                        if (calEvent.end != null) {
+                            $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+                        }
+                        $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                        $('#myModal #pDetails').empty().html($description);
+
+                        $('#myModal').modal();
+                    },
+                })
+            }
+
+            $('#btnCreate').click(function () {
+
+                $('#myModalCreate').modal();
+                $('#create').click(function () {
+                    $.ajax({
+                        method: "PUT",
+                        url: "/TodoTasks/Event",
+                        data: {
+                            UserId: $('#userId').val(),
+                            title: $('#title').val(),
+                            description: $('#description').val(),
+                            start_date: $('#start').val(),
+                            end_date: $('#end').val(),
+                        },
+                        success: function (response) {
+                            if (response) {
+                                FetchEventAndRenderCalendar();
+                                $('#myModalCreate').modal('hide');
+                            }
+                        },
+                        error: function () {
+                            alert('failed');
+                        }
+                    })
+                })
+            });
+
+            $('#btnEdit').click(function () {
+
+            });
+
+            $('#btnDelete').click(function () {
+                if (selectedEvent != null && confirm('Are you sure?')) {
+                    $.ajax({
+                        method: "DELETE",
+                        url: "/TodoTasks/Event",
+                        data: {
+                            id: selectedEvent.id
+                        },
+                        success: function (response) {
+                            if (response) {
+                                FetchEventAndRenderCalendar();
+                                $('#myModal').modal('hide');
+                            }
+                        },
+                        error: function () {
+                            alert('failed');
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+}

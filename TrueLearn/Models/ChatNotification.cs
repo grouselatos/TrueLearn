@@ -9,11 +9,14 @@ namespace TrueLearn.Models
 {
     public class ChatNotification
     {
-        [Key, ForeignKey("Message")]
+        public int Id { get; set; }
+
+        [ForeignKey("Chat")]
         public int ChatId { get; set; }
-        public string sender { get; set; }
+
+        public int MessageId { get; set; }
+        public string senderName { get;set; }
         public string receiver { get; set; }
-        public DateTime triggered { get; set; }
-        public virtual Message Message { get; set; }
+        public virtual Chat Chat { get; set; }
     }
 }

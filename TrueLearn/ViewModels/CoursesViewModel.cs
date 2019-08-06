@@ -6,8 +6,9 @@ using TrueLearn.Models;
 
 namespace TrueLearn.ViewModels
 {
-    public class FriendsNotificationViewModel
+    public class CoursesViewModel
     {
-        public IEnumerable<ApplicationUser> Users { get; set; }
+        public IEnumerable<Course> Courses { get; set; }
+        public CourseStatus Status { get; set; }
     }
 }

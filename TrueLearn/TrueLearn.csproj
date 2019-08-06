@@ -184,7 +184,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CertificatesController.cs" />
+    <Compile Include="Controllers\ChatNotificationsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\GlobalChatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -199,10 +201,7 @@
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-    <Compile Include="Migrations\201908051057437_almostfinal.cs" />
-    <Compile Include="Migrations\201908051057437_almostfinal.Designer.cs">
-      <DependentUpon>201908051057437_almostfinal.cs</DependentUpon>
-    </Compile>
+    
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -219,8 +218,11 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ChatNotificationViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\GlobalChatViewModel.cs" />
     <Compile Include="ViewModels\PersonalChatViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="ViewModels\FriendsNotificationViewModel.cs" />
     <Compile Include="ViewModels\FriendsViewModel.cs" />
@@ -265,6 +267,104 @@
     <Content Include="Content\Landing\undraw_steps_ngvm.svg" />
     <Content Include="Content\layout.html" />
     <Content Include="Content\main.js" />
+    <Content Include="Content\packages\bootstrap\main.css" />
+    <Content Include="Content\packages\bootstrap\main.js" />
+    <Content Include="Content\packages\bootstrap\main.min.css" />
+    <Content Include="Content\packages\bootstrap\main.min.js" />
+    <Content Include="Content\packages\core\locales-all.js" />
+    <Content Include="Content\packages\core\locales-all.min.js" />
+    <Content Include="Content\packages\core\locales\af.js" />
+    <Content Include="Content\packages\core\locales\ar-dz.js" />
+    <Content Include="Content\packages\core\locales\ar-kw.js" />
+    <Content Include="Content\packages\core\locales\ar-ly.js" />
+    <Content Include="Content\packages\core\locales\ar-ma.js" />
+    <Content Include="Content\packages\core\locales\ar-sa.js" />
+    <Content Include="Content\packages\core\locales\ar-tn.js" />
+    <Content Include="Content\packages\core\locales\ar.js" />
+    <Content Include="Content\packages\core\locales\bg.js" />
+    <Content Include="Content\packages\core\locales\bs.js" />
+    <Content Include="Content\packages\core\locales\ca.js" />
+    <Content Include="Content\packages\core\locales\cs.js" />
+    <Content Include="Content\packages\core\locales\da.js" />
+    <Content Include="Content\packages\core\locales\de.js" />
+    <Content Include="Content\packages\core\locales\el.js" />
+    <Content Include="Content\packages\core\locales\en-au.js" />
+    <Content Include="Content\packages\core\locales\en-gb.js" />
+    <Content Include="Content\packages\core\locales\en-nz.js" />
+    <Content Include="Content\packages\core\locales\es-us.js" />
+    <Content Include="Content\packages\core\locales\es.js" />
+    <Content Include="Content\packages\core\locales\et.js" />
+    <Content Include="Content\packages\core\locales\eu.js" />
+    <Content Include="Content\packages\core\locales\fa.js" />
+    <Content Include="Content\packages\core\locales\fi.js" />
+    <Content Include="Content\packages\core\locales\fr-ca.js" />
+    <Content Include="Content\packages\core\locales\fr-ch.js" />
+    <Content Include="Content\packages\core\locales\fr.js" />
+    <Content Include="Content\packages\core\locales\gl.js" />
+    <Content Include="Content\packages\core\locales\he.js" />
+    <Content Include="Content\packages\core\locales\hi.js" />
+    <Content Include="Content\packages\core\locales\hr.js" />
+    <Content Include="Content\packages\core\locales\hu.js" />
+    <Content Include="Content\packages\core\locales\id.js" />
+    <Content Include="Content\packages\core\locales\is.js" />
+    <Content Include="Content\packages\core\locales\it.js" />
+    <Content Include="Content\packages\core\locales\ja.js" />
+    <Content Include="Content\packages\core\locales\ka.js" />
+    <Content Include="Content\packages\core\locales\kk.js" />
+    <Content Include="Content\packages\core\locales\ko.js" />
+    <Content Include="Content\packages\core\locales\lb.js" />
+    <Content Include="Content\packages\core\locales\lt.js" />
+    <Content Include="Content\packages\core\locales\lv.js" />
+    <Content Include="Content\packages\core\locales\mk.js" />
+    <Content Include="Content\packages\core\locales\ms.js" />
+    <Content Include="Content\packages\core\locales\nb.js" />
+    <Content Include="Content\packages\core\locales\nl.js" />
+    <Content Include="Content\packages\core\locales\nn.js" />
+    <Content Include="Content\packages\core\locales\pl.js" />
+    <Content Include="Content\packages\core\locales\pt-br.js" />
+    <Content Include="Content\packages\core\locales\pt.js" />
+    <Content Include="Content\packages\core\locales\ro.js" />
+    <Content Include="Content\packages\core\locales\ru.js" />
+    <Content Include="Content\packages\core\locales\sk.js" />
+    <Content Include="Content\packages\core\locales\sl.js" />
+    <Content Include="Content\packages\core\locales\sq.js" />
+    <Content Include="Content\packages\core\locales\sr-cyrl.js" />
+    <Content Include="Content\packages\core\locales\sr.js" />
+    <Content Include="Content\packages\core\locales\sv.js" />
+    <Content Include="Content\packages\core\locales\th.js" />
+    <Content Include="Content\packages\core\locales\tr.js" />
+    <Content Include="Content\packages\core\locales\uk.js" />
+    <Content Include="Content\packages\core\locales\vi.js" />
+    <Content Include="Content\packages\core\locales\zh-cn.js" />
+    <Content Include="Content\packages\core\locales\zh-tw.js" />
+    <Content Include="Content\packages\core\main.css" />
+    <Content Include="Content\packages\core\main.js" />
+    <Content Include="Content\packages\core\main.min.css" />
+    <Content Include="Content\packages\core\main.min.js" />
+    <Content Include="Content\packages\daygrid\main.css" />
+    <Content Include="Content\packages\daygrid\main.js" />
+    <Content Include="Content\packages\daygrid\main.min.css" />
+    <Content Include="Content\packages\daygrid\main.min.js" />
+    <Content Include="Content\packages\google-calendar\main.js" />
+    <Content Include="Content\packages\google-calendar\main.min.js" />
+    <Content Include="Content\packages\interaction\main.js" />
+    <Content Include="Content\packages\interaction\main.min.js" />
+    <Content Include="Content\packages\list\main.css" />
+    <Content Include="Content\packages\list\main.js" />
+    <Content Include="Content\packages\list\main.min.css" />
+    <Content Include="Content\packages\list\main.min.js" />
+    <Content Include="Content\packages\luxon\main.js" />
+    <Content Include="Content\packages\luxon\main.min.js" />
+    <Content Include="Content\packages\moment-timezone\main.js" />
+    <Content Include="Content\packages\moment-timezone\main.min.js" />
+    <Content Include="Content\packages\moment\main.js" />
+    <Content Include="Content\packages\moment\main.min.js" />
+    <Content Include="Content\packages\rrule\main.js" />
+    <Content Include="Content\packages\rrule\main.min.js" />
+    <Content Include="Content\packages\timegrid\main.css" />
+    <Content Include="Content\packages\timegrid\main.js" />
+    <Content Include="Content\packages\timegrid\main.min.css" />
+    <Content Include="Content\packages\timegrid\main.min.js" />
     <Content Include="Content\settings.html" />
     <Content Include="Content\signin.html" />
     <Content Include="Content\styles.css" />
@@ -371,6 +471,10 @@
     <Content Include="Views\TodoTasks\Edit.cshtml" />
     <Content Include="Views\TodoTasks\Delete.cshtml" />
     <Content Include="Views\TodoTasks\Create.cshtml" />
+    <Content Include="Views\Certificates\Index.cshtml" />
+    <Content Include="Views\Certificates\Create.cshtml" />
+    <Content Include="Views\Certificates\Edit.cshtml" />
+    <Content Include="Views\Certificates\Delete.cshtml" />
     <Content Include="Views\Friends\FriendList.cshtml" />
     <Content Include="Views\Certificates\Create.cshtml" />
     <Content Include="Views\Certificates\Index.cshtml" />
@@ -378,8 +482,6 @@
     <Content Include="Views\GlobalChat\Index.cshtml" />
     <Content Include="Views\PersonalChat\Chat.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Suggestions\Index.cshtml" />
-    <Content Include="Views\Account\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -396,9 +498,7 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908051057437_almostfinal.resx">
-      <DependentUpon>201908051057437_almostfinal.cs</DependentUpon>
-    </EmbeddedResource>
+
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
