@@ -201,7 +201,10 @@
     <Compile Include="Hubs\GlobalChatHub.cs" />
     <Compile Include="Hubs\PersonalChatHub.cs" />
     <Compile Include="Managers\DbManager.cs" />
-    
+    <Compile Include="Migrations\201908061013070_k7.cs" />
+    <Compile Include="Migrations\201908061013070_k7.Designer.cs">
+      <DependentUpon>201908061013070_k7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -498,7 +501,9 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-
+    <EmbeddedResource Include="Migrations\201908061013070_k7.resx">
+      <DependentUpon>201908061013070_k7.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
