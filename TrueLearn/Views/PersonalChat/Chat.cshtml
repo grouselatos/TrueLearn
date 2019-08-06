@@ -41,13 +41,13 @@
         transition: 0.7s;
     }
 
-    .message:nth-child(n) {
+    .message.you {
         background-color: #9f72b0;
         float: right;
         margin-right: 17px;
     }
 
-    .message:nth-child(2n) {
+    .message.friend {
         background-color: #a7abab;
         float: left;
         margin-right: 17px;
@@ -98,7 +98,7 @@
     <div class="chatwindow" id="messages">
         @foreach (var message in Model.Messages)
         {
-            <p class="message" id="messages"><b>@message.sent  | @message.sender  : </b>@message.text</p>
+            <p class="@("message " + (message.sender == User.Identity.Name ? "you" : "friend"))" id="messages"><b>@(@message.sender == User.Identity.Name ? "Me" : message.sender )  : </b>@message.text</p>
         }
     </div>
     <div>
@@ -122,7 +122,7 @@
 
 
             chat.client.gotMessage = (from, message) => {
-                $('#messages').append(`<p class="message"> ${from}: ${message}</p>`);
+                $('#messages').append(`<p class="message friend"> ${from}: ${message}</p>`);
                 var objDiv = document.getElementById("messages");
                 objDiv.scrollTop = objDiv.scrollHeight;
 
@@ -132,7 +132,7 @@
                 $('#send').click(() => {
                     chat.server.sendToUser($('#chatId').val(), $('#friend').val(), $('#message').val());
 
-                    $('#messages').append(`<p class="message">Me: ${$('#message').val()}</p>`);
+                    $('#messages').append(`<p class="message you">Me: ${$('#message').val()}</p>`);
                     $('#message').val('').focus();
                     var objDiv = document.getElementById("messages");
                     objDiv.scrollTop = objDiv.scrollHeight;

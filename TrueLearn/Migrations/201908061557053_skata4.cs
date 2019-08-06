@@ -3,7 +3,7 @@ namespace TrueLearn.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class asdfas : DbMigration
+    public partial class skata4 : DbMigration
     {
         public override void Up()
         {
@@ -28,6 +28,7 @@ namespace TrueLearn.Migrations
                         last_name = c.String(),
                         birth_date = c.DateTime(nullable: false),
                         country = c.String(),
+                        ProfilePhotoPath = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -94,22 +95,26 @@ namespace TrueLearn.Migrations
                         sender = c.String(),
                         sent = c.DateTime(nullable: false),
                         text = c.String(),
+                        ChatNotification_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Chats", t => t.ChatId, cascadeDelete: true)
-                .Index(t => t.ChatId);
+                .ForeignKey("dbo.ChatNotifications", t => t.ChatNotification_Id)
+                .Index(t => t.ChatId)
+                .Index(t => t.ChatNotification_Id);
             
             CreateTable(
                 "dbo.ChatNotifications",
                 c => new
                     {
+                        Id = c.Int(nullable: false, identity: true),
                         ChatId = c.Int(nullable: false),
-                        sender = c.String(),
+                        MessageId = c.Int(nullable: false),
+                        senderName = c.String(),
                         receiver = c.String(),
-                        triggered = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.ChatId)
-                .ForeignKey("dbo.Messages", t => t.ChatId)
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Chats", t => t.ChatId, cascadeDelete: true)
                 .Index(t => t.ChatId);
             
             CreateTable(
@@ -207,6 +212,15 @@ namespace TrueLearn.Migrations
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
+                "dbo.SuggestionDummies",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        title = c.String(),
+                    })
+                .PrimaryKey(t => t.id);
+            
+            CreateTable(
                 "dbo.FriendNotificationFriends",
                 c => new
                     {
@@ -250,7 +264,8 @@ namespace TrueLearn.Migrations
             DropForeignKey("dbo.Friends", "receiverId", "dbo.AspNetUsers");
             DropForeignKey("dbo.FriendNotificationFriends", "Friend_Id", "dbo.Friends");
             DropForeignKey("dbo.FriendNotificationFriends", "FriendNotification_id", "dbo.FriendNotifications");
-            DropForeignKey("dbo.ChatNotifications", "ChatId", "dbo.Messages");
+            DropForeignKey("dbo.Messages", "ChatNotification_Id", "dbo.ChatNotifications");
+            DropForeignKey("dbo.ChatNotifications", "ChatId", "dbo.Chats");
             DropForeignKey("dbo.Messages", "ChatId", "dbo.Chats");
             DropForeignKey("dbo.Chats", "Id", "dbo.Friends");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
@@ -266,6 +281,7 @@ namespace TrueLearn.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.GlobalChats", new[] { "UserId" });
             DropIndex("dbo.ChatNotifications", new[] { "ChatId" });
+            DropIndex("dbo.Messages", new[] { "ChatNotification_Id" });
             DropIndex("dbo.Messages", new[] { "ChatId" });
             DropIndex("dbo.Chats", new[] { "Id" });
             DropIndex("dbo.Friends", new[] { "ApplicationUser_Id" });
@@ -276,6 +292,7 @@ namespace TrueLearn.Migrations
             DropIndex("dbo.Certificates", new[] { "UserId" });
             DropTable("dbo.CourseTodoTasks");
             DropTable("dbo.FriendNotificationFriends");
+            DropTable("dbo.SuggestionDummies");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Courses");
             DropTable("dbo.TodoTasks");
