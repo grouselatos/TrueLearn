@@ -6,9 +6,24 @@
     @foreach (var item in Model)
 
     {
-
-
-    <tr style=" border: none;">
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.friend)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.senderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.timeSent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.text)
+            </td>
+            <td>
+                @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.FriendId }, null)
+            </td>
+        </tr>
+    <tr>
         <td>
             @Html.DisplayFor(modelItem => item.timeSent)
         </td>
@@ -26,7 +41,6 @@
             @Html.ActionLink("Chat", "Chat", "PersonalChat", new { friendId = item.FriendId }, null)
         </td>
     </tr>
-
     }
 
 </table>
