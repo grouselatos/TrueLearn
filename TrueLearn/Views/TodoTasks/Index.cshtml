@@ -19,6 +19,20 @@
     .modal-dialogue{
         background-image:linear-gradient(white, white, 0.4) !important;
     }
+    .fc-toolbar .fc-left {
+    /* float: left; */
+    display: none;
+}
+    #calendar{
+        width: 1100px;
+    }
+    .fc-unthemed td.fc-today {
+    background-color: transparent !important;
+}
+    .fc td.fc-today {
+    border-style: double;
+    background-color: lightgrey !important;
+}
 </style>
 
 
@@ -147,20 +161,21 @@
                         alert('failed');
                     }
                 })
+
             }
 
 
             function GenerateCalendar(events) {
                 $('#calendar').fullCalendar('destroy');
                 $('#calendar').fullCalendar({
-                    contentHeight: 400,
+                    contentHeight: 700,
                     defaultDate: new Date(),
                     timeFormat: 'h(:mm)a',
                     header: {
                         left: 'prev, next today',
                         center: 'title',
                     },
-                    eventColor: 'rebeccapurple',
+                    eventColor: '#a588b5',
                     events: events,
                     eventClick: function (calEvent, jsEvent, view) {
                         selectedEvent = calEvent;
