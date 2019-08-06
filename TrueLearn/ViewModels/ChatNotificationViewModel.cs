@@ -12,5 +12,6 @@ namespace TrueLearn.ViewModels
         public string senderName { get; set; }
         public string text { get; set; }
         public DateTime timeSent { get; set; }
+        public int chatId { get; set; }
     }
 }
