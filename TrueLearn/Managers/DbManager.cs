@@ -388,25 +388,25 @@ namespace TrueLearn.Managers
                 var chatNots = db.Friends.Where(x => x.senderId == userId ||
                                                   x.receiverId == userId &&
                                                   x.status == FriendStatus.Approved)
-                                      .Join(db.Chats,
-                                            friend => friend.Id,
-                                            chat => chat.Id,
-                                            (friend, chat) => new { F = friend, C = chat })
-                                      .Join(db.ChatNotifications,
-                                            chat => chat.C.Id,
-                                            chatNot => chatNot.ChatId,
-                                            (chat, chatNot) => new { Chat = chat, CN = chatNot })
-                                      .Join(db.Messages,
-                                            chatNot => chatNot.CN.MessageId,
-                                            message => message.Id,
-                                            (chatNot, message) => new { CHN = chatNot, M = message })
-                                      .Select(x => new ChatNotificationViewModel
-                                      {
-                                          senderName = x.CHN.CN.senderName,
-                                          timeSent = x.M.sent,
-                                          text = x.M.text
-                                      })
-                                      .ToList();
+                                         .Join(db.Chats,
+                                             friend => friend.Id,
+                                             chat => chat.Id,
+                                             (friend, chat) => new { F = friend, C = chat })
+                                         .Join(db.ChatNotifications,
+                                             chat => chat.C.Id,
+                                             chatNot => chatNot.ChatId,
+                                             (chat, chatNot) => new { Chat = chat, CN = chatNot })
+                                         .Join(db.Messages,
+                                             chatNot => chatNot.CN.MessageId,
+                                             message => message.Id,
+                                             (chatNot, message) => new { CHN = chatNot, M = message })
+                                         .Select(x => new ChatNotificationViewModel
+                                         {
+                                             senderName = x.CHN.CN.senderName,
+                                             timeSent = x.M.sent,
+                                             text = x.M.text
+                                         })
+                                         .ToList();
                                            
 
                 result = chatNots;
@@ -416,12 +416,13 @@ namespace TrueLearn.Managers
 
 
 
-        public void UpdateChatNotification(Message message, string senderName)
+        public void UpdateChatNotification(Message message, string sender)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 ChatNotification chatNot = db.ChatNotifications.FirstOrDefault(x => x.ChatId == message.ChatId);
                 chatNot.MessageId = message.Id;
+                chatNot.senderName = sender;
                 db.ChatNotifications.Attach(chatNot);
                 db.Entry(chatNot).State = EntityState.Modified;
                 db.SaveChanges();
