@@ -225,16 +225,36 @@ namespace TrueLearn.Managers
             }
         }
 
+		public bool AddTodoTaskBool(TodoTask todoTask)
+		{
+			bool result;
 
-        public TodoTask GetTodoTask(int id)
-        {
-            TodoTask result;
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                result = db.TodoTasks.Find(id);
-            }
-            return result;
-        }
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				if (todoTask != null)
+				{
+					db.TodoTasks.Add(todoTask);
+					db.SaveChanges();
+					result = true;
+				}
+				else
+				{
+					result = false;
+				}
+			}
+			return result;
+		}
+
+        
+		public TodoTask GetTodoTask(int id)
+		{
+			TodoTask result;
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				result = db.TodoTasks.Find(id);
+			}
+			return result;
+		}
 
         public TodoTask GetTodoTaskFull(int id)
         {
@@ -280,6 +300,26 @@ namespace TrueLearn.Managers
             }
         }
 
+		public bool DeleteTodoTaskBool(int id)
+		{
+			bool result; 
+			using (ApplicationDbContext db = new ApplicationDbContext())
+			{
+				TodoTask todoTask = db.TodoTasks.Find(id);
+
+				if(todoTask != null)
+				{
+					db.TodoTasks.Remove(todoTask);
+					db.SaveChanges();
+					result = true;
+				}
+				else
+				{
+					result = false;
+				}
+			}
+			return result;
+		}
         #endregion
 
         #region Friend

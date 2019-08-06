@@ -16,7 +16,8 @@
         height: 50%;
         background: none !important;
     }
-    .main-body{
+
+    .main-body {
         margin-top: 0px !important;
     }
 </style>
@@ -81,26 +82,29 @@
 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
 
 @section scripts{
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script src="~/Content/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     @*<script>
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
+            //document.addEventListener('DOMContentLoaded', function () {
+            //    var calendarEl = document.getElementById('calendar');
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ['dayGrid']
-            });
+            //    var calendar = new FullCalendar.Calendar(calendarEl, {
+            //        plugins: ['dayGrid']
+            //    });
 
-            calendar.render();
-        });
+            //    calendar.render();
+            //});
 
-    </script>*@
+        </script>*@
 
     <script>
         $(document).ready(() => {
@@ -123,8 +127,7 @@
                                 allDay: true
                             });
                         }
-                        console.log(events);
-                        GenerateCalendar(events)
+                        GenerateCalendar(events);
                     },
                     error: function (response) {
                         alert('failed');
@@ -143,7 +146,7 @@
                         left: 'prev, next today',
                         center: 'title',
                     },
-                    eventColor: '#378006',
+                    eventColor: 'rebeccapurple',
                     events: events,
                     eventClick: function (calEvent, jsEvent, view) {
                         selectedEvent = calEvent;

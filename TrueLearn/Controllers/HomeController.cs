@@ -20,37 +20,5 @@ namespace TrueLearn.Controllers
             return View();
         }
 
-        public JsonResult GetEvents()
-        {
-            
-                var events = db.GetTodoTasks();
-                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public JsonResult Create(TaskViewModel vm)
-        {
-            
-            vm.TodoTask.UserId = User.Identity.GetUserId();
-            db.AddTodoTask(vm.TodoTask, vm.SelectedCourses);
-            return new JsonResult { Data = new { vm.TodoTask, vm.SelectedCourses } };
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [ActionName("Delete")]
-        public JsonResult DeleteConfirmed(int id)
-        {
-            var status = false;
-            var task = db.GetTodoTask(id);
-            if (task != null)
-            {
-                db.DeleteTodoTask(id);
-                status = true;
-            }
-            return new JsonResult { Data = new { status = status } };
-        }
     }
 }
